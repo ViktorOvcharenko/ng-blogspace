@@ -13,27 +13,29 @@
                 type="text"
                 class="form-control form-control-lg"
                 placeholder="Username"
-                formControlName="username"
-              >
+                formControlName="username">
             </fieldset>
             <fieldset class="form-group">
               <input
                 type="text"
                 class="form-control form-control-lg"
                 placeholder="Email"
-                formControlName="email"
-              >
+                formControlName="email">
             </fieldset>
             <fieldset class="form-group">
               <input
                 type="password"
                 class="form-control form-control-lg"
                 placeholder="Password"
-                formControlName="password"
-              >
+                formControlName="password">
             </fieldset>
             <div class="d-flex justify-content-end">
-              <button class="btn btn-lg btn-success" type="submit">{{ 'auth.sign-up' | translate }}</button>
+              <button
+                class="btn btn-lg btn-success"
+                type="submit"
+                [disabled]="isLoading">
+                {{ 'auth.sign-up' | translate }}
+              </button>
             </div>
           </fieldset>
         </form>

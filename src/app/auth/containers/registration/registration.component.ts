@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Registration } from '../../store/actions';
+import { Observable } from 'rxjs';
+import { getIsLoading } from '../../store/selectors';
 
 import * as fromAuthModels from '../../models';
 
@@ -10,8 +12,11 @@ import * as fromAuthModels from '../../models';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent {
+  isLoading$: Observable<boolean>;
 
-  constructor(private store: Store) { }
+  constructor(private store: Store) {
+    this.isLoading$ = this.store.pipe(select(getIsLoading));
+  }
 
   submit(event: fromAuthModels.RegistrationRequest): void {
     this.store.dispatch(new Registration(event));

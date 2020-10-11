@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { StoreModule } from '@ngrx/store';
+
+import { authReducers } from './store/reducers';
 
 import * as fromComponents from './components';
 import * as fromContainers from './containers';
@@ -16,7 +19,8 @@ import * as fromContainers from './containers';
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
-    TranslateModule
+    TranslateModule,
+    StoreModule.forFeature('auth', authReducers)
   ]
 })
 export class AuthModule { }

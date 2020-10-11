@@ -1,3 +1,4 @@
 <app-registration
+  [isLoading]="isLoading$ | async"
   (onSubmit)="submit($event)"
 ></app-registration>
