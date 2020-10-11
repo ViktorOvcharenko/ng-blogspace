@@ -20,6 +20,7 @@ export class RegistrationSuccess implements Action {
 
 export class RegistrationFail implements Action {
   public readonly type = AuthActionsTypes.REGISTRATION_FAIL;
+  constructor(public payload: fromModels.BackendErrors) { }
 }
 
 export type Actions =

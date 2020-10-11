@@ -9,7 +9,29 @@ export const authReducers = (
 ): fromAuthModels.AuthState => {
   switch (action.type) {
     case AuthActionsTypes.REGISTRATION: {
-      return { ...state, isLoading: true };
+      return {
+        ...state,
+        isLoading: true,
+        validationErrors: null
+      };
+    }
+    case AuthActionsTypes.REGISTRATION_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+        isLoaded: true,
+        currentUser: action.payload,
+        validationErrors: null
+      };
+    }
+    case AuthActionsTypes.REGISTRATION_FAIL: {
+      return {
+        ...state,
+        isLoading: false,
+        isLoaded: false,
+        currentUser: null,
+        validationErrors: action.payload
+      };
     }
     default:
       return state;
