@@ -1,6 +1,9 @@
 {
   "auth": {
     "sign-up": "Sign up",
-    "have-account": "Have an account?"
+    "have-account": "Have an account?",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password"
   }
 }

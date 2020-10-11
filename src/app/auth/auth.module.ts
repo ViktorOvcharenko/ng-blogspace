@@ -11,6 +11,7 @@ import { AuthEffects } from './store/effects';
 import * as fromComponents from './components';
 import * as fromContainers from './containers';
 import * as fromServices from './services';
+import * as fromSharedServices from '../shared/services';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import * as fromServices from './services';
     EffectsModule.forFeature([AuthEffects])
   ],
   providers: [
-    fromServices.AuthService
+    fromServices.AuthService,
+    fromSharedServices.PersistenceService
   ]
 })
 export class AuthModule { }

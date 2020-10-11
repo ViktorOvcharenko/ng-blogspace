@@ -29,7 +29,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       },
-      defaultLanguage: 'en'
+      defaultLanguage: 'ru'
     }),
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),

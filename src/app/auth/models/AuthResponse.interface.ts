@@ -1,5 +1,5 @@
-import * as fromModels from '../../shared/models';
+import * as fromSharedModels from '../../shared/models';
 
 export interface AuthResponse {
-  user: fromModels.CurrentUser;
+  user: fromSharedModels.CurrentUser;
 }

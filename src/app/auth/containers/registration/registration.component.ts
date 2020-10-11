@@ -7,7 +7,7 @@ import {
   getValidationErrors
 } from '../../store/selectors';
 
-import * as fromModels from '../../../shared/models';
+import * as fromSharedModels from '../../../shared/models';
 import * as fromAuthModels from '../../models';
 
 @Component({
@@ -17,7 +17,7 @@ import * as fromAuthModels from '../../models';
 })
 export class RegistrationComponent {
   isLoading$: Observable<boolean>;
-  backendErrors$: Observable<fromModels.BackendErrors>;
+  backendErrors$: Observable<fromSharedModels.BackendErrors>;
 
   constructor(private store: Store) {
     this.isLoading$ = this.store.pipe(select(getIsLoading));

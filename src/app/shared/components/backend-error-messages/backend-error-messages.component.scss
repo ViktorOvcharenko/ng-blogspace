@@ -1,4 +1,6 @@
+@import "src/assets/styles/variables";
+
 .error-messages {
-  color: #b85c5c !important;
+  color: $color-error;
   font-weight: 700;
 }

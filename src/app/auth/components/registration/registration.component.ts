@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import * as fromAuthModels from '../../models';
-import * as fromModels from '../../../shared/models';
+import * as fromSharedModels from '../../../shared/models';
 
 @Component({
   selector: 'app-registration',
@@ -13,7 +13,7 @@ import * as fromModels from '../../../shared/models';
 export class RegistrationComponent implements OnInit {
   form: FormGroup;
   @Input() isLoading: boolean;
-  @Input() backendErrors: fromModels.BackendErrors;
+  @Input() backendErrors: fromSharedModels.BackendErrors;
   @Output() onSubmit: EventEmitter<fromAuthModels.RegistrationRequest> = new EventEmitter<fromAuthModels.RegistrationRequest>();
 
   constructor(private fb: FormBuilder) { }

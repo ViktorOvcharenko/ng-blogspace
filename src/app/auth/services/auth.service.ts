@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 
-import * as fromModels from '../../shared/models';
+import * as fromSharedModels from '../../shared/models';
 import * as fromAuthModels from '../models';
 
 @Injectable()
@@ -13,7 +13,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  registration(data: fromAuthModels.RegistrationRequest): Observable<fromModels.CurrentUser> {
+  registration(data: fromAuthModels.RegistrationRequest): Observable<fromSharedModels.CurrentUser> {
       return this.http
         .post<fromAuthModels.AuthResponse>(`${this.apiUrl}/users`, data)
         .pipe(map(response => response.user));

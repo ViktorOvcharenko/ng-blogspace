@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
-import * as fromModels from '../../models';
+import * as fromSharedModels from '../../models';
 
 @Component({
   selector: 'app-backend-error-messages',
@@ -9,7 +9,7 @@ import * as fromModels from '../../models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BackendErrorMessagesComponent implements OnInit {
-  @Input() backendErrors: fromModels.BackendErrors;
+  @Input() backendErrors: fromSharedModels.BackendErrors;
   errorMessages: string[];
 
   ngOnInit() {

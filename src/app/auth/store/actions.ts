@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import * as fromModels from '../../shared/models';
+import * as fromSharedModels from '../../shared/models';
 import * as fromAuthModels from '../models';
 
 export enum AuthActionsTypes {
@@ -15,12 +15,12 @@ export class Registration implements Action {
 }
 export class RegistrationSuccess implements Action {
   public readonly type = AuthActionsTypes.REGISTRATION_SUCCESS;
-  constructor(public payload: fromModels.CurrentUser) { }
+  constructor(public payload: fromSharedModels.CurrentUser) { }
 }
 
 export class RegistrationFail implements Action {
   public readonly type = AuthActionsTypes.REGISTRATION_FAIL;
-  constructor(public payload: fromModels.BackendErrors) { }
+  constructor(public payload: fromSharedModels.BackendErrors) { }
 }
 
 export type Actions =

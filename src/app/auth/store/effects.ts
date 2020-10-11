@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
+import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import {
@@ -9,10 +10,11 @@ import {
   RegistrationFail,
   RegistrationSuccess
 } from './actions';
-import {HttpErrorResponse} from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 
-import * as fromModels from '../../shared/models';
+import * as fromSharedModels from '../../shared/models';
 import * as fromAuthServices from '../services';
+import * as fromSharedServices from '../../shared/services';
 
 @Injectable()
 export class AuthEffects {
@@ -20,12 +22,18 @@ export class AuthEffects {
   registration$: Observable<Action> = this.actions$.pipe(
     ofType<Registration>(AuthActionsTypes.REGISTRATION),
     switchMap(({ payload }) => this.authService.registration(payload)),
-    switchMap((currentUser: fromModels.CurrentUser) => of(new RegistrationSuccess(currentUser))),
+    switchMap((currentUser: fromSharedModels.CurrentUser) => {
+      this.persistenceService.set('accessToken', currentUser.token);
+      this.router.navigate(['/']);
+      return of(new RegistrationSuccess(currentUser))
+    }),
     catchError((errorResponse: HttpErrorResponse) => of(new RegistrationFail(errorResponse.error.errors)))
   );
 
   constructor(
     private actions$: Actions,
-    private authService: fromAuthServices.AuthService
+    private authService: fromAuthServices.AuthService,
+    private persistenceService: fromSharedServices.PersistenceService,
+    private router: Router
   ) { }
 }

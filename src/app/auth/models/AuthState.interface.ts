@@ -1,8 +1,8 @@
-import * as fromModels from '../../shared/models';
+import * as fromSharedModels from '../../shared/models';
 
 export interface AuthState {
   isLoading: boolean;
   isLoaded: boolean;
-  currentUser?: fromModels.CurrentUser;
-  validationErrors: fromModels.BackendErrors;
+  currentUser?: fromSharedModels.CurrentUser;
+  validationErrors: fromSharedModels.BackendErrors;
 }
