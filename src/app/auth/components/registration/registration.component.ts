@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import * as fromAuthModels from '../../models';
@@ -13,7 +13,7 @@ export class RegistrationComponent implements OnInit {
   @Input() isLoading: boolean;
   @Output() onSubmit: EventEmitter<fromAuthModels.RegistrationRequest> = new EventEmitter<fromAuthModels.RegistrationRequest>();
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -28,6 +28,8 @@ export class RegistrationComponent implements OnInit {
   }
 
   submit(): void {
-    this.onSubmit.emit(this.form.value);
+    const requestBody: fromAuthModels.RegistrationRequest = { user: { ...this.form.value } };
+
+    this.onSubmit.emit(requestBody);
   }
 }

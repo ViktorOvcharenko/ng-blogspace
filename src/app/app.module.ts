@@ -9,6 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -31,6 +32,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       defaultLanguage: 'en'
     }),
     StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   bootstrap: [
