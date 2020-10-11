@@ -9,6 +9,7 @@ import { authReducers } from './store/reducers';
 
 import * as fromComponents from './components';
 import * as fromContainers from './containers';
+import * as fromServices from './services';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,9 @@ import * as fromContainers from './containers';
     ReactiveFormsModule,
     TranslateModule,
     StoreModule.forFeature('auth', authReducers)
+  ],
+  providers: [
+    fromServices.AuthService
   ]
 })
 export class AuthModule { }
