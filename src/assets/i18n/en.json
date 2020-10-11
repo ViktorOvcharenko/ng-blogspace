@@ -1,1 +1,6 @@
-{}
+{
+  "auth": {
+    "sign-up": "Sign Up",
+    "have-account": "Have an account?"
+  }
+}
