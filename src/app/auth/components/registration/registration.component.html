@@ -4,9 +4,9 @@
       <div class="col-md-6 offset-md-3 col-xs-12">
         <h1 class="text-xs-center">{{ 'auth.sign-up' | translate }}</h1>
         <p class="text-xs-center">
-          <a [routerLink]="['/']" class="text-success">{{ 'auth.have-account' | translate }}</a>
+          <a [routerLink]="['/']" class="text-primary">{{ 'auth.have-account' | translate }}</a>
         </p>
-        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <form [formGroup]="form" (ngSubmit)="submit()">
           <fieldset>
             <fieldset class="form-group">
               <input
@@ -32,7 +32,7 @@
                 formControlName="password"
               >
             </fieldset>
-            <button class="btn btn-lg btn-success pull-xs-right" type="submit">{{ 'auth.sign-up' | translate }}</button>
+            <button class="btn btn-lg btn-primary pull-xs-right" type="submit">{{ 'auth.sign-up' | translate }}</button>
           </fieldset>
         </form>
       </div>

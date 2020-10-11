@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import * as fromAuthModels from '../../models';
 
 @Component({
   selector: 'app-registration',
@@ -8,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegistrationComponent implements OnInit {
   form: FormGroup;
+  @Output() onSubmit: EventEmitter<fromAuthModels.RegistrationRequest> = new EventEmitter<fromAuthModels.RegistrationRequest>();
 
   constructor(private fb: FormBuilder) {}
 
@@ -23,7 +26,7 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  onSubmit(): void {
-    console.log(this.form.value);
+  submit(): void {
+    this.onSubmit.emit(this.form.value);
   }
 }
