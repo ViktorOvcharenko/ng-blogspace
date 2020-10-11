@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
 import { AuthRoutingModule } from './auth-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { TranslateModule } from '@ngx-translate/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -19,10 +18,9 @@ import * as fromServices from './services';
     fromComponents.RegistrationComponent,
   ],
   imports: [
-    CommonModule,
+    SharedModule,
     AuthRoutingModule,
     ReactiveFormsModule,
-    TranslateModule,
     StoreModule.forFeature('auth', authReducers),
     EffectsModule.forFeature([AuthEffects])
   ],

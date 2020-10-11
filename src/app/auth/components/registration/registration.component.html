@@ -6,6 +6,10 @@
         <p class="text-center">
           <a [routerLink]="['/']" class="registration-link">{{ 'auth.have-account' | translate }}</a>
         </p>
+        <app-backend-error-messages
+          *ngIf="backendErrors"
+          [backendErrors]="backendErrors"
+        ></app-backend-error-messages>
         <form [formGroup]="form" (ngSubmit)="submit()">
           <fieldset>
             <fieldset class="form-group">

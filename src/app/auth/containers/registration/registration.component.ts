@@ -2,8 +2,12 @@ import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Registration } from '../../store/actions';
 import { Observable } from 'rxjs';
-import { getIsLoading } from '../../store/selectors';
+import {
+  getIsLoading,
+  getValidationErrors
+} from '../../store/selectors';
 
+import * as fromModels from '../../../shared/models';
 import * as fromAuthModels from '../../models';
 
 @Component({
@@ -13,9 +17,11 @@ import * as fromAuthModels from '../../models';
 })
 export class RegistrationComponent {
   isLoading$: Observable<boolean>;
+  backendErrors$: Observable<fromModels.BackendErrors>;
 
   constructor(private store: Store) {
     this.isLoading$ = this.store.pipe(select(getIsLoading));
+    this.backendErrors$ = this.store.pipe(select(getValidationErrors));
   }
 
   submit(event: fromAuthModels.RegistrationRequest): void {

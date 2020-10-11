@@ -21,7 +21,7 @@ export class AuthEffects {
     ofType<Registration>(AuthActionsTypes.REGISTRATION),
     switchMap(({ payload }) => this.authService.registration(payload)),
     switchMap((currentUser: fromModels.CurrentUser) => of(new RegistrationSuccess(currentUser))),
-    catchError((errorResponse: HttpErrorResponse) => of(new RegistrationFail(errorResponse.error)))
+    catchError((errorResponse: HttpErrorResponse) => of(new RegistrationFail(errorResponse.error.errors)))
   );
 
   constructor(

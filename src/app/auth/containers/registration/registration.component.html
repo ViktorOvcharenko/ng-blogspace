@@ -1,4 +1,5 @@
 <app-registration
   [isLoading]="isLoading$ | async"
+  [backendErrors]="backendErrors$ | async"
   (onSubmit)="submit($event)"
 ></app-registration>

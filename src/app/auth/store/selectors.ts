@@ -6,3 +6,4 @@ import * as fromAuthModels from '../models';
 const authFeatureSelector = createFeatureSelector<fromModels.AppState, fromAuthModels.AuthState>('auth');
 
 export const getIsLoading = createSelector(authFeatureSelector, (state: fromAuthModels.AuthState) => state.isLoading);
+export const getValidationErrors = createSelector(authFeatureSelector, (state: fromAuthModels.AuthState) => state.validationErrors);

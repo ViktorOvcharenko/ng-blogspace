@@ -1,16 +1,19 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import * as fromAuthModels from '../../models';
+import * as fromModels from '../../../shared/models';
 
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  styleUrls: ['./registration.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegistrationComponent implements OnInit {
   form: FormGroup;
   @Input() isLoading: boolean;
+  @Input() backendErrors: fromModels.BackendErrors;
   @Output() onSubmit: EventEmitter<fromAuthModels.RegistrationRequest> = new EventEmitter<fromAuthModels.RegistrationRequest>();
 
   constructor(private fb: FormBuilder) { }
