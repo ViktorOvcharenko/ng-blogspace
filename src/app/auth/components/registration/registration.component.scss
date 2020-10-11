@@ -4,5 +4,9 @@
   .registration-link {
     text-decoration: none;
     color: $color-theme;
+
+    &:hover {
+      color: $color-theme-hover;
+    }
   }
 }
