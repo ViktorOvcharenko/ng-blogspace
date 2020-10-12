@@ -1,11 +1,11 @@
-import { initialAuthState } from './store';
-import { Actions, AuthActionsTypes } from './actions';
+import { initialAuthState } from './auth.store';
+import { AuthActions, AuthActionsTypes } from './auth.actions';
 
 import * as fromAuthModels from '../models';
 
 export const authReducers = (
   state: fromAuthModels.AuthState = initialAuthState,
-  action: Actions
+  action: AuthActions
 ): fromAuthModels.AuthState => {
   switch (action.type) {
     case AuthActionsTypes.REGISTRATION: {

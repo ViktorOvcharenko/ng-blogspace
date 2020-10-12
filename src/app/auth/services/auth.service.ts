@@ -18,4 +18,10 @@ export class AuthService {
         .post<fromAuthModels.AuthResponse>(`${this.apiUrl}/users`, data)
         .pipe(map(response => response.user));
   }
+
+  login(data: fromAuthModels.LoginRequest): Observable<fromSharedModels.CurrentUser> {
+    return this.http
+      .post<fromAuthModels.AuthResponse>(`${this.apiUrl}/users/login`, data)
+      .pipe(map(response => response.user));
+  }
 }

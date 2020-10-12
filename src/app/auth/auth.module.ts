@@ -5,8 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { authReducers } from './store/reducers';
-import { AuthEffects } from './store/effects';
+import { authReducers } from './store/auth.reducers';
+import { AuthEffects } from './store/auth.effects';
 
 import * as fromComponents from './components';
 import * as fromContainers from './containers';
@@ -16,18 +16,20 @@ import * as fromSharedServices from '../shared/services';
 @NgModule({
   declarations: [
     fromContainers.RegistrationComponent,
+    fromContainers.LoginComponent,
     fromComponents.RegistrationComponent,
+    fromComponents.LoginComponent,
   ],
   imports: [
     SharedModule,
     AuthRoutingModule,
     ReactiveFormsModule,
     StoreModule.forFeature('auth', authReducers),
-    EffectsModule.forFeature([AuthEffects])
+    EffectsModule.forFeature([AuthEffects]),
   ],
   providers: [
     fromServices.AuthService,
-    fromSharedServices.PersistenceService
+    fromSharedServices.PersistenceService,
   ]
 })
 export class AuthModule { }

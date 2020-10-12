@@ -1,0 +1,5 @@
+<app-login
+  [isLoading]="isLoading$ | async"
+  [backendErrors]="backendErrors$ | async"
+  (onSubmit)="submit($event)"
+></app-login>

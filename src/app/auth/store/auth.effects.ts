@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import {
-  AuthActionsTypes,
+  AuthActionsTypes, Login, LoginFail, LoginSuccess,
   Registration,
   RegistrationFail,
   RegistrationSuccess
-} from './actions';
+} from './auth.actions';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import * as fromSharedModels from '../../shared/models';
@@ -28,6 +28,18 @@ export class AuthEffects {
       return of(new RegistrationSuccess(currentUser))
     }),
     catchError((errorResponse: HttpErrorResponse) => of(new RegistrationFail(errorResponse.error.errors)))
+  );
+
+  @Effect()
+  login$: Observable<Action> = this.actions$.pipe(
+    ofType<Login>(AuthActionsTypes.LOGIN),
+    switchMap(({ payload }) => this.authService.login(payload)),
+    switchMap((currentUser: fromSharedModels.CurrentUser) => {
+      this.persistenceService.set('accessToken', currentUser.token);
+      this.router.navigate(['/']);
+      return of(new LoginSuccess(currentUser))
+    }),
+    catchError((errorResponse: HttpErrorResponse) => of(new LoginFail(errorResponse.error.errors)))
   );
 
   constructor(

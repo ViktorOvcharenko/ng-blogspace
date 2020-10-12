@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { Registration } from '../../store/auth.actions';
+import { Login } from '../../store/auth.actions';
 import { Observable } from 'rxjs';
 import {
   getIsLoading,
@@ -11,11 +11,11 @@ import * as fromSharedModels from '../../../shared/models';
 import * as fromAuthModels from '../../models';
 
 @Component({
-  selector: 'app-registration-container',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  selector: 'app-login-container',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class RegistrationComponent {
+export class LoginComponent {
   isLoading$: Observable<boolean>;
   backendErrors$: Observable<fromSharedModels.BackendErrors>;
 
@@ -24,7 +24,7 @@ export class RegistrationComponent {
     this.backendErrors$ = this.store.pipe(select(getValidationErrors));
   }
 
-  submit(event: fromAuthModels.RegistrationRequest): void {
-    this.store.dispatch(new Registration(event));
+  submit(event: fromAuthModels.LoginRequest): void {
+    this.store.dispatch(new Login(event));
   }
 }

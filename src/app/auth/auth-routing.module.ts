@@ -5,6 +5,10 @@ import * as fromContainers from './containers';
 
 const routes: Routes = [
   {
+    path: 'login',
+    component: fromContainers.LoginComponent
+  },
+  {
     path: 'registration',
     component: fromContainers.RegistrationComponent
   },
