@@ -15,10 +15,10 @@ import * as fromSharedServices from '../shared/services';
 
 @NgModule({
   declarations: [
-    fromContainers.RegistrationComponent,
     fromContainers.LoginComponent,
-    fromComponents.RegistrationComponent,
+    fromContainers.RegistrationComponent,
     fromComponents.LoginComponent,
+    fromComponents.RegistrationComponent,
   ],
   imports: [
     SharedModule,

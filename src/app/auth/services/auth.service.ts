@@ -16,12 +16,16 @@ export class AuthService {
   registration(data: fromAuthModels.RegistrationRequest): Observable<fromSharedModels.CurrentUser> {
       return this.http
         .post<fromAuthModels.AuthResponse>(`${this.apiUrl}/users`, data)
-        .pipe(map(response => response.user));
+        .pipe(map(this.getCurrentUser));
   }
 
   login(data: fromAuthModels.LoginRequest): Observable<fromSharedModels.CurrentUser> {
     return this.http
       .post<fromAuthModels.AuthResponse>(`${this.apiUrl}/users/login`, data)
-      .pipe(map(response => response.user));
+      .pipe(map(this.getCurrentUser));
+  }
+
+  getCurrentUser(response: fromAuthModels.AuthResponse): fromSharedModels.CurrentUser {
+    return response.user;
   }
 }

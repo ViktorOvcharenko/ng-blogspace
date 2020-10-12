@@ -33,6 +33,31 @@ export const authReducers = (
         validationErrors: action.payload
       };
     }
+    case AuthActionsTypes.LOGIN: {
+      return {
+        ...state,
+        isLoading: true,
+        validationErrors: null
+      };
+    }
+    case AuthActionsTypes.LOGIN_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+        isLoaded: true,
+        currentUser: action.payload,
+        validationErrors: null
+      };
+    }
+    case AuthActionsTypes.LOGIN_FAIL: {
+      return {
+        ...state,
+        isLoading: false,
+        isLoaded: false,
+        currentUser: null,
+        validationErrors: action.payload
+      };
+    }
     default:
       return state;
   }
