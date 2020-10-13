@@ -12,8 +12,7 @@ import * as fromAuthModels from '../../models';
 
 @Component({
   selector: 'app-login-container',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  templateUrl: './login.component.html'
 })
 export class LoginComponent {
   isLoading$: Observable<boolean>;

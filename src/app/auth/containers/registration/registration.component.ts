@@ -12,8 +12,7 @@ import * as fromAuthModels from '../../models';
 
 @Component({
   selector: 'app-registration-container',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss']
+  templateUrl: './registration.component.html'
 })
 export class RegistrationComponent {
   isLoading$: Observable<boolean>;
