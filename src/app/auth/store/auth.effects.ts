@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import {
-  AuthActionsTypes, Login, LoginFail, LoginSuccess,
+  AuthActionsTypes, GetCurrentUser, GetCurrentUserFail, GetCurrentUserSuccess, Login, LoginFail, LoginSuccess,
   Registration,
   RegistrationFail,
   RegistrationSuccess
@@ -25,9 +25,9 @@ export class AuthEffects {
     switchMap((currentUser: fromSharedModels.CurrentUser) => {
       this.persistenceService.set('accessToken', currentUser.token);
       this.router.navigate(['/']);
-      return of(new RegistrationSuccess(currentUser))
+      return of( new RegistrationSuccess(currentUser) )
     }),
-    catchError((errorResponse: HttpErrorResponse) => of(new RegistrationFail(errorResponse.error.errors)))
+    catchError((errorResponse: HttpErrorResponse) => of( new RegistrationFail(errorResponse.error.errors) ))
   );
 
   @Effect()
@@ -39,7 +39,20 @@ export class AuthEffects {
       this.router.navigate(['/']);
       return of(new LoginSuccess(currentUser))
     }),
-    catchError((errorResponse: HttpErrorResponse) => of(new LoginFail(errorResponse.error.errors)))
+    catchError((errorResponse: HttpErrorResponse) => of( new LoginFail(errorResponse.error.errors) ))
+  );
+
+  @Effect()
+  getCurrentUser$: Observable<Action> = this.actions$.pipe(
+    ofType<GetCurrentUser>(AuthActionsTypes.GET_CURRENT_USER),
+    switchMap(() => this.authService.getCurrentUser()),
+    switchMap((currentUser: fromSharedModels.CurrentUser) => {
+      if( this.persistenceService.get('accessToken') ) {
+        return of( new GetCurrentUserFail() )
+      }
+      return of(new GetCurrentUserSuccess(currentUser))
+    }),
+    catchError(() => of( new GetCurrentUserFail() ))
   );
 
   constructor(

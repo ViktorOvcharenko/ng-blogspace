@@ -10,6 +10,9 @@ export enum AuthActionsTypes {
   LOGIN = '[Auth] Login',
   LOGIN_SUCCESS = '[Auth] Login success',
   LOGIN_FAIL = '[Auth] Login fail',
+  GET_CURRENT_USER = '[Auth] Get current user',
+  GET_CURRENT_USER_SUCCESS = '[Auth] Get current user success',
+  GET_CURRENT_USER_FAIL = '[Auth] Get current user fail',
 }
 
 export class Registration implements Action {
@@ -40,10 +43,25 @@ export class LoginFail implements Action {
   constructor(public payload: fromSharedModels.BackendErrors) { }
 }
 
+export class GetCurrentUser implements Action {
+  public readonly type = AuthActionsTypes.GET_CURRENT_USER;
+}
+export class GetCurrentUserSuccess implements Action {
+  public readonly type = AuthActionsTypes.GET_CURRENT_USER_SUCCESS;
+  constructor(public payload: fromSharedModels.CurrentUser) { }
+}
+
+export class GetCurrentUserFail implements Action {
+  public readonly type = AuthActionsTypes.GET_CURRENT_USER_FAIL;
+}
+
 export type AuthActions =
   Registration |
   RegistrationSuccess |
   RegistrationFail |
   Login |
   LoginSuccess |
-  LoginFail;
+  LoginFail |
+  GetCurrentUser |
+  GetCurrentUserSuccess |
+  GetCurrentUserFail;

@@ -58,6 +58,28 @@ export const authReducers = (
         validationErrors: action.payload
       };
     }
+    case AuthActionsTypes.GET_CURRENT_USER: {
+      return {
+        ...state,
+        isLoading: true
+      };
+    }
+    case AuthActionsTypes.GET_CURRENT_USER_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+        isLoaded: true,
+        currentUser: action.payload
+      };
+    }
+    case AuthActionsTypes.GET_CURRENT_USER_FAIL: {
+      return {
+        ...state,
+        isLoading: false,
+        isLoaded: false,
+        currentUser: null
+      };
+    }
     default:
       return state;
   }
