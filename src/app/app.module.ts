@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
@@ -16,6 +16,7 @@ import { AuthEffects } from './auth/store/auth.effects';
 
 import * as fromAuthServices from './auth/services';
 import * as fromSharedServices from './shared/services';
+import * as fromSharedInterceptors from './shared/interceptors';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -46,6 +47,11 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   providers: [
     fromAuthServices.AuthService,
     fromSharedServices.PersistenceService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass:fromSharedInterceptors.AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [
     AppComponent

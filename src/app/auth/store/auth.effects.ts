@@ -45,13 +45,13 @@ export class AuthEffects {
   @Effect()
   getCurrentUser$: Observable<Action> = this.actions$.pipe(
     ofType<GetCurrentUser>(AuthActionsTypes.GET_CURRENT_USER),
-    switchMap(() => this.authService.getCurrentUser()),
-    switchMap((currentUser: fromSharedModels.CurrentUser) => {
+    switchMap(() => {
       if( this.persistenceService.get('accessToken') ) {
         return of( new GetCurrentUserFail() )
       }
-      return of(new GetCurrentUserSuccess(currentUser))
+      return this.authService.getCurrentUser()
     }),
+    switchMap((currentUser: fromSharedModels.CurrentUser) => of( new GetCurrentUserSuccess(currentUser) )),
     catchError(() => of( new GetCurrentUserFail() ))
   );
 
