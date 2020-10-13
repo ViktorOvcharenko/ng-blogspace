@@ -1,3 +1,4 @@
-export { AppState } from './AppState.interface';
-export { BackendErrors } from './BackendErrors.interface';
-export { CurrentUser } from './CurrentUser.interface';
+export { AppState } from './app-state.interface';
+export { Article } from './article.interface';
+export { BackendErrors } from './backend-errors.interface';
+export { CurrentUser } from './current-user.interface';
