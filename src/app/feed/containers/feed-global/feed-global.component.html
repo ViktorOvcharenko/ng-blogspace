@@ -1,2 +1,5 @@
-<app-feed-global></app-feed-global>
-<div>{{ feed$ | async | json}}</div>
+<app-feed-global
+  [isLoading]="isLoading$ | async"
+  [errors]="errors$ | async"
+  [feed]="feed$ | async"
+></app-feed-global>
