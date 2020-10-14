@@ -11,6 +11,6 @@ export class AppComponent implements OnInit{
   constructor(private store: Store) { }
 
   ngOnInit() {
-    this.store.dispatch(new GetCurrentUser())
+    this.store.dispatch(new GetCurrentUser());
   }
 }

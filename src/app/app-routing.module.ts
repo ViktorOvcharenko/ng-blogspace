@@ -17,7 +17,8 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'feed'
+    redirectTo: 'feed',
+    pathMatch: 'full'
   }
 ];
 

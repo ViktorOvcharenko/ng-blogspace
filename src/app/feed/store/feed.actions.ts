@@ -8,20 +8,21 @@ export enum FeedActionsTypes {
   GET_FEED_FAIL = '[Feed] Get feed fail',
 }
 
-export class GetFeed implements Action{
+export class GetFeed implements Action {
   public readonly type: FeedActionsTypes.GET_FEED;
   constructor(public payload: string) { }
 }
 
-export class GetFeedSuccess implements Action{
+export class GetFeedSuccess implements Action {
   public readonly type: FeedActionsTypes.GET_FEED_SUCCESS;
   constructor(public payload: fromFeedModels.FeedResponse) { }
 }
 
-export class GetFeedFail implements Action{
+export class GetFeedFail implements Action {
   public readonly type: FeedActionsTypes.GET_FEED_FAIL;
 }
 
-export type FeedActions = GetFeed |
+export type FeedActions =
+  GetFeed |
   GetFeedSuccess |
   GetFeedFail;
