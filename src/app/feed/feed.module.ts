@@ -21,7 +21,7 @@ import * as fromServices from './services';
     CommonModule,
     FeedRoutingModule,
     StoreModule.forFeature('feed', feedReducers),
-    // EffectsModule.forFeature([FeedEffects])
+    EffectsModule.forFeature([FeedEffects]),
   ],
   providers: [
     fromServices.FeedService

@@ -14,7 +14,7 @@ export class FeedGlobalComponent implements OnInit {
   feed$: Observable<fromFeedModels.FeedResponse>
 
   constructor(private store: Store) {
-    this.feed$ = this.store.pipe(select(getFeed))
+    this.feed$ = this.store.pipe(select(getFeed));
   }
 
   ngOnInit(): void {
