@@ -21,3 +21,7 @@ export class GetFeedSuccess implements Action{
 export class GetFeedFail implements Action{
   public readonly type: FeedActionsTypes.GET_FEED_FAIL;
 }
+
+export type FeedActions = GetFeed |
+  GetFeedSuccess |
+  GetFeedFail;
