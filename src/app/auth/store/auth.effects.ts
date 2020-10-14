@@ -5,7 +5,13 @@ import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import {
-  AuthActionsTypes, GetCurrentUser, GetCurrentUserFail, GetCurrentUserSuccess, Login, LoginFail, LoginSuccess,
+  AuthActionsTypes,
+  GetCurrentUser,
+  GetCurrentUserFail,
+  GetCurrentUserSuccess,
+  Login,
+  LoginFail,
+  LoginSuccess,
   Registration,
   RegistrationFail,
   RegistrationSuccess

@@ -12,7 +12,6 @@ export class FeedService {
   constructor(private http: HttpClient) { }
 
   getFeed(url: string): Observable<fromFeedModels.FeedResponse> {
-    return this.http
-      .get<fromFeedModels.FeedResponse>(`${this.apiUrl}${url}`);
+    return this.http.get<fromFeedModels.FeedResponse>(`${this.apiUrl}${url}`);
   }
 }
