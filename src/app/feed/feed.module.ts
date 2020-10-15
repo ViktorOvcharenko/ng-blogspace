@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FeedRoutingModule } from './feed-routing.module';
+import { SharedModule } from '../shared/shared.module';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
@@ -20,6 +21,7 @@ import * as fromServices from './services';
   imports: [
     CommonModule,
     FeedRoutingModule,
+    SharedModule,
     StoreModule.forFeature('feed', feedReducers),
     EffectsModule.forFeature([FeedEffects]),
   ],

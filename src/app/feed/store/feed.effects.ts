@@ -12,6 +12,7 @@ import {
 
 import * as fromFeedServices from '../services';
 import * as fromFeedModels from '../models';
+import {HttpErrorResponse} from '@angular/common/http';
 
 @Injectable()
 export class FeedEffects {
@@ -20,7 +21,7 @@ export class FeedEffects {
     ofType<GetFeed>(FeedActionsTypes.GET_FEED),
     switchMap(({payload}) => this.feedService.getFeed(payload)),
     switchMap((feed: fromFeedModels.FeedResponse) => of( new GetFeedSuccess(feed) )),
-    catchError(() => of( new GetFeedFail() ))
+    catchError((errorResponse: HttpErrorResponse) => of( new GetFeedFail(errorResponse.error.errors) ))
   );
 
   constructor(

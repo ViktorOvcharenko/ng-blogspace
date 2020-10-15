@@ -8,18 +8,20 @@ import * as fromComponents from './components';
 @NgModule({
   declarations: [
     fromComponents.BackendErrorMessagesComponent,
-    fromComponents.HeaderComponent
+    fromComponents.HeaderComponent,
+    fromComponents.LoaderComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    TranslateModule
+    TranslateModule,
   ],
   exports: [
     CommonModule,
     TranslateModule,
     fromComponents.BackendErrorMessagesComponent,
-    fromComponents.HeaderComponent
+    fromComponents.HeaderComponent,
+    fromComponents.LoaderComponent,
   ]
 })
 export class SharedModule { }

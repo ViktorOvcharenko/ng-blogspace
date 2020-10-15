@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 import * as fromFeedModels from '../../models';
+import * as fromSharedModels from '../../../shared/models';
 
 @Component({
   selector: 'app-feed-global',
@@ -10,8 +11,8 @@ import * as fromFeedModels from '../../models';
 })
 export class FeedGlobalComponent implements OnInit {
   @Input() isLoading: boolean;
-  @Input() errors: string;
   @Input() feed: fromFeedModels.FeedResponse;
+  @Input() errors: fromSharedModels.BackendErrors;
 
   constructor() { }
 

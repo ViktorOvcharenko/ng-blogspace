@@ -1,6 +1,9 @@
-<div *ngIf="isLoading">Loading articles...</div>
+<app-loader *ngIf="isLoading"></app-loader>
 
-<div *ngIf="errors">Some error happened...</div>
+<app-backend-error-messages
+  *ngIf="errors"
+  [backendErrors]="errors"
+></app-backend-error-messages>
 
 <div *ngIf="feed">
   <div

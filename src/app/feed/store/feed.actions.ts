@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 
 import * as fromFeedModels from '../models';
+import * as fromSharedModels from '../../shared/models';
 
 export enum FeedActionsTypes {
   GET_FEED = '[Feed] Get feed',
@@ -20,6 +21,8 @@ export class GetFeedSuccess implements Action {
 
 export class GetFeedFail implements Action {
   public readonly type = FeedActionsTypes.GET_FEED_FAIL;
+  constructor(public payload: fromSharedModels.BackendErrors) {
+  }
 }
 
 export type FeedActions =

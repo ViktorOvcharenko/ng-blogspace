@@ -9,6 +9,7 @@ import {
 } from '../../store/feed.selectors';
 
 import * as fromFeedModels from '../../models';
+import * as fromSharedModels from '../../../shared/models';
 
 @Component({
   selector: 'app-feed-global-container',
@@ -16,13 +17,13 @@ import * as fromFeedModels from '../../models';
 })
 export class FeedGlobalComponent implements OnInit {
   isLoading$: Observable<boolean>;
-  errors$: Observable<string>;
   feed$: Observable<fromFeedModels.FeedResponse>;
+  errors$: Observable<fromSharedModels.BackendErrors>;
 
   constructor(private store: Store) {
     this.isLoading$ = this.store.pipe(select(getIsLoading));
-    this.errors$ = this.store.pipe(select(getErrors));
     this.feed$ = this.store.pipe(select(getFeed));
+    this.errors$ = this.store.pipe(select(getErrors));
   }
 
   ngOnInit(): void {

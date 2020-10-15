@@ -11,7 +11,8 @@ export const feedReducers = (
     case FeedActionsTypes.GET_FEED: {
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
+        errors: null
       };
     }
     case FeedActionsTypes.GET_FEED_SUCCESS: {
@@ -24,7 +25,8 @@ export const feedReducers = (
     case FeedActionsTypes.GET_FEED_FAIL: {
       return {
         ...state,
-        isLoading: false
+        isLoading: false,
+        errors: action.payload
       };
     }
     default:

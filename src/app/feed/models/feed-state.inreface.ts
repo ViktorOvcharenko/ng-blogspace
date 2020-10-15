@@ -1,7 +1,8 @@
 import * as fromFeedModels from './';
+import * as fromSharedModels from '../../shared/models';
 
 export interface FeedState {
   isLoading: boolean;
-  errors: string;
   feed: fromFeedModels.FeedResponse;
+  errors: fromSharedModels.BackendErrors;
 }
