@@ -10,6 +10,7 @@ import * as fromComponents from './components';
     fromComponents.BackendErrorMessagesComponent,
     fromComponents.HeaderComponent,
     fromComponents.LoaderComponent,
+    fromComponents.PaginationComponent,
   ],
   imports: [
     CommonModule,
@@ -22,6 +23,7 @@ import * as fromComponents from './components';
     fromComponents.BackendErrorMessagesComponent,
     fromComponents.HeaderComponent,
     fromComponents.LoaderComponent,
+    fromComponents.PaginationComponent,
   ]
 })
 export class SharedModule { }

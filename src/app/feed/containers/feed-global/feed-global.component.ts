@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { GetFeed } from '../../store/feed.actions';
@@ -16,6 +17,7 @@ import * as fromSharedModels from '../../../shared/models';
   templateUrl: './feed-global.component.html'
 })
 export class FeedGlobalComponent implements OnInit {
+  apiUrl: string = environment.apiUrl;
   isLoading$: Observable<boolean>;
   feed$: Observable<fromFeedModels.FeedResponse>;
   errors$: Observable<fromSharedModels.BackendErrors>;
@@ -27,6 +29,18 @@ export class FeedGlobalComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.store.dispatch(new GetFeed('/articles'));
+    const startPaginationParams: fromSharedModels.PaginationParams = {
+      offset: 0,
+      limit: environment.limit
+    };
+    this.fetchFeed(startPaginationParams);
+  }
+
+  fetchFeed(paginationParams: fromSharedModels.PaginationParams): void {
+    const request: fromSharedModels.PaginationRequest = {
+      url: `${this.apiUrl}/articles`,
+      paginationParams
+    };
+    this.store.dispatch(new GetFeed(request));
   }
 }
