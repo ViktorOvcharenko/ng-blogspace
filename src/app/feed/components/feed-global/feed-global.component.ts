@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import * as fromFeedModels from '../../models';
 import * as fromSharedModels from '../../../shared/models';
@@ -9,14 +9,12 @@ import * as fromSharedModels from '../../../shared/models';
   styleUrls: ['./feed-global.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FeedGlobalComponent implements OnInit {
+export class FeedGlobalComponent {
   @Input() isLoading: boolean;
   @Input() feed: fromFeedModels.FeedResponse;
   @Input() errors: fromSharedModels.BackendErrors;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  get articles(): fromSharedModels.Article[] {
+    return this.feed.articles;
   }
-
 }
