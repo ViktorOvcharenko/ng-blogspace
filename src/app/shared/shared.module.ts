@@ -4,10 +4,10 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 
 import * as fromComponents from './components';
-import { ArticleListComponent } from './components/article-list/article-list.component';
 
 @NgModule({
   declarations: [
+    fromComponents.ArticleComponent,
     fromComponents.ArticleListComponent,
     fromComponents.BackendErrorMessagesComponent,
     fromComponents.HeaderComponent,
@@ -22,6 +22,7 @@ import { ArticleListComponent } from './components/article-list/article-list.com
   exports: [
     CommonModule,
     TranslateModule,
+    fromComponents.ArticleComponent,
     fromComponents.ArticleListComponent,
     fromComponents.BackendErrorMessagesComponent,
     fromComponents.HeaderComponent,
