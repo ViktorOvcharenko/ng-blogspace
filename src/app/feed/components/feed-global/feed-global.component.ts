@@ -13,6 +13,7 @@ export class FeedGlobalComponent {
   @Input() isLoading: boolean;
   @Input() feed: fromFeedModels.FeedResponse;
   @Input() errors: fromSharedModels.BackendErrors;
+  @Input() url: string[];
   @Output() onSelectPage: EventEmitter<fromSharedModels.PaginationParams> = new EventEmitter<fromSharedModels.PaginationParams>();
 
   get articles(): fromSharedModels.Article[] {

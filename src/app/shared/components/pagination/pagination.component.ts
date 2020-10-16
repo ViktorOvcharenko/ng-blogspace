@@ -1,5 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { environment } from '../../../../environments/environment';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import * as fromSharedModels from '../../models';
 
@@ -8,15 +11,35 @@ import * as fromSharedModels from '../../models';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent {
+export class PaginationComponent implements OnInit, OnDestroy {
   limit: number =  environment.limit;
+  currentPage: number;
+  destroy$: Subject<void> = new Subject<void>();
   @Input() total: number;
-  @Input() currentPage: number;
+  @Input() url: string[];
   @Output() onSelectPage: EventEmitter<fromSharedModels.PaginationParams> = new EventEmitter<fromSharedModels.PaginationParams>();
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   get pages(): number[] {
     const end = Math.ceil(this.total / this.limit);
     return [...Array(end).keys()].map( num => num + 1);
+  }
+
+  ngOnInit(): void {
+    this.route.queryParamMap
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((params: Params) => {
+        this.currentPage = parseInt(params.params.page) || 1;
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   selectPage(page: number): void {
@@ -27,5 +50,6 @@ export class PaginationComponent {
     };
 
     this.onSelectPage.emit(paginationParams);
+    this.router.navigate(this.url, { queryParams: { page } });
   }
 }

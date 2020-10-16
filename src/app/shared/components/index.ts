@@ -1,4 +1,4 @@
-export { ArticleComponent } from './article/article.component';
+export { ArticlePreviewComponent } from './article-preview/article-preview.component';
 export { ArticleListComponent } from './article-list/article-list.component';
 export { BackendErrorMessagesComponent } from './backend-error-messages/backend-error-messages.component';
 export { HeaderComponent } from './header/header.component';

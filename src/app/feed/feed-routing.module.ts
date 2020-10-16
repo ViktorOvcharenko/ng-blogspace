@@ -10,6 +10,11 @@ const routes: Routes = [
     component: fromComponents.FeedMainComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'global',
+        pathMatch: 'full'
+      },
+      {
         path: 'global',
         component: fromContainers.FeedGlobalComponent,
       }

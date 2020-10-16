@@ -7,7 +7,7 @@ import * as fromComponents from './components';
 
 @NgModule({
   declarations: [
-    fromComponents.ArticleComponent,
+    fromComponents.ArticlePreviewComponent,
     fromComponents.ArticleListComponent,
     fromComponents.BackendErrorMessagesComponent,
     fromComponents.HeaderComponent,
@@ -22,7 +22,7 @@ import * as fromComponents from './components';
   exports: [
     CommonModule,
     TranslateModule,
-    fromComponents.ArticleComponent,
+    fromComponents.ArticlePreviewComponent,
     fromComponents.ArticleListComponent,
     fromComponents.BackendErrorMessagesComponent,
     fromComponents.HeaderComponent,

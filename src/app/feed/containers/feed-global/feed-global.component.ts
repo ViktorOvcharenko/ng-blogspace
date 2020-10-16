@@ -11,7 +11,6 @@ import {
 
 import * as fromFeedModels from '../../models';
 import * as fromSharedModels from '../../../shared/models';
-import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-feed-global-container',
@@ -19,11 +18,12 @@ import {Router} from '@angular/router';
 })
 export class FeedGlobalComponent implements OnInit {
   apiUrl: string = environment.apiUrl;
+  url: string[] = ['/feed', 'global'];
   isLoading$: Observable<boolean>;
   feed$: Observable<fromFeedModels.FeedResponse>;
   errors$: Observable<fromSharedModels.BackendErrors>;
 
-  constructor(private store: Store, private router: Router) {
+  constructor(private store: Store) {
     this.isLoading$ = this.store.pipe(select(getIsLoading));
     this.feed$ = this.store.pipe(select(getFeed));
     this.errors$ = this.store.pipe(select(getErrors));
@@ -46,19 +46,7 @@ export class FeedGlobalComponent implements OnInit {
       url: `${this.apiUrl}/articles`,
       paginationParams
     };
-    const currentPage = this.computeCurrentPage(paginationParams);
 
     this.store.dispatch(new GetFeed(request));
-    this.addQueryParams(currentPage);
-  }
-
-  computeCurrentPage(params: fromSharedModels.PaginationParams): number {
-    return params.offset / params.limit + 1;
-  }
-
-  addQueryParams(page: number): void {
-    this.router.navigate(['/feed', 'global'], {
-      queryParams: { page }
-    });
   }
 }
