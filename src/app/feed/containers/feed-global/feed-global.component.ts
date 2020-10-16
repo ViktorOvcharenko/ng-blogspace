@@ -11,6 +11,7 @@ import {
 
 import * as fromFeedModels from '../../models';
 import * as fromSharedModels from '../../../shared/models';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-feed-global-container',
@@ -22,16 +23,20 @@ export class FeedGlobalComponent implements OnInit {
   feed$: Observable<fromFeedModels.FeedResponse>;
   errors$: Observable<fromSharedModels.BackendErrors>;
 
-  constructor(private store: Store) {
+  constructor(private store: Store, private router: Router) {
     this.isLoading$ = this.store.pipe(select(getIsLoading));
     this.feed$ = this.store.pipe(select(getFeed));
     this.errors$ = this.store.pipe(select(getErrors));
   }
 
+  get limit(): number {
+    return environment.limit;
+  }
+
   ngOnInit(): void {
     const startPaginationParams: fromSharedModels.PaginationParams = {
       offset: 0,
-      limit: environment.limit
+      limit: this.limit
     };
     this.fetchFeed(startPaginationParams);
   }
@@ -41,6 +46,19 @@ export class FeedGlobalComponent implements OnInit {
       url: `${this.apiUrl}/articles`,
       paginationParams
     };
+    const currentPage = this.computeCurrentPage(paginationParams);
+
     this.store.dispatch(new GetFeed(request));
+    this.addQueryParams(currentPage);
+  }
+
+  computeCurrentPage(params: fromSharedModels.PaginationParams): number {
+    return params.offset / params.limit + 1;
+  }
+
+  addQueryParams(page: number): void {
+    this.router.navigate(['/feed', 'global'], {
+      queryParams: { page }
+    });
   }
 }

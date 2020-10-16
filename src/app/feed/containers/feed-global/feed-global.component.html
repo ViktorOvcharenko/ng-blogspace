@@ -2,4 +2,5 @@
   [isLoading]="isLoading$ | async"
   [errors]="errors$ | async"
   [feed]="feed$ | async"
+  (onSelectPage)="fetchFeed($event)"
 ></app-feed-global>

@@ -9,5 +9,9 @@
   <app-article-list
     [articles]="articles"
   ></app-article-list>
-  <app-pagination></app-pagination>
+
+  <app-pagination
+    [total]="total"
+    (onSelectPage)="selectPage($event)"
+  ></app-pagination>
 </ng-template>

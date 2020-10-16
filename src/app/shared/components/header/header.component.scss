@@ -6,6 +6,10 @@
   padding-top: 0;
   margin-right: 2rem;
   color: $color-theme;
+
+  &:hover {
+    color: $color-theme-light;
+  }
 }
 
 .nav-item {
