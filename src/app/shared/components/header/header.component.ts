@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import {
   getCurrentUser,
   getIsAnonymous,
-  getIsLoaded
+  getIsLoggedIn
 } from '../../../auth/store/auth.selectors';
 
 import * as fromSharedModels from '../../models';
@@ -15,12 +15,12 @@ import * as fromSharedModels from '../../models';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  isLoaded$: Observable<boolean>
+  isLoggedIn$: Observable<boolean>
   isAnonymous$: Observable<boolean>
   currentUser$: Observable<fromSharedModels.CurrentUser>
 
   constructor(private store$: Store) {
-    this.isLoaded$ = this.store$.pipe(select(getIsLoaded))
+    this.isLoggedIn$ = this.store$.pipe(select(getIsLoggedIn))
     this.isAnonymous$ = this.store$.pipe(select(getIsAnonymous))
     this.currentUser$ = this.store$.pipe(select(getCurrentUser))
   }

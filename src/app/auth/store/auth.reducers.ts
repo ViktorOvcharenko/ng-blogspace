@@ -19,7 +19,7 @@ export const authReducers = (
       return {
         ...state,
         isLoading: false,
-        isLoaded: true,
+        isLoggedIn: true,
         currentUser: action.payload,
         validationErrors: null
       };
@@ -28,7 +28,7 @@ export const authReducers = (
       return {
         ...state,
         isLoading: false,
-        isLoaded: false,
+        isLoggedIn: false,
         currentUser: null,
         validationErrors: action.payload
       };
@@ -44,7 +44,7 @@ export const authReducers = (
       return {
         ...state,
         isLoading: false,
-        isLoaded: true,
+        isLoggedIn: true,
         currentUser: action.payload,
         validationErrors: null
       };
@@ -53,7 +53,7 @@ export const authReducers = (
       return {
         ...state,
         isLoading: false,
-        isLoaded: false,
+        isLoggedIn: false,
         currentUser: null,
         validationErrors: action.payload
       };
@@ -68,7 +68,7 @@ export const authReducers = (
       return {
         ...state,
         isLoading: false,
-        isLoaded: true,
+        isLoggedIn: true,
         currentUser: action.payload
       };
     }
@@ -76,7 +76,7 @@ export const authReducers = (
       return {
         ...state,
         isLoading: false,
-        isLoaded: false,
+        isLoggedIn: false,
         currentUser: null
       };
     }

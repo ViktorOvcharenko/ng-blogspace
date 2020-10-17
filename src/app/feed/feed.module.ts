@@ -17,9 +17,11 @@ import * as fromServices from './services';
 @NgModule({
   declarations: [
     fromContainers.FeedGlobalComponent,
+    fromContainers.FeedToggleComponent,
     fromContainers.PopularTagsComponent,
     fromComponents.FeedGlobalComponent,
     fromComponents.FeedMainComponent,
+    fromComponents.FeedToggleComponent,
     fromComponents.PopularTagsComponent,
   ],
   imports: [

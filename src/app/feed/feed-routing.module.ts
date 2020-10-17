@@ -17,6 +17,14 @@ const routes: Routes = [
       {
         path: 'global',
         component: fromContainers.FeedGlobalComponent,
+      },
+      {
+        path: 'your',
+        component: fromContainers.FeedGlobalComponent,
+      },
+      {
+        path: 'tags/:tag',
+        component: fromContainers.FeedGlobalComponent,
       }
     ]
   },

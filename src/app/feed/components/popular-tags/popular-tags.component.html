@@ -5,9 +5,8 @@
     <div *ngIf="popularTags; else errorsRef" class="sidebar">
       <p>{{ 'shared.popular-tags' | translate }}</p>
       <div class="tag-list">
-        <a
-          *ngFor="let tag of popularTags"
-          [routerLink]="['/tags', tag]"
+        <a *ngFor="let tag of popularTags"
+          [routerLink]="['/feed', 'tags', tag]"
           class="tag-default tag-pill">
           {{ tag }}
         </a>
