@@ -3,6 +3,7 @@ import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
 import {
   FeedActionsTypes,
   GetFeed,
@@ -12,7 +13,6 @@ import {
 
 import * as fromFeedServices from '../services';
 import * as fromFeedModels from '../models';
-import {HttpErrorResponse} from '@angular/common/http';
 
 @Injectable()
 export class FeedEffects {

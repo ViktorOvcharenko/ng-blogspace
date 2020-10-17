@@ -4,5 +4,7 @@ export { BackendErrors } from './backend-errors.interface';
 export { CurrentUser } from './current-user.interface';
 export { PaginationParams } from './pagination-params.interface';
 export { PaginationRequest } from './pagination-request.interface';
+export { PopularTagsResponse } from './popular-tags-response.inreface';
+export { PopularTagsState } from './popular-tags-state.interface';
 export { Profile } from './profile.interface';
 export { Tag } from './tag.type';

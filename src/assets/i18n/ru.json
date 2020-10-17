@@ -7,6 +7,9 @@
     "username": "Имя",
     "email": "Электронная почта",
     "password": "Пароль"
+  },
+  "shared": {
+    "popular-tags": "Популярные теги"
   }
 }
 

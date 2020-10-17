@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 
 import * as fromComponents from './components';
+import * as fromSharedServices from './services';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import * as fromComponents from './components';
     fromComponents.HeaderComponent,
     fromComponents.LoaderComponent,
     fromComponents.PaginationComponent,
+    fromComponents.PopularTagsComponent,
     fromComponents.TagListComponent,
   ],
   imports: [
@@ -29,7 +31,12 @@ import * as fromComponents from './components';
     fromComponents.HeaderComponent,
     fromComponents.LoaderComponent,
     fromComponents.PaginationComponent,
+    fromComponents.PopularTagsComponent,
     fromComponents.TagListComponent,
+  ],
+  providers: [
+    fromSharedServices.PersistenceService,
+    fromSharedServices.PopularTagsService,
   ]
 })
 export class SharedModule { }

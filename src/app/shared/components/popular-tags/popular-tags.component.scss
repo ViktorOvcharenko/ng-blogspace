@@ -1,0 +1,37 @@
+@import "src/assets/styles/variables";
+
+.popular-tags-container {
+  position: relative;
+
+  .sidebar {
+    padding: 5px 10px 10px;
+    background: $color-grey-background-light;
+    border-radius: 4px;
+
+    p {
+      color: $color-black;
+      margin-bottom: .2rem;
+    }
+
+    .tag-default {
+      color: $color-white;
+      font-size: .8rem;
+      padding-top: .1rem;
+      padding-bottom: .1rem;
+      white-space: nowrap;
+      margin-right: 3px;
+      margin-bottom: .2rem;
+      display: inline-block;
+      background-color: $color-grey-background;
+      text-decoration: none;
+    }
+
+    .tag-pill {
+      padding-right: .6em;
+      padding-left: .6em;
+      border-radius: 10rem;
+    }
+  }
+}
+
+

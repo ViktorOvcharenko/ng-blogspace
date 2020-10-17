@@ -8,9 +8,9 @@ import { GetCurrentUser } from './auth/store/auth.actions';
              <router-outlet></router-outlet>`
 })
 export class AppComponent implements OnInit{
-  constructor(private store: Store) { }
+  constructor(private store$: Store) { }
 
   ngOnInit() {
-    this.store.dispatch(new GetCurrentUser());
+    this.store$.dispatch(new GetCurrentUser());
   }
 }

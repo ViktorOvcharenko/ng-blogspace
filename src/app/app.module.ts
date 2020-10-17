@@ -12,10 +12,11 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { authReducers } from './auth/store/auth.reducers';
+import { popularTagsReducers } from './shared/store/popular-tags.reducers';
 import { AuthEffects } from './auth/store/auth.effects';
+import { PopularTagsEffects } from './shared/store/popular-tags.effects';
 
 import * as fromAuthServices from './auth/services';
-import * as fromSharedServices from './shared/services';
 import * as fromSharedInterceptors from './shared/interceptors';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -37,16 +38,16 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       },
-      defaultLanguage: 'ru'
+      defaultLanguage: 'en'
     }),
     StoreModule.forRoot({}),
     StoreModule.forFeature('auth', authReducers),
-    EffectsModule.forRoot([AuthEffects]),
+    StoreModule.forFeature('popularTags', popularTagsReducers),
+    EffectsModule.forRoot([AuthEffects, PopularTagsEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
     fromAuthServices.AuthService,
-    fromSharedServices.PersistenceService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass:fromSharedInterceptors.AuthInterceptor,

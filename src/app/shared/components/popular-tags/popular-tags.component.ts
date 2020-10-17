@@ -1,0 +1,36 @@
+import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { GetPopularTags } from '../../store/popular-tags.actions';
+import {
+  getErrors,
+  getIsLoading,
+  getPopularTags
+} from '../../store/popular-tags.selectors';
+
+import * as fromSharedModels from '../../models';
+
+@Component({
+  selector: 'app-popular-tags',
+  templateUrl: './popular-tags.component.html',
+  styleUrls: ['./popular-tags.component.scss']
+})
+export class PopularTagsComponent implements OnInit {
+  isLoading$: Observable<boolean>;
+  popularTags$: Observable<fromSharedModels.Tag[]>;
+  errors$: Observable<string>;
+
+  constructor(private store$: Store) {
+    this.isLoading$ = this.store$.pipe(select(getIsLoading));
+    this.popularTags$ = this.store$.pipe(select(getPopularTags));
+    this.errors$ = this.store$.pipe(select(getErrors));
+  }
+
+  ngOnInit(): void {
+    this.fetchPopularTags();
+  }
+
+  fetchPopularTags(): void {
+    this.store$.dispatch(new GetPopularTags());
+  }
+}

@@ -5,8 +5,8 @@ import { SharedModule } from '../shared/shared.module';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import { FeedEffects } from './store/feed.effects';
 import { feedReducers } from './store/feed.reducers';
+import { FeedEffects } from './store/feed.effects';
 
 import * as fromContainers from './containers';
 import * as fromComponents from './components';
@@ -26,7 +26,7 @@ import * as fromServices from './services';
     EffectsModule.forFeature([FeedEffects]),
   ],
   providers: [
-    fromServices.FeedService
+    fromServices.FeedService,
   ]
 })
 export class FeedModule { }

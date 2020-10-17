@@ -18,12 +18,12 @@ export class RegistrationComponent {
   isLoading$: Observable<boolean>;
   backendErrors$: Observable<fromSharedModels.BackendErrors>;
 
-  constructor(private store: Store) {
-    this.isLoading$ = this.store.pipe(select(getIsLoading));
-    this.backendErrors$ = this.store.pipe(select(getValidationErrors));
+  constructor(private store$: Store) {
+    this.isLoading$ = this.store$.pipe(select(getIsLoading));
+    this.backendErrors$ = this.store$.pipe(select(getValidationErrors));
   }
 
   submit(event: fromAuthModels.RegistrationRequest): void {
-    this.store.dispatch(new Registration(event));
+    this.store$.dispatch(new Registration(event));
   }
 }

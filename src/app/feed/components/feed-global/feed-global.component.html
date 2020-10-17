@@ -1,18 +1,21 @@
-<app-loader *ngIf="isLoading; else feedRef"></app-loader>
+<div class="feed-global-container">
+  <app-loader *ngIf="isLoading; else feedRef"></app-loader>
 
-<app-backend-error-messages
-  *ngIf="errors"
-  [backendErrors]="errors"
-></app-backend-error-messages>
+  <app-backend-error-messages
+    *ngIf="errors"
+    [backendErrors]="errors"
+  ></app-backend-error-messages>
 
-<ng-template #feedRef>
-  <app-article-list
-    [articles]="articles"
-  ></app-article-list>
+  <ng-template #feedRef>
+    <app-article-list
+      [articles]="articles"
+    ></app-article-list>
 
-  <app-pagination
-    [total]="total"
-    [url]="url"
-    (onSelectPage)="selectPage($event)"
-  ></app-pagination>
-</ng-template>
+    <app-pagination
+      [total]="total"
+      [url]="url"
+      (onSelectPage)="selectPage($event)"
+    ></app-pagination>
+  </ng-template>
+</div>
+
