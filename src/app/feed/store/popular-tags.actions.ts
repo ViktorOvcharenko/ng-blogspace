@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import * as fromSharedModels from '../models';
+import * as fromSharedModels from '../../shared/models';
 
 export enum PopularTagsActionsTypes {
   GET_POPULAR_TAGS = '[Popular tags] Get popular tags',

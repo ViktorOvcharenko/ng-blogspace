@@ -8,12 +8,11 @@ import {
   getPopularTags
 } from '../../store/popular-tags.selectors';
 
-import * as fromSharedModels from '../../models';
+import * as fromSharedModels from '../../../shared/models';
 
 @Component({
-  selector: 'app-popular-tags',
+  selector: 'app-popular-tags-container',
   templateUrl: './popular-tags.component.html',
-  styleUrls: ['./popular-tags.component.scss']
 })
 export class PopularTagsComponent implements OnInit {
   isLoading$: Observable<boolean>;

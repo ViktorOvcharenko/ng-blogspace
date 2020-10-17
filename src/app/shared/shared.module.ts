@@ -14,7 +14,6 @@ import * as fromSharedServices from './services';
     fromComponents.HeaderComponent,
     fromComponents.LoaderComponent,
     fromComponents.PaginationComponent,
-    fromComponents.PopularTagsComponent,
     fromComponents.TagListComponent,
   ],
   imports: [
@@ -31,7 +30,6 @@ import * as fromSharedServices from './services';
     fromComponents.HeaderComponent,
     fromComponents.LoaderComponent,
     fromComponents.PaginationComponent,
-    fromComponents.PopularTagsComponent,
     fromComponents.TagListComponent,
   ],
   providers: [

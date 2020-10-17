@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import * as fromSharedModels from '../models';
+import * as fromSharedModels from '../../shared/models';
 
 const popularTagsFeatureSelector = createFeatureSelector<fromSharedModels.PopularTagsState, fromSharedModels.PopularTagsState>('popularTags');
 

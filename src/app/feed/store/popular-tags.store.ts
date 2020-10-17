@@ -1,4 +1,4 @@
-import * as fromSharedModels from '../models';
+import * as fromSharedModels from '../../shared/models';
 
 export const initialPopularTagsState: fromSharedModels.PopularTagsState  = {
   isLoading: false,

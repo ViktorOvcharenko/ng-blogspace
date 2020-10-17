@@ -12,9 +12,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { authReducers } from './auth/store/auth.reducers';
-import { popularTagsReducers } from './shared/store/popular-tags.reducers';
 import { AuthEffects } from './auth/store/auth.effects';
-import { PopularTagsEffects } from './shared/store/popular-tags.effects';
 
 import * as fromAuthServices from './auth/services';
 import * as fromSharedInterceptors from './shared/interceptors';
@@ -42,8 +40,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     }),
     StoreModule.forRoot({}),
     StoreModule.forFeature('auth', authReducers),
-    StoreModule.forFeature('popularTags', popularTagsReducers),
-    EffectsModule.forRoot([AuthEffects, PopularTagsEffects]),
+    EffectsModule.forRoot([AuthEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [

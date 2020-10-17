@@ -1,12 +1,12 @@
 <div class="popular-tags-container">
-  <app-loader *ngIf="isLoading$ | async; else loadedRef"></app-loader>
+  <app-loader *ngIf="isLoading; else loadedRef"></app-loader>
 
   <ng-template #loadedRef>
-    <div *ngIf="popularTags$ | async; else errorsRef" class="sidebar">
+    <div *ngIf="popularTags; else errorsRef" class="sidebar">
       <p>{{ 'shared.popular-tags' | translate }}</p>
       <div class="tag-list">
         <a
-          *ngFor="let tag of popularTags$ | async"
+          *ngFor="let tag of popularTags"
           [routerLink]="['/tags', tag]"
           class="tag-default tag-pill">
           {{ tag }}
@@ -15,7 +15,7 @@
     </div>
 
     <ng-template #errorsRef>
-      <app-backend-error-messages [backendErrors]="errors$ | async"></app-backend-error-messages>
+      <app-backend-error-messages [backendErrors]="errors"></app-backend-error-messages>
     </ng-template>
   </ng-template>
 </div>

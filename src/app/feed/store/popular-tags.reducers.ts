@@ -1,7 +1,7 @@
 import { initialPopularTagsState } from './popular-tags.store';
 import { PopularTagsActions, PopularTagsActionsTypes } from './popular-tags.actions';
 
-import * as fromSharedModels from '../models';
+import * as fromSharedModels from '../../shared/models';
 
 export const popularTagsReducers = (
   state: fromSharedModels.PopularTagsState = initialPopularTagsState,
