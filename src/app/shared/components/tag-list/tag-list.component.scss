@@ -1,0 +1,35 @@
+@import "src/assets/styles/variables";
+
+.tag-list {
+  float: right;
+  max-width: 50%;
+  vertical-align: top;
+
+  li {
+    font-weight: 300;
+    font-size: .8rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    display: inline-block!important;
+    list-style: none!important;
+  }
+
+  .tag-default {
+    border: 1px solid $color-grey;
+    color: $color-grey;
+    white-space: nowrap;
+    margin-right: 3px;
+    margin-bottom: .2rem;
+
+    &:hover {
+      color: $color-grey-light;
+      border-color: $color-grey-light;
+    }
+  }
+
+  .tag-pill {
+    padding-right: .6em;
+    padding-left: .6em;
+    border-radius: 10rem;
+  }
+}

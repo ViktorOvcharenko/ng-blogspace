@@ -13,6 +13,7 @@ import * as fromComponents from './components';
     fromComponents.HeaderComponent,
     fromComponents.LoaderComponent,
     fromComponents.PaginationComponent,
+    fromComponents.TagListComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +29,7 @@ import * as fromComponents from './components';
     fromComponents.HeaderComponent,
     fromComponents.LoaderComponent,
     fromComponents.PaginationComponent,
+    fromComponents.TagListComponent,
   ]
 })
 export class SharedModule { }
