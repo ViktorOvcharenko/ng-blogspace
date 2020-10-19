@@ -18,12 +18,12 @@ export class LoginComponent {
   isLoading$: Observable<boolean>;
   backendErrors$: Observable<fromSharedModels.BackendErrors>;
 
-  constructor(private store$: Store) {
-    this.isLoading$ = this.store$.pipe(select(getIsLoading));
-    this.backendErrors$ = this.store$.pipe(select(getValidationErrors));
+  constructor(private store: Store) {
+    this.isLoading$ = this.store.pipe(select(getIsLoading));
+    this.backendErrors$ = this.store.pipe(select(getValidationErrors));
   }
 
   submit(event: fromAuthModels.LoginRequest): void {
-    this.store$.dispatch(new Login(event));
+    this.store.dispatch(new Login(event));
   }
 }

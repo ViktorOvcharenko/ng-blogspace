@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class FeedToggleComponent {
   @Input() isLoggedIn: boolean;
-  @Input() tagName: string;
+  @Input() selectedTag: string;
 }

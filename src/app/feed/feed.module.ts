@@ -12,12 +12,13 @@ import { PopularTagsEffects } from './store/popular-tags.effects';
 
 import * as fromContainers from './containers';
 import * as fromComponents from './components';
-import * as fromServices from './services';
+import * as fromFeedServices from './services';
 
 @NgModule({
   declarations: [
     fromContainers.FeedGlobalComponent,
     fromContainers.FeedYourComponent,
+    fromContainers.FeedTagsComponent,
     fromContainers.FeedToggleComponent,
     fromContainers.PopularTagsComponent,
     fromComponents.FeedLayoutComponent,
@@ -34,7 +35,8 @@ import * as fromServices from './services';
     EffectsModule.forFeature([FeedEffects, PopularTagsEffects]),
   ],
   providers: [
-    fromServices.FeedService,
+    fromFeedServices.FeedService,
+    fromFeedServices.PopularTagsService
   ]
 })
 export class FeedModule { }

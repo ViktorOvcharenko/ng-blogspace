@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { getIsLoggedIn } from '../../../auth/store/auth.selectors';
+import { getSelectedTag } from '../../store/popular-tags.selectors';
 
 @Component({
   selector: 'app-feed-toggle-container',
@@ -9,9 +10,10 @@ import { getIsLoggedIn } from '../../../auth/store/auth.selectors';
 })
 export class FeedToggleComponent {
   isLoggedIn$: Observable<boolean>;
-  @Input() tagName: string;
+  selectedTag$: Observable<string>;
 
-  constructor(private store$: Store) {
-    this.isLoggedIn$ = this.store$.pipe(select(getIsLoggedIn));
+  constructor(private store: Store) {
+    this.isLoggedIn$ = this.store.pipe(select(getIsLoggedIn));
+    this.selectedTag$ = this.store.pipe(select(getSelectedTag));
   }
 }

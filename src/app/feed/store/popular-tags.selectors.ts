@@ -1,9 +1,10 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
-import * as fromSharedModels from '../../shared/models';
+import * as fromFeedModels from '../models';
 
-const popularTagsFeatureSelector = createFeatureSelector<fromSharedModels.PopularTagsState, fromSharedModels.PopularTagsState>('popularTags');
+const popularTagsFeatureSelector = createFeatureSelector<fromFeedModels.PopularTagsState, fromFeedModels.PopularTagsState>('popularTags');
 
-export const getIsLoading = createSelector(popularTagsFeatureSelector, (state: fromSharedModels.PopularTagsState) => state.isLoading);
-export const getPopularTags = createSelector(popularTagsFeatureSelector, (state: fromSharedModels.PopularTagsState) => state.popularTags);
-export const getErrors = createSelector(popularTagsFeatureSelector, (state: fromSharedModels.PopularTagsState) => state.errors);
+export const getIsLoading = createSelector(popularTagsFeatureSelector, (state: fromFeedModels.PopularTagsState) => state.isLoading);
+export const getPopularTags = createSelector(popularTagsFeatureSelector, (state: fromFeedModels.PopularTagsState) => state.popularTags);
+export const getErrors = createSelector(popularTagsFeatureSelector, (state: fromFeedModels.PopularTagsState) => state.errors);
+export const getSelectedTag = createSelector(popularTagsFeatureSelector, (state: fromFeedModels.PopularTagsState) => state.selectedTag);

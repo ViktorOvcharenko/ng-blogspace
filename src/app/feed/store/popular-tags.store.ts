@@ -1,7 +1,8 @@
-import * as fromSharedModels from '../../shared/models';
+import * as fromFeedModels from '../models';
 
-export const initialPopularTagsState: fromSharedModels.PopularTagsState  = {
+export const initialPopularTagsState: fromFeedModels.PopularTagsState  = {
   isLoading: false,
   popularTags: null,
   errors: null,
+  selectedTag: null,
 };

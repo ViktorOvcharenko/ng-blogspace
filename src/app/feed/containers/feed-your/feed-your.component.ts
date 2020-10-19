@@ -23,10 +23,10 @@ export class FeedYourComponent implements OnInit {
   feed$: Observable<fromFeedModels.FeedResponse>;
   errors$: Observable<fromSharedModels.BackendErrors>;
 
-  constructor(private store$: Store) {
-    this.isLoading$ = this.store$.pipe(select(getIsLoading));
-    this.feed$ = this.store$.pipe(select(getFeed));
-    this.errors$ = this.store$.pipe(select(getErrors));
+  constructor(private store: Store) {
+    this.isLoading$ = this.store.pipe(select(getIsLoading));
+    this.feed$ = this.store.pipe(select(getFeed));
+    this.errors$ = this.store.pipe(select(getErrors));
   }
 
   get limit(): number {
@@ -42,11 +42,11 @@ export class FeedYourComponent implements OnInit {
   }
 
   fetchFeed(paginationParams: fromSharedModels.PaginationParams): void {
-    const request: fromSharedModels.FeedRequest = {
+    const request: fromFeedModels.FeedRequest = {
       url: `${this.apiUrl}/articles/feed`,
       paginationParams
     };
 
-    this.store$.dispatch(new GetFeed(request));
+    this.store.dispatch(new GetFeed(request));
   }
 }

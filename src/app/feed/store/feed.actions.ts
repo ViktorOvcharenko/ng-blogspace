@@ -11,7 +11,7 @@ export enum FeedActionsTypes {
 
 export class GetFeed implements Action {
   public readonly type = FeedActionsTypes.GET_FEED;
-  constructor(public payload: fromSharedModels.FeedRequest) { }
+  constructor(public payload: fromFeedModels.FeedRequest) { }
 }
 
 export class GetFeedSuccess implements Action {

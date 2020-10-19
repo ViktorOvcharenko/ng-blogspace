@@ -10,7 +10,7 @@ import {
   PopularTagsActionsTypes,
 } from './popular-tags.actions';
 
-import * as fromSharedServices from '../../shared/services';
+import * as fromFeedServices from '../services';
 import * as fromSharedModels from '../../shared/models';
 
 @Injectable()
@@ -25,6 +25,6 @@ export class PopularTagsEffects {
 
   constructor(
     private actions$: Actions,
-    private popularTagsService: fromSharedServices.PopularTagsService
+    private popularTagsService: fromFeedServices.PopularTagsService
   ) { }
 }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { environment } from '../../../../environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { select, Store } from '@ngrx/store';
 import { GetFeed } from '../../store/feed.actions';
 import {
@@ -8,25 +9,30 @@ import {
   getFeed,
   getIsLoading
 } from '../../store/feed.selectors';
+import { getSelectedTag } from '../../store/popular-tags.selectors';
+import { ClearSelectedTag } from '../../store/popular-tags.actions';
 
 import * as fromFeedModels from '../../models';
 import * as fromSharedModels from '../../../shared/models';
 
 @Component({
   selector: 'app-feed-global-container',
-  templateUrl: './feed-global.component.html'
+  templateUrl: './feed-tags.component.html'
 })
-export class FeedGlobalComponent implements OnInit {
+export class FeedTagsComponent implements OnInit, OnDestroy {
   apiUrl: string = environment.apiUrl;
   url: string[] = ['/feed', 'global'];
   isLoading$: Observable<boolean>;
   feed$: Observable<fromFeedModels.FeedResponse>;
   errors$: Observable<fromSharedModels.BackendErrors>;
+  selectedTag$: Observable<string>;
+  destroy$: Subject<void> = new Subject<void>();
 
   constructor(private store: Store) {
     this.isLoading$ = this.store.pipe(select(getIsLoading));
     this.feed$ = this.store.pipe(select(getFeed));
     this.errors$ = this.store.pipe(select(getErrors));
+    this.selectedTag$ = this.store.pipe(select(getSelectedTag))
   }
 
   get limit(): number {
@@ -38,13 +44,24 @@ export class FeedGlobalComponent implements OnInit {
       offset: 0,
       limit: this.limit
     };
-    this.fetchFeed(startPaginationParams);
+    this.selectedTag$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(selectedTag => {
+      this.fetchFeed(startPaginationParams, selectedTag);
+    });
   }
 
-  fetchFeed(paginationParams: fromSharedModels.PaginationParams): void {
+  ngOnDestroy(): void {
+    this.store.dispatch(new ClearSelectedTag());
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  fetchFeed(paginationParams: fromSharedModels.PaginationParams, tagParam): void {
     const request: fromFeedModels.FeedRequest = {
       url: `${this.apiUrl}/articles`,
-      paginationParams
+      paginationParams,
+      tagParam
     };
 
     this.store.dispatch(new GetFeed(request));

@@ -6,6 +6,8 @@ export enum PopularTagsActionsTypes {
   GET_POPULAR_TAGS = '[Popular tags] Get popular tags',
   GET_POPULAR_TAGS_SUCCESS = '[Popular tags] Get popular tags success',
   GET_POPULAR_TAGS_FAIL = '[Popular tags] Get popular tags fail',
+  SET_SELECTED_TAG = '[Popular tags] Set selected tag',
+  CLEAR_SELECTED_TAG = '[Popular tags] Clear selected tag',
 }
 
 export class GetPopularTags implements Action {
@@ -21,7 +23,18 @@ export class GetPopularTagsFail implements Action {
   public readonly type = PopularTagsActionsTypes.GET_POPULAR_TAGS_FAIL;
 }
 
+export class SetSelectedTag implements Action {
+  public readonly type = PopularTagsActionsTypes.SET_SELECTED_TAG;
+  constructor(public payload: fromSharedModels.Tag) { }
+}
+
+export class ClearSelectedTag implements Action {
+  public readonly type = PopularTagsActionsTypes.CLEAR_SELECTED_TAG;
+}
+
 export type PopularTagsActions =
   GetPopularTags |
   GetPopularTagsSuccess |
-  GetPopularTagsFail;
+  GetPopularTagsFail |
+  SetSelectedTag |
+  ClearSelectedTag;

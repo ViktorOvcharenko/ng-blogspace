@@ -9,8 +9,13 @@ import * as fromSharedModels from '../../shared/models';
 export class FeedService {
   constructor(private http: HttpClient) { }
 
-  getFeed(request: fromSharedModels.FeedRequest): Observable<fromFeedModels.FeedResponse> {
+  getFeed(request: fromFeedModels.FeedRequest): Observable<fromFeedModels.FeedResponse> {
     let params = new HttpParams();
+
+    if (request.tagParam) {
+      params = params.append('tag', request.tagParam);
+    }
+
     params = params.append('offset', request.paginationParams.offset.toString());
     params = params.append('limit', request.paginationParams.limit.toString());
 

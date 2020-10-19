@@ -1,0 +1,7 @@
+<app-feed-main
+  [isLoading]="isLoading$ | async"
+  [errors]="errors$ | async"
+  [feed]="feed$ | async"
+  [url]="url"
+  (onSelectPage)="fetchFeed($event)"
+></app-feed-main>

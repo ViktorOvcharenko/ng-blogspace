@@ -19,9 +19,9 @@ export class HeaderComponent {
   isAnonymous$: Observable<boolean>
   currentUser$: Observable<fromSharedModels.CurrentUser>
 
-  constructor(private store$: Store) {
-    this.isLoggedIn$ = this.store$.pipe(select(getIsLoggedIn))
-    this.isAnonymous$ = this.store$.pipe(select(getIsAnonymous))
-    this.currentUser$ = this.store$.pipe(select(getCurrentUser))
+  constructor(private store: Store) {
+    this.isLoggedIn$ = this.store.pipe(select(getIsLoggedIn))
+    this.isAnonymous$ = this.store.pipe(select(getIsAnonymous))
+    this.currentUser$ = this.store.pipe(select(getCurrentUser))
   }
 }

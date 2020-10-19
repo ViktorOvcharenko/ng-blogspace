@@ -24,7 +24,7 @@ const routes: Routes = [
       },
       {
         path: 'tags/:tag',
-        component: fromContainers.FeedGlobalComponent,
+        component: fromContainers.FeedTagsComponent,
       }
     ]
   },

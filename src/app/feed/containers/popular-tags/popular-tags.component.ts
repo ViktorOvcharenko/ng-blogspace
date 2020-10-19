@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-import { GetPopularTags } from '../../store/popular-tags.actions';
+import { GetPopularTags, SetSelectedTag } from '../../store/popular-tags.actions';
 import {
   getErrors,
   getIsLoading,
@@ -19,10 +19,10 @@ export class PopularTagsComponent implements OnInit {
   popularTags$: Observable<fromSharedModels.Tag[]>;
   errors$: Observable<string>;
 
-  constructor(private store$: Store) {
-    this.isLoading$ = this.store$.pipe(select(getIsLoading));
-    this.popularTags$ = this.store$.pipe(select(getPopularTags));
-    this.errors$ = this.store$.pipe(select(getErrors));
+  constructor(private store: Store) {
+    this.isLoading$ = this.store.pipe(select(getIsLoading));
+    this.popularTags$ = this.store.pipe(select(getPopularTags));
+    this.errors$ = this.store.pipe(select(getErrors));
   }
 
   ngOnInit(): void {
@@ -30,6 +30,10 @@ export class PopularTagsComponent implements OnInit {
   }
 
   fetchPopularTags(): void {
-    this.store$.dispatch(new GetPopularTags());
+    this.store.dispatch(new GetPopularTags());
+  }
+
+  selectTag(event: fromSharedModels.Tag): void {
+    this.store.dispatch(new SetSelectedTag(event));
   }
 }

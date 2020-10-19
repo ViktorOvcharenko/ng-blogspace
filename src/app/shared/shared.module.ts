@@ -34,7 +34,6 @@ import * as fromSharedServices from './services';
   ],
   providers: [
     fromSharedServices.PersistenceService,
-    fromSharedServices.PopularTagsService,
   ]
 })
 export class SharedModule { }

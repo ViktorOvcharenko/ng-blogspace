@@ -1,12 +1,12 @@
 import { initialPopularTagsState } from './popular-tags.store';
 import { PopularTagsActions, PopularTagsActionsTypes } from './popular-tags.actions';
 
-import * as fromSharedModels from '../../shared/models';
+import * as fromFeedModels from '../models';
 
 export const popularTagsReducers = (
-  state: fromSharedModels.PopularTagsState = initialPopularTagsState,
+  state: fromFeedModels.PopularTagsState = initialPopularTagsState,
   action: PopularTagsActions
-): fromSharedModels.PopularTagsState => {
+): fromFeedModels.PopularTagsState => {
   switch (action.type) {
     case PopularTagsActionsTypes.GET_POPULAR_TAGS: {
       return {
@@ -26,6 +26,18 @@ export const popularTagsReducers = (
       return {
         ...state,
         isLoading: false,
+      };
+    }
+    case PopularTagsActionsTypes.SET_SELECTED_TAG: {
+      return {
+        ...state,
+        selectedTag: action.payload
+      };
+    }
+    case PopularTagsActionsTypes.CLEAR_SELECTED_TAG: {
+      return {
+        ...state,
+        selectedTag: null
       };
     }
     default:
