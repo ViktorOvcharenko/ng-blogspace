@@ -7,7 +7,7 @@ import * as fromComponents from './components';
 const routes: Routes = [
   {
     path: '',
-    component: fromComponents.FeedMainComponent,
+    component: fromComponents.FeedLayoutComponent,
     children: [
       {
         path: '',
@@ -20,7 +20,7 @@ const routes: Routes = [
       },
       {
         path: 'your',
-        component: fromContainers.FeedGlobalComponent,
+        component: fromContainers.FeedYourComponent,
       },
       {
         path: 'tags/:tag',

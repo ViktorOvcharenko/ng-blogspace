@@ -1,6 +1,6 @@
 import * as fromSharedModels from './';
 
-export interface PaginationRequest {
+export interface FeedRequest {
   url: string;
   paginationParams: fromSharedModels.PaginationParams
 }

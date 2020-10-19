@@ -13,10 +13,10 @@ import * as fromFeedModels from '../../models';
 import * as fromSharedModels from '../../../shared/models';
 
 @Component({
-  selector: 'app-feed-global-container',
-  templateUrl: './feed-global.component.html'
+  selector: 'app-feed-your-container',
+  templateUrl: './feed-your.component.html'
 })
-export class FeedGlobalComponent implements OnInit {
+export class FeedYourComponent implements OnInit {
   apiUrl: string = environment.apiUrl;
   url: string[] = ['/feed', 'global'];
   isLoading$: Observable<boolean>;
@@ -43,7 +43,7 @@ export class FeedGlobalComponent implements OnInit {
 
   fetchFeed(paginationParams: fromSharedModels.PaginationParams): void {
     const request: fromSharedModels.FeedRequest = {
-      url: `${this.apiUrl}/articles`,
+      url: `${this.apiUrl}/articles/feed`,
       paginationParams
     };
 

@@ -1,14 +1,31 @@
-<div class="home-page">
-  <div class="container page">
-    <div class="row">
-      <div class="col-md-9">
-        <app-feed-toggle-container></app-feed-toggle-container>
-        <router-outlet></router-outlet>
+<div class="feed-global-container">
+  <app-loader *ngIf="isLoading; else feedRef"></app-loader>
+
+  <ng-template #feedRef>
+    <div *ngIf="isFeed; else errorsRef">
+      <div *ngIf="isArticles; else emptyArticlesRef">
+        <app-article-list
+          [articles]="articles"
+        ></app-article-list>
+
+        <app-pagination
+          [total]="total"
+          [url]="url"
+          (onSelectPage)="selectPage($event)"
+        ></app-pagination>
       </div>
-      <div class="col-md-3">
-        <app-popular-tags-container></app-popular-tags-container>
-      </div>
+
+      <ng-template #emptyArticlesRef>
+        <div class="article-empty">No articles are here... yet.</div>
+      </ng-template>
     </div>
-  </div>
+
+    <ng-template #errorsRef>
+      <app-backend-error-messages
+        *ngIf="errors"
+        [backendErrors]="errors"
+      ></app-backend-error-messages>
+    </ng-template>
+  </ng-template>
 </div>
 
