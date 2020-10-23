@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('./feed/feed.module').then(m => m.FeedModule),
   },
   {
-    path: 'article',
+    path: 'article/:slug',
     loadChildren: () => import('./article/article.module').then(m => m.ArticleModule),
   },
   {
