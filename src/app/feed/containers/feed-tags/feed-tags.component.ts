@@ -25,7 +25,8 @@ export class FeedTagsComponent implements OnInit, OnDestroy {
   isLoading$: Observable<boolean>;
   feed$: Observable<fromFeedModels.FeedResponse>;
   errors$: Observable<fromSharedModels.BackendErrors>;
-  selectedTag$: Observable<string>;
+  selectedTag$: Observable<fromSharedModels.Tag>;
+  selectedTag: fromSharedModels.Tag;
   destroy$: Subject<void> = new Subject<void>();
 
   constructor(private store: Store) {
@@ -47,7 +48,8 @@ export class FeedTagsComponent implements OnInit, OnDestroy {
     this.selectedTag$
       .pipe(takeUntil(this.destroy$))
       .subscribe(selectedTag => {
-      this.fetchFeed(startPaginationParams, selectedTag);
+        this.selectedTag = selectedTag;
+      this.fetchFeed(startPaginationParams);
     });
   }
 
@@ -57,11 +59,11 @@ export class FeedTagsComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  fetchFeed(paginationParams: fromSharedModels.PaginationParams, tagParam): void {
+  fetchFeed(paginationParams: fromSharedModels.PaginationParams): void {
     const request: fromFeedModels.FeedRequest = {
       url: `${this.apiUrl}/articles`,
       paginationParams,
-      tagParam
+      tagParam: this.selectedTag,
     };
 
     this.store.dispatch(new GetFeed(request));

@@ -1,24 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
-import * as fromFeedModels from '../models';
+import * as fromArticleModels from '../models';
 import * as fromSharedModels from '../../shared/models';
 
 @Injectable()
-export class FeedService {
+export class ArticleService {
   constructor(private http: HttpClient) { }
 
-  getFeed(request: fromFeedModels.FeedRequest): Observable<fromFeedModels.FeedResponse> {
-    let params = new HttpParams();
-
-    if (request.tagParam) {
-      params = params.append('tag', request.tagParam);
-    }
-
-    params = params.append('offset', request.paginationParams.offset.toString());
-    params = params.append('limit', request.paginationParams.limit.toString());
-
-    return this.http.get<fromFeedModels.FeedResponse>(request.url, { params });
+  getArticle(slug: string): Observable<fromSharedModels.Article> {
+    return this.http.get<fromArticleModels.ArticleResponse>(`${environment.apiUrl}/articles/${slug}`)
+      .pipe(map(response => response.article));
   }
 }

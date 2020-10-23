@@ -3,7 +3,6 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import * as fromFeedModels from '../models';
-import * as fromSharedModels from '../../shared/models';
 
 @Injectable()
 export class FeedService {

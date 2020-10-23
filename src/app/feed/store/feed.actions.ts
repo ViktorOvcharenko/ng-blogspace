@@ -21,8 +21,7 @@ export class GetFeedSuccess implements Action {
 
 export class GetFeedFail implements Action {
   public readonly type = FeedActionsTypes.GET_FEED_FAIL;
-  constructor(public payload: fromSharedModels.BackendErrors) {
-  }
+  constructor(public payload: fromSharedModels.BackendErrors) { }
 }
 
 export type FeedActions =
