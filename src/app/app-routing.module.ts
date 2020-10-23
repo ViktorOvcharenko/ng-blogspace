@@ -5,25 +5,29 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'feed',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'feed',
-    loadChildren: () => import('./feed/feed.module').then(m => m.FeedModule)
+    loadChildren: () => import('./feed/feed.module').then(m => m.FeedModule),
+  },
+  {
+    path: 'article',
+    loadChildren: () => import('./article/article.module').then(m => m.ArticleModule),
   },
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
   },
   {
     path: '**',
     redirectTo: 'feed',
-    pathMatch: 'full'
+    pathMatch: 'full',
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

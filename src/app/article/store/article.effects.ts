@@ -3,7 +3,6 @@ import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
-import { HttpErrorResponse } from '@angular/common/http';
 import {
   ArticleActionsTypes,
   GetArticle,
@@ -22,7 +21,7 @@ export class ArticleEffects {
     ofType<GetArticle>(ArticleActionsTypes.GET_ARTICLE),
     switchMap(({payload}) => this.articleService.getArticle(payload)),
     switchMap((article: fromSharedModels.Article) => of( new GetArticleSuccess(article) )),
-    catchError((errorResponse: HttpErrorResponse) => of( new GetArticleFail() ))
+    catchError(() => of( new GetArticleFail() ))
   );
 
   constructor(
