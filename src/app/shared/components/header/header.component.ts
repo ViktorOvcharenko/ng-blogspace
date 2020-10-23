@@ -15,13 +15,13 @@ import * as fromSharedModels from '../../models';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  isLoggedIn$: Observable<boolean>
-  isAnonymous$: Observable<boolean>
-  currentUser$: Observable<fromSharedModels.CurrentUser>
+  isLoggedIn$: Observable<boolean>;
+  isAnonymous$: Observable<boolean>;
+  currentUser$: Observable<fromSharedModels.CurrentUser>;
 
   constructor(private store: Store) {
-    this.isLoggedIn$ = this.store.pipe(select(getIsLoggedIn))
-    this.isAnonymous$ = this.store.pipe(select(getIsAnonymous))
-    this.currentUser$ = this.store.pipe(select(getCurrentUser))
+    this.isLoggedIn$ = this.store.pipe(select(getIsLoggedIn));
+    this.isAnonymous$ = this.store.pipe(select(getIsAnonymous));
+    this.currentUser$ = this.store.pipe(select(getCurrentUser));
   }
 }

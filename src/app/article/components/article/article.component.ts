@@ -11,4 +11,5 @@ export class ArticleComponent  {
   @Input() isLoading: boolean;
   @Input() article: fromSharedModels.Article;
   @Input() errors: fromSharedModels.BackendErrors;
+  @Input() isAuthor: boolean;
 }
