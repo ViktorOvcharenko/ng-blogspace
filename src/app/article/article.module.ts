@@ -9,12 +9,13 @@ import { articleReducers } from './store/article.reducers';
 import { ArticleEffects } from './store/article.effects';
 
 import * as fromContainers from './containers';
-// import * as fromComponents from './components';
+import * as fromComponents from './components';
 import * as fromArticleServices from './services';
 
 @NgModule({
   declarations: [
     fromContainers.ArticleComponent,
+    fromComponents.ArticleComponent,
   ],
   imports: [
     CommonModule,
