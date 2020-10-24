@@ -21,6 +21,7 @@ import * as fromFeedServices from './services';
     fromContainers.FeedTagsComponent,
     fromContainers.FeedToggleComponent,
     fromContainers.PopularTagsComponent,
+    fromComponents.FeedBannerComponent,
     fromComponents.FeedLayoutComponent,
     fromComponents.FeedMainComponent,
     fromComponents.FeedToggleComponent,
