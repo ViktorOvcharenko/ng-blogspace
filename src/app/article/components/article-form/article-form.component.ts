@@ -12,14 +12,14 @@ import * as fromSharedModels from '../../../shared/models';
 export class ArticleFormComponent implements OnInit {
   form: FormGroup;
   @Input() initialValue: fromArticleModels.ArticleRequest;
-  @Input() isSubmitting: boolean;
+  @Input() isLoading: boolean;
   @Input() errors: fromSharedModels.BackendErrors;
   @Output() onSubmit: EventEmitter<fromArticleModels.ArticleRequest> = new EventEmitter<fromArticleModels.ArticleRequest>();
 
   constructor(private fb: FormBuilder) { }
 
   get isDisabled(): boolean {
-    return this.form.invalid || this.isSubmitting;
+    return this.form.invalid || this.isLoading;
   }
 
   ngOnInit(): void {
@@ -28,10 +28,10 @@ export class ArticleFormComponent implements OnInit {
 
   initForm(): void {
     this.form = this.fb.group({
-      title: [this.initialValue.title, Validators.required],
-      description: [this.initialValue.description, Validators.required],
-      body: [this.initialValue.body, Validators.required],
-      tagList: [this.initialValue.tagList, Validators.required],
+      title: this.initialValue.title,
+      description: this.initialValue.description,
+      body: this.initialValue.body,
+      tagList: this.initialValue.tagList,
     });
   }
 

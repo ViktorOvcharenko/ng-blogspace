@@ -49,6 +49,27 @@ export const articleReducers = (
         errors: action.payload
       };
     }
+    case ArticleActionsTypes.CREATE_ARTICLE: {
+      return {
+        ...state,
+        isLoading: true,
+        errors: null,
+      };
+    }
+    case ArticleActionsTypes.CREATE_ARTICLE_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+        article: action.payload,
+      };
+    }
+    case ArticleActionsTypes.CREATE_ARTICLE_FAIL: {
+      return {
+        ...state,
+        isLoading: false,
+        errors: action.payload
+      };
+    }
     default:
       return state;
   }
