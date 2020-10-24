@@ -8,7 +8,7 @@ export interface Article {
   favorited: boolean;
   favoritesCount: number;
   slug: string;
-  tagList: string[]
+  tagList: fromSharedModels.Tag[]
   title: string;
   updatedAt: string;
 }

@@ -1,38 +1,44 @@
 <div class="article-page">
-  <div class="banner">
-    <div *ngIf="article" class="container" >
-      <h1>{{ article.title }}</h1>
-      <div class="article-meta">
-        <a [routerLink]="['/profiles', article.author.username]">
-          <img [src]="article.author.image" />
-        </a>
-        <div class="info">
-          <a [routerLink]="['/profiles', article.author.username]" class="author">
-            {{ article.author.username }}
-          </a>
-          <span class="date">{{ article.createdAt | date}}</span>
-        </div>
-        <span *ngIf="isAuthor">
-          <a [routerLink]="['/articles', article.slug, '/edit']" class="btn btn-outline-secondary btn-sm">
+  <app-loader *ngIf="isLoading; else articleRef"></app-loader>
+
+  <ng-template #articleRef>
+    <div *ngIf="article; else errorsRef">
+      <div class="banner">
+        <div *ngIf="article" class="container page">
+          <h1>{{ title }}</h1>
+          <div class="article-meta">
+            <a [routerLink]="['/profiles', username]">
+              <img [src]="image" />
+            </a>
+            <div class="info">
+              <a [routerLink]="['/profiles', username]" class="author">{{ username }}</a>
+              <span class="date">{{ article.createdAt | date}}</span>
+            </div>
+            <span *ngIf="isAuthor">
+          <a [routerLink]="['/articles', slug, '/edit']" class="btn btn-outline-secondary btn-sm">
             <i class="ion-edit"></i>
             Edit Article
           </a>
           DELETE BUTTON
         </span>
-      </div>
-    </div>
-  </div>
-  <div class="container page">
-    <app-loader *ngIf="isLoading"></app-loader>
-    <app-backend-error-messages *ngIf="errors"></app-backend-error-messages>
-
-    <div class="row article-content" *ngIf="article">
-      <div class="col-xs-12">
-        <div>
-          <p>{{ article.body }}</p>
+          </div>
         </div>
-        <app-tag-list [tagList]="article.tagList"></app-tag-list>
+      </div>
+
+      <div class="container page">
+        <div class="row article-content" *ngIf="article">
+          <div class="col-xs-12">
+            <div>
+              <p>{{ articleBody }}</p>
+            </div>
+            <app-tag-list [tagList]="tagList"></app-tag-list>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+
+    <ng-template #errorsRef>
+      <app-backend-error-messages *ngIf="errors"></app-backend-error-messages>
+    </ng-template>
+  </ng-template>
 </div>
