@@ -6,6 +6,7 @@
       <app-article-banner
         [article]="article"
         [isAuthor]="isAuthor"
+        (onDeleteArticle)="deleteArticle($event)"
       ></app-article-banner>
 
       <div class="container page">

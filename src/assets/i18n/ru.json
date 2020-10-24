@@ -8,6 +8,10 @@
     "email": "Электронная почта",
     "password": "Пароль"
   },
+  "article": {
+    "edit-article": "Редактировать статью",
+    "delete-article": "Удалить статью"
+  },
   "shared": {
     "popular-tags": "Популярные теги"
   }

@@ -11,10 +11,12 @@
       </div>
       <span *ngIf="isAuthor">
               <a [routerLink]="['/articles', slug, '/edit']" class="btn btn-outline-secondary btn-sm">
-                <i class="ion-edit"></i>
-                Edit Article
+                {{ 'article.edit-article' | translate }}
               </a>
-              DELETE BUTTON
+              <button
+                (click)="deleteArticle()"
+                class="btn btn-outline-danger btn-sm">
+                {{ 'article.delete-article' | translate }}</button>
             </span>
     </div>
   </div>

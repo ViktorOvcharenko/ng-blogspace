@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { ActivatedRoute, Params } from '@angular/router';
 import { combineLatest, Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
-import { GetArticle } from '../../store/article.actions';
+import {DeleteArticle, GetArticle} from '../../store/article.actions';
 import {
   getArticle,
   getArticleErrors,
@@ -57,5 +57,9 @@ export class ArticleComponent implements OnInit {
       .subscribe((params: Params) => {
         this.store.dispatch(new GetArticle(params.slug))
       });
+  }
+
+  deleteArticle(event: string): void {
+    this.store.dispatch(new DeleteArticle(event));
   }
 }

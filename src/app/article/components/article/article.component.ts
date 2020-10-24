@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import * as fromSharedModels from '../../../shared/models';
 
@@ -12,6 +12,7 @@ export class ArticleComponent  {
   @Input() article: fromSharedModels.Article;
   @Input() errors: fromSharedModels.BackendErrors;
   @Input() isAuthor: boolean;
+  @Output() onDeleteArticle: EventEmitter<string> = new EventEmitter<string>();
 
   get articleBody(): string {
     return this.article.body;
@@ -19,5 +20,9 @@ export class ArticleComponent  {
 
   get tagList(): fromSharedModels.Tag[] {
     return this.article.tagList;
+  }
+
+  deleteArticle(event: string): void {
+    this.onDeleteArticle.emit(event);
   }
 }

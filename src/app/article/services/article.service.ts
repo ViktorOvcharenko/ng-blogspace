@@ -15,4 +15,8 @@ export class ArticleService {
     return this.http.get<fromArticleModels.ArticleResponse>(`${environment.apiUrl}/articles/${slug}`)
       .pipe(map(response => response.article));
   }
+
+  deleteArticle(slug: string): Observable<void> {
+    return this.http.delete<void>(`${environment.apiUrl}/articles/${slug}`);
+  }
 }

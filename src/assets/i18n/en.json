@@ -8,6 +8,10 @@
     "email": "Email",
     "password": "Password"
   },
+  "article": {
+    "edit-article": "Edit Article",
+    "delete-article": "Delete Article"
+  },
   "shared": {
     "popular-tags": "Popular tags"
   }

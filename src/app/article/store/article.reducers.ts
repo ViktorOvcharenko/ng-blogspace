@@ -28,6 +28,27 @@ export const articleReducers = (
         isLoading: false,
       };
     }
+    case ArticleActionsTypes.DELETE_ARTICLE: {
+      return {
+        ...state,
+        isLoading: true,
+        errors: null,
+      };
+    }
+    case ArticleActionsTypes.DELETE_ARTICLE_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+        article: null,
+      };
+    }
+    case ArticleActionsTypes.DELETE_ARTICLE_FAIL: {
+      return {
+        ...state,
+        isLoading: false,
+        errors: action.payload
+      };
+    }
     default:
       return state;
   }

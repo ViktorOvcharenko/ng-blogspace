@@ -3,4 +3,5 @@
   [article]="article$ | async"
   [errors]="errors$ | async"
   [isAuthor]="isAuthor$ | async"
+  (onDeleteArticle)="deleteArticle($event)"
 ></app-article>
