@@ -1,5 +1,5 @@
 <app-login
   [isLoading]="isLoading$ | async"
-  [backendErrors]="backendErrors$ | async"
+  [validationErrors]="validationErrors$ | async"
   (onSubmit)="submit($event)"
 ></app-login>

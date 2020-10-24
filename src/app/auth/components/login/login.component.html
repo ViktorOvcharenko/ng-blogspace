@@ -7,8 +7,8 @@
           <a [routerLink]="['/auth', 'registration']" class="login-link">{{ 'auth.need-account' | translate }}</a>
         </p>
         <app-backend-error-messages
-          *ngIf="backendErrors"
-          [backendErrors]="backendErrors"
+          *ngIf="validationErrors"
+          [errors]="validationErrors"
         ></app-backend-error-messages>
         <form [formGroup]="form" (ngSubmit)="submit()">
           <fieldset>

@@ -1,7 +1,7 @@
 @import "src/assets/styles/variables";
 
 .banner {
-  color: #fff;
+  color: $color-white;
   background: $color-black;
   padding: 2rem 0;
   margin-bottom: 2rem;
@@ -39,7 +39,7 @@
     }
 
     .date {
-      color: #bbb;
+      color: $color-grey-light;
       font-size: .8rem;
       display: block;
     }

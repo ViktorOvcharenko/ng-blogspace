@@ -9,13 +9,13 @@ import * as fromSharedModels from '../../models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BackendErrorMessagesComponent implements OnInit {
-  @Input() backendErrors: fromSharedModels.BackendErrors;
+  @Input() errors: fromSharedModels.BackendErrors;
   errorMessages: string[];
 
   ngOnInit() {
-    this.errorMessages = Object.keys(this.backendErrors)
+    this.errorMessages = Object.keys(this.errors)
       .map((name: string) => {
-        const messages = this.backendErrors[name].join(', ');
+        const messages = this.errors[name].join(', ');
 
         return `${name} ${messages}`;
       });

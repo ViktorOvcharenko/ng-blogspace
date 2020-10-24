@@ -13,7 +13,7 @@ import * as fromSharedModels from '../../../shared/models';
 export class LoginComponent implements OnInit {
   form: FormGroup;
   @Input() isLoading: boolean;
-  @Input() backendErrors: fromSharedModels.BackendErrors;
+  @Input() validationErrors: fromSharedModels.BackendErrors;
   @Output() onSubmit: EventEmitter<fromAuthModels.LoginRequest> = new EventEmitter<fromAuthModels.LoginRequest>();
 
   constructor(private fb: FormBuilder) { }
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   initForm(): void {
     this.form = this.fb.group({
       email: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 

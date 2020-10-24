@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { ActivatedRoute, Params } from '@angular/router';
 import { combineLatest, Observable, Subject } from 'rxjs';
-import {map, takeUntil} from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 import { GetArticle } from '../../store/article.actions';
 import {
   getArticle,

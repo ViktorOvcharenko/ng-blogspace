@@ -13,7 +13,7 @@ import * as fromSharedModels from '../../../shared/models';
 export class RegistrationComponent implements OnInit {
   form: FormGroup;
   @Input() isLoading: boolean;
-  @Input() backendErrors: fromSharedModels.BackendErrors;
+  @Input() validationErrors: fromSharedModels.BackendErrors;
   @Output() onSubmit: EventEmitter<fromAuthModels.RegistrationRequest> = new EventEmitter<fromAuthModels.RegistrationRequest>();
 
   constructor(private fb: FormBuilder) { }
@@ -26,7 +26,7 @@ export class RegistrationComponent implements OnInit {
     this.form = this.fb.group({
       username: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
 

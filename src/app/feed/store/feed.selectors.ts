@@ -5,6 +5,6 @@ import * as fromFeedModels from '../models';
 
 const feedFeatureSelector = createFeatureSelector<fromSharedModels.AppState, fromFeedModels.FeedState>('feed');
 
-export const getIsLoading = createSelector(feedFeatureSelector, (state: fromFeedModels.FeedState) => state.isLoading);
-export const getErrors = createSelector(feedFeatureSelector, (state: fromFeedModels.FeedState) => state.errors);
+export const getIsFeedLoading = createSelector(feedFeatureSelector, (state: fromFeedModels.FeedState) => state.isLoading);
 export const getFeed = createSelector(feedFeatureSelector, (state: fromFeedModels.FeedState) => state.feed);
+export const getFeedErrors = createSelector(feedFeatureSelector, (state: fromFeedModels.FeedState) => state.errors);

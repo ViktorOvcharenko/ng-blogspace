@@ -3,7 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { Login } from '../../store/auth.actions';
 import { Observable } from 'rxjs';
 import {
-  getIsLoading,
+  getIsAuthLoading,
   getValidationErrors
 } from '../../store/auth.selectors';
 
@@ -16,11 +16,11 @@ import * as fromAuthModels from '../../models';
 })
 export class LoginComponent {
   isLoading$: Observable<boolean>;
-  backendErrors$: Observable<fromSharedModels.BackendErrors>;
+  validationErrors$: Observable<fromSharedModels.BackendErrors>;
 
   constructor(private store: Store) {
-    this.isLoading$ = this.store.pipe(select(getIsLoading));
-    this.backendErrors$ = this.store.pipe(select(getValidationErrors));
+    this.isLoading$ = this.store.pipe(select(getIsAuthLoading));
+    this.validationErrors$ = this.store.pipe(select(getValidationErrors));
   }
 
   submit(event: fromAuthModels.LoginRequest): void {

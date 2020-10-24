@@ -5,9 +5,9 @@ import { takeUntil } from 'rxjs/operators';
 import { select, Store } from '@ngrx/store';
 import { GetFeed } from '../../store/feed.actions';
 import {
-  getErrors,
   getFeed,
-  getIsLoading
+  getFeedErrors,
+  getIsFeedLoading,
 } from '../../store/feed.selectors';
 import { getSelectedTag } from '../../store/popular-tags.selectors';
 import { ClearSelectedTag } from '../../store/popular-tags.actions';
@@ -30,9 +30,9 @@ export class FeedTagsComponent implements OnInit, OnDestroy {
   destroy$: Subject<void> = new Subject<void>();
 
   constructor(private store: Store) {
-    this.isLoading$ = this.store.pipe(select(getIsLoading));
+    this.isLoading$ = this.store.pipe(select(getIsFeedLoading));
     this.feed$ = this.store.pipe(select(getFeed));
-    this.errors$ = this.store.pipe(select(getErrors));
+    this.errors$ = this.store.pipe(select(getFeedErrors));
     this.selectedTag$ = this.store.pipe(select(getSelectedTag))
   }
 

@@ -4,9 +4,9 @@ import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import { GetFeed } from '../../store/feed.actions';
 import {
-  getErrors,
   getFeed,
-  getIsLoading
+  getFeedErrors,
+  getIsFeedLoading,
 } from '../../store/feed.selectors';
 
 import * as fromFeedModels from '../../models';
@@ -24,9 +24,9 @@ export class FeedYourComponent implements OnInit {
   errors$: Observable<fromSharedModels.BackendErrors>;
 
   constructor(private store: Store) {
-    this.isLoading$ = this.store.pipe(select(getIsLoading));
+    this.isLoading$ = this.store.pipe(select(getIsFeedLoading));
     this.feed$ = this.store.pipe(select(getFeed));
-    this.errors$ = this.store.pipe(select(getErrors));
+    this.errors$ = this.store.pipe(select(getFeedErrors));
   }
 
   get limit(): number {

@@ -7,12 +7,11 @@ import {
   ArticleActionsTypes,
   GetArticle,
   GetArticleFail,
-  GetArticleSuccess
+  GetArticleSuccess,
 } from './article.actions';
 
 import * as fromArticleServices from '../services';
 import * as fromSharedModels from '../../shared/models';
-
 
 @Injectable()
 export class ArticleEffects {
@@ -26,6 +25,6 @@ export class ArticleEffects {
 
   constructor(
     private actions$: Actions,
-    private articleService: fromArticleServices.ArticleService
+    private articleService: fromArticleServices.ArticleService,
   ) { }
 }
