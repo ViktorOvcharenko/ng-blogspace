@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import * as fromSharedModels from '../../../shared/models';
 
 @Component({
   selector: 'app-article-banner',
   templateUrl: './article-banner.component.html',
-  styleUrls: ['./article-banner.component.scss']
+  styleUrls: ['./article-banner.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArticleBannerComponent  {
   @Input() article: fromSharedModels.Article;

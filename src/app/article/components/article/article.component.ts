@@ -1,11 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import * as fromSharedModels from '../../../shared/models';
 
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
-  styleUrls: ['./article.component.scss']
+  styleUrls: ['./article.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArticleComponent  {
   @Input() isLoading: boolean;

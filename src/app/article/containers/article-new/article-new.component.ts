@@ -23,10 +23,12 @@ export class ArticleNewComponent implements OnInit {
 
   ngOnInit(): void {
     this.initialValue = {
-      title: '',
-      description: '',
-      body: '',
-      tagList: []
+      article: {
+        title: '',
+        description: '',
+        body: '',
+        tagList: []
+      }
     };
   }
 
