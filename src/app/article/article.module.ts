@@ -15,6 +15,8 @@ import * as fromArticleServices from './services';
 @NgModule({
   declarations: [
     fromContainers.ArticleComponent,
+    fromContainers.ArticleEditComponent,
+    fromContainers.ArticleNewComponent,
     fromComponents.ArticleComponent,
     fromComponents.ArticleBannerComponent,
   ],

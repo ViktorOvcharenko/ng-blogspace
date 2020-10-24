@@ -10,7 +10,7 @@
         <span class="date">{{ article.createdAt | date}}</span>
       </div>
       <span *ngIf="isAuthor">
-              <a [routerLink]="['/articles', slug, '/edit']" class="btn btn-outline-secondary btn-sm">
+              <a [routerLink]="['/article', slug, 'edit']" class="btn btn-outline-secondary btn-sm">
                 {{ 'article.edit-article' | translate }}
               </a>
               <button

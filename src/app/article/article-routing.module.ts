@@ -5,8 +5,17 @@ import * as fromContainers from './containers';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'new',
+    component: fromContainers.ArticleNewComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: ':slug',
     component: fromContainers.ArticleComponent,
+  },
+  {
+    path: ':slug/edit',
+    component: fromContainers.ArticleEditComponent,
   },
 ];
 
