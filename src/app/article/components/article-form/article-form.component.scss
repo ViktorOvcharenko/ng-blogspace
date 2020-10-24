@@ -1,0 +1,15 @@
+@import "src/assets/styles/variables";
+
+.article-form-page {
+  margin-top: 1.5rem;
+
+  .submit-container {
+    display: flex;
+    justify-content: flex-end;
+
+    button {
+      background-color: $color-theme;
+      border-color: $color-theme;
+    }
+  }
+}

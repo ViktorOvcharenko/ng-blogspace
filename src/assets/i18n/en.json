@@ -9,8 +9,9 @@
     "password": "Password"
   },
   "article": {
-    "edit-article": "Edit Article",
-    "delete-article": "Delete Article"
+    "edit-article": "Edit article",
+    "delete-article": "Delete article",
+    "publish-article": "Publish article"
   },
   "shared": {
     "popular-tags": "Popular tags",

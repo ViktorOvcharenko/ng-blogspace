@@ -12,17 +12,20 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   registration(data: fromAuthModels.RegistrationRequest): Observable<fromSharedModels.CurrentUser> {
-      return this.http.post<fromAuthModels.AuthResponse>(`${environment.apiUrl}/users`, data)
-        .pipe(map(this.getUser));
+    return this.http
+      .post<fromAuthModels.AuthResponse>(`${environment.apiUrl}/users`, data)
+      .pipe(map(this.getUser));
   }
 
   login(data: fromAuthModels.LoginRequest): Observable<fromSharedModels.CurrentUser> {
-    return this.http.post<fromAuthModels.AuthResponse>(`${environment.apiUrl}/users/login`, data)
+    return this.http
+      .post<fromAuthModels.AuthResponse>(`${environment.apiUrl}/users/login`, data)
       .pipe(map(this.getUser));
   }
 
   getCurrentUser(): Observable<fromSharedModels.CurrentUser> {
-    return this.http.get<fromAuthModels.AuthResponse>(`${environment.apiUrl}/user`)
+    return this.http
+      .get<fromAuthModels.AuthResponse>(`${environment.apiUrl}/user`)
       .pipe(map(this.getUser));
   }
 

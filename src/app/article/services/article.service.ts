@@ -12,11 +12,19 @@ export class ArticleService {
   constructor(private http: HttpClient) { }
 
   getArticle(slug: string): Observable<fromSharedModels.Article> {
-    return this.http.get<fromArticleModels.ArticleResponse>(`${environment.apiUrl}/articles/${slug}`)
+    return this.http
+      .get<fromArticleModels.ArticleResponse>(`${environment.apiUrl}/articles/${slug}`)
       .pipe(map(response => response.article));
   }
 
   deleteArticle(slug: string): Observable<void> {
-    return this.http.delete<void>(`${environment.apiUrl}/articles/${slug}`);
+    return this.http
+      .delete<void>(`${environment.apiUrl}/articles/${slug}`);
+  }
+
+  createArticle(requestBody: fromArticleModels.ArticleRequest): Observable<fromSharedModels.Article> {
+    return this.http
+      .post<fromArticleModels.ArticleResponse>(`${environment.apiUrl}/articles`, requestBody)
+      .pipe(map(response => response.article));
   }
 }

@@ -10,7 +10,8 @@
   },
   "article": {
     "edit-article": "Редактировать статью",
-    "delete-article": "Удалить статью"
+    "delete-article": "Удалить статью",
+    "publish-article": "Опубликовать статью"
   },
   "shared": {
     "popular-tags": "Популярные теги",

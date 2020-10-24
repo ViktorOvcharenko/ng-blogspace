@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import * as fromComponents from './components';
 import * as fromSharedServices from './services';
@@ -21,10 +22,12 @@ import * as fromSharedServices from './services';
     CommonModule,
     RouterModule,
     TranslateModule,
+    ReactiveFormsModule,
   ],
   exports: [
     CommonModule,
     TranslateModule,
+    ReactiveFormsModule,
     fromComponents.ArticlePreviewComponent,
     fromComponents.ArticleListComponent,
     fromComponents.BackendErrorMessagesComponent,

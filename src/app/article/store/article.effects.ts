@@ -5,6 +5,9 @@ import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import {
   ArticleActionsTypes,
+  CreateArticle,
+  CreateArticleFail,
+  CreateArticleSuccess,
   DeleteArticle,
   DeleteArticleFail,
   DeleteArticleSuccess,
@@ -37,6 +40,17 @@ export class ArticleEffects {
       return of( new DeleteArticleSuccess() )
     }),
     catchError((errorResponse: HttpErrorResponse) => of( new DeleteArticleFail(errorResponse.error.errors) ))
+  );
+
+  @Effect()
+  createArticle$: Observable<Action> = this.actions$.pipe(
+    ofType<CreateArticle>(ArticleActionsTypes.CREATE_ARTICLE),
+    switchMap(({payload}) => this.articleService.createArticle(payload)),
+    switchMap((article: fromSharedModels.Article) => {
+      this.router.navigate(['/article', article.slug, 'edit']);
+      return of( new CreateArticleSuccess(article) )
+    }),
+    catchError((errorResponse: HttpErrorResponse) => of( new CreateArticleFail(errorResponse.error.errors) ))
   );
 
   constructor(
