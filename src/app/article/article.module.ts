@@ -16,6 +16,7 @@ import * as fromArticleServices from './services';
   declarations: [
     fromContainers.ArticleComponent,
     fromComponents.ArticleComponent,
+    fromComponents.ArticleBannerComponent,
   ],
   imports: [
     CommonModule,

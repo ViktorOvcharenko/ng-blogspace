@@ -3,27 +3,10 @@
 
   <ng-template #articleRef>
     <div *ngIf="article; else errorsRef">
-      <div class="banner">
-        <div class="container page">
-          <h1>{{ title }}</h1>
-          <div class="article-meta">
-            <a [routerLink]="['/profiles', username]">
-              <img [src]="image">
-            </a>
-            <div class="info">
-              <a [routerLink]="['/profiles', username]" class="author">{{ username }}</a>
-              <span class="date">{{ article.createdAt | date}}</span>
-            </div>
-            <span *ngIf="isAuthor">
-              <a [routerLink]="['/articles', slug, '/edit']" class="btn btn-outline-secondary btn-sm">
-                <i class="ion-edit"></i>
-                Edit Article
-              </a>
-              DELETE BUTTON
-            </span>
-          </div>
-        </div>
-      </div>
+      <app-article-banner
+        [article]="article"
+        [isAuthor]="isAuthor"
+      ></app-article-banner>
 
       <div class="container page">
         <div class="row article-content" *ngIf="article">
