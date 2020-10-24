@@ -13,6 +13,8 @@
     "delete-article": "Delete Article"
   },
   "shared": {
-    "popular-tags": "Popular tags"
+    "popular-tags": "Popular tags",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
   }
 }

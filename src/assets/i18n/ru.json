@@ -13,7 +13,9 @@
     "delete-article": "Удалить статью"
   },
   "shared": {
-    "popular-tags": "Популярные теги"
+    "popular-tags": "Популярные теги",
+    "confirm": "Подтвердить",
+    "cancel": "Отменить"
   }
 }
 

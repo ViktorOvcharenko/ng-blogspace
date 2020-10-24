@@ -11,6 +11,7 @@ import * as fromSharedServices from './services';
     fromComponents.ArticlePreviewComponent,
     fromComponents.ArticleListComponent,
     fromComponents.BackendErrorMessagesComponent,
+    fromComponents.ConfirmDialogComponent,
     fromComponents.HeaderComponent,
     fromComponents.LoaderComponent,
     fromComponents.PaginationComponent,

@@ -3,7 +3,8 @@ import { select, Store } from '@ngrx/store';
 import { ActivatedRoute, Params } from '@angular/router';
 import { combineLatest, Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
-import {DeleteArticle, GetArticle} from '../../store/article.actions';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { DeleteArticle, GetArticle } from '../../store/article.actions';
 import {
   getArticle,
   getArticleErrors,
@@ -12,6 +13,7 @@ import {
 import { getCurrentUser } from '../../../auth/store/auth.selectors';
 
 import * as fromSharedModels from '../../../shared/models';
+import * as fromSharedComponents from '../../../shared/components';
 
 @Component({
   selector: 'app-article-container',
@@ -22,12 +24,14 @@ export class ArticleComponent implements OnInit {
   article$: Observable<fromSharedModels.Article>;
   errors$: Observable<fromSharedModels.BackendErrors>;
   isAuthor$: Observable<boolean>;
-  currentUser$: Observable<fromSharedModels.CurrentUser>
+  currentUser$: Observable<fromSharedModels.CurrentUser>;
+  dialogRef: MatDialogRef<fromSharedComponents.ConfirmDialogComponent>;
   destroy$: Subject<void> = new Subject<void>();
 
   constructor(
     private store: Store,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dialog: MatDialog,
   ) {
     this.isLoading$ = this.store.pipe(select(getArticleIsLoading));
     this.article$ = this.store.pipe(select(getArticle));
@@ -56,6 +60,26 @@ export class ArticleComponent implements OnInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe((params: Params) => {
         this.store.dispatch(new GetArticle(params.slug))
+      });
+  }
+
+  confirmDeleteArticle(event: string): void {
+    this.dialogRef = this.dialog.open(
+        fromSharedComponents.ConfirmDialogComponent,
+        {
+          width: '300px',
+          data: {
+            title: 'article.delete-article'
+          }
+        }
+      );
+
+    this.dialogRef.afterClosed()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(result => {
+        if (result) {
+          this.deleteArticle(event);
+        }
       });
   }
 
