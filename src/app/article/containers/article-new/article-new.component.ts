@@ -8,7 +8,7 @@ import * as fromArticleModels from '../../models';
 import * as fromSharedModels from '../../../shared/models';
 
 @Component({
-  selector: 'app-article-new',
+  selector: 'app-article-new-container',
   templateUrl: './article-new.component.html',
 })
 export class ArticleNewComponent implements OnInit {

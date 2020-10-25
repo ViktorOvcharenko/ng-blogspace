@@ -14,7 +14,7 @@ import * as fromArticleModels from '../../models';
 import * as fromSharedModels from '../../../shared/models';
 
 @Component({
-  selector: 'app-article-edit',
+  selector: 'app-article-edit-container',
   templateUrl: './article-edit.component.html',
 })
 export class ArticleEditComponent implements OnInit {
