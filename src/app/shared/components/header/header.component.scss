@@ -16,9 +16,22 @@
   padding-left: 20px;
 }
 
-.nav-link .user-pic {
-  height: 26px;
-  border-radius: 50px;
-  float: left;
-  margin-right: 5px;
+.nav-link {
+  display: inline-flex;
+
+  .user-pic {
+    height: 26px;
+    border-radius: 50px;
+    float: left;
+    margin-right: 5px;
+  }
+
+  .mat-icon {
+    font-size: 1.1rem;
+    margin-right: 2px;
+    width: 10px;
+    height: 10px;
+    cursor: pointer !important;
+  }
 }
+

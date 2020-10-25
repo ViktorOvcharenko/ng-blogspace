@@ -3,18 +3,21 @@
     <a class="navbar-brand" [routerLink]="['/']">blogspace</a>
     <ul class="nav navbar-nav pull-xs-right flex-row">
       <li class="nav-item">
-        <a [routerLink]="['/']" class="nav-link">Home</a>
+        <a [routerLink]="['/']" class="nav-link">
+          <mat-icon class="mat-icon">home</mat-icon>
+          &nbsp; Home
+        </a>
       </li>
       <ng-container *ngIf="isLoggedIn$ | async">
         <li class="nav-item">
           <a [routerLink]="['/article', 'new']" class="nav-link">
-            <i class="ion-compose"></i>
+            <mat-icon class="mat-icon">create</mat-icon>
             &nbsp; New Article
           </a>
         </li>
         <li class="nav-item">
           <a [routerLink]="['/settings']" class="nav-link">
-            <i class="ion-gear-a"></i>
+            <mat-icon class="mat-icon">settings</mat-icon>
             &nbsp; Settings
           </a>
         </li>
