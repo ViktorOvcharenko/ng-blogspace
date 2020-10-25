@@ -1,0 +1,15 @@
+@import "src/assets/styles/variables";
+
+.article-form-tag-list {
+  span {
+    color: $color-white;
+    font-size: .8rem;
+    padding: .1rem .6rem;
+    white-space: nowrap;
+    margin-right: 3px;
+    margin-bottom: .2rem;
+    display: inline-block;
+    background-color: $color-grey-background;
+    border-radius: 10rem;
+  }
+}

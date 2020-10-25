@@ -20,6 +20,7 @@ import * as fromArticleServices from './services';
     fromComponents.ArticleComponent,
     fromComponents.ArticleBannerComponent,
     fromComponents.ArticleFormComponent,
+    fromComponents.ArticleFormTagListComponent,
   ],
   imports: [
     CommonModule,

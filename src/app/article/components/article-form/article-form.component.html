@@ -43,9 +43,7 @@
               formControlName="tagName">
           </fieldset>
           <div>
-            <span *ngFor="let tag of tagList">
-              {{ tag }}
-            </span>
+            <app-article-form-tag-list [tagList]="tagList"></app-article-form-tag-list>
           </div>
           <fieldset>
             <div class="submit-container">
