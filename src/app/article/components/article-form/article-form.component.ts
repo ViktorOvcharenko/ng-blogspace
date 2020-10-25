@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { fromEvent, Subject } from 'rxjs';
-import {filter, map, takeUntil, tap} from 'rxjs/operators';
+import { filter, map, takeUntil } from 'rxjs/operators';
 
 import * as fromArticleModels from '../../models';
 import * as fromSharedModels from '../../../shared/models';
@@ -68,13 +68,17 @@ export class ArticleFormComponent implements OnInit, OnDestroy {
         filter((e: KeyboardEvent) => e.key === 'Enter'),
         map((e: KeyboardEvent) => (e.target as HTMLInputElement).value.trim()),
         filter(Boolean),
-        tap(d => console.log(d)),
         takeUntil(this.destroy$)
       )
       .subscribe(value =>  {
         const control = this.fb.control(value);
+
         (this.form.get('tagList') as FormArray).push(control);
         this.form.get('tagName').setValue('');
       });
+  }
+
+  deleteTag(index: number): void {
+    (this.form.get('tagList') as FormArray).removeAt(index);
   }
 }

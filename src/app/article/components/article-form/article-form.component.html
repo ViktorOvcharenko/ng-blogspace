@@ -43,7 +43,10 @@
               formControlName="tagName">
           </fieldset>
           <div>
-            <app-article-form-tag-list [tagList]="tagList"></app-article-form-tag-list>
+            <app-article-form-tag-list
+              [tagList]="tagList"
+              (onDeleteTag)="deleteTag($event)">
+            </app-article-form-tag-list>
           </div>
           <fieldset>
             <div class="submit-container">
