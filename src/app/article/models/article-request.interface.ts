@@ -6,5 +6,6 @@ export interface ArticleRequest {
     description: string;
     body: string;
     tagList: fromSharedModels.Tag[];
-  }
+  },
+  slug?: string;
 }

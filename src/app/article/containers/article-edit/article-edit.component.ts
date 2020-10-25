@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 import { ActivatedRoute, Params } from '@angular/router';
-import { CreateArticle, GetArticle } from '../../store/article.actions';
+import { GetArticle, UpdateArticle } from '../../store/article.actions';
 import {
   getArticle,
   getArticleErrors,
@@ -22,6 +22,7 @@ export class ArticleEditComponent implements OnInit {
   article$: Observable<fromSharedModels.Article>;
   isLoading$: Observable<boolean>;
   errors$: Observable<fromSharedModels.BackendErrors>;
+  slug: string;
   destroy$: Subject<void> = new Subject<void>();
 
   constructor(
@@ -53,19 +54,20 @@ export class ArticleEditComponent implements OnInit {
 
   getInitialValue(): void {
     this.article$
-      .pipe(takeUntil(this.destroy$))
+      .pipe(
+        filter(Boolean),
+        takeUntil(this.destroy$)
+      )
       .subscribe(article => {
-      if (article) {
-        const { title, description, body, tagList } = article;
+        const { title, description, body, tagList, slug } = (article as fromSharedModels.Article);
         this.initialValue = { article: { title, description, body, tagList } };
-      } else {
-        this.initialValue = { article: { title: '', description: '', body: '', tagList: [] } };
-      }
+        this.slug = slug;
     });
   }
 
-  createArticle(event: fromArticleModels.ArticleRequest): void {
-    this.store.dispatch(new CreateArticle(event));
+  updateArticle(requestDate: fromArticleModels.ArticleRequest): void {
+    requestDate.slug = this.slug;
+    this.store.dispatch(new UpdateArticle(requestDate));
   }
 }
 

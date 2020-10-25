@@ -28,9 +28,9 @@ export class ArticleService {
       .pipe(map(response => response.article));
   }
 
-  updateArticle(requestBody: fromArticleModels.ArticleRequest): Observable<fromSharedModels.Article> {
+  updateArticle(requestData: fromArticleModels.ArticleRequest): Observable<fromSharedModels.Article> {
     return this.http
-      .put<fromArticleModels.ArticleResponse>(`${environment.apiUrl}/articles`, requestBody)
+      .put<fromArticleModels.ArticleResponse>(`${environment.apiUrl}/articles/${requestData.slug}`, requestData)
       .pipe(map(response => response.article));
   }
 }
