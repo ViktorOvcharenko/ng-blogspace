@@ -22,14 +22,11 @@ export class ArticleNewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initialValue = {
-      article: {
-        title: '',
-        description: '',
-        body: '',
-        tagList: []
-      }
-    };
+    this.getInitialValue();
+  }
+
+  getInitialValue(): void {
+    this.initialValue = { article: { title: '', description: '', body: '', tagList: [] } };
   }
 
   createArticle(event: fromArticleModels.ArticleRequest): void {

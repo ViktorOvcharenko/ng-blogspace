@@ -70,6 +70,27 @@ export const articleReducers = (
         errors: action.payload
       };
     }
+    case ArticleActionsTypes.UPDATE_ARTICLE: {
+      return {
+        ...state,
+        isLoading: true,
+        errors: null,
+      };
+    }
+    case ArticleActionsTypes.UPDATE_ARTICLE_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+        article: action.payload,
+      };
+    }
+    case ArticleActionsTypes.UPDATE_ARTICLE_FAIL: {
+      return {
+        ...state,
+        isLoading: false,
+        errors: action.payload
+      };
+    }
     default:
       return state;
   }

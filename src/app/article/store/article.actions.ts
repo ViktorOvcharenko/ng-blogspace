@@ -13,6 +13,9 @@ export enum ArticleActionsTypes {
   CREATE_ARTICLE = '[Article] Create article',
   CREATE_ARTICLE_SUCCESS = '[Article] Create article success',
   CREATE_ARTICLE_FAIL = '[Article] Create article fail',
+  UPDATE_ARTICLE = '[Article] Update article',
+  UPDATE_ARTICLE_SUCCESS = '[Article] Update article success',
+  UPDATE_ARTICLE_FAIL = '[Article] Update article fail',
 }
 
 export class GetArticle implements Action {
@@ -58,6 +61,21 @@ export class CreateArticleFail implements Action {
   constructor(public payload: fromSharedModels.BackendErrors) { }
 }
 
+export class UpdateArticle implements Action {
+  public readonly type = ArticleActionsTypes.UPDATE_ARTICLE;
+  constructor(public payload: fromArticleModels.ArticleRequest) { }
+}
+
+export class UpdateArticleSuccess implements Action {
+  public readonly type = ArticleActionsTypes.UPDATE_ARTICLE_SUCCESS;
+  constructor(public payload: fromSharedModels.Article) { }
+}
+
+export class UpdateArticleFail implements Action {
+  public readonly type = ArticleActionsTypes.UPDATE_ARTICLE_FAIL;
+  constructor(public payload: fromSharedModels.BackendErrors) { }
+}
+
 export type ArticleActions =
   GetArticle |
   GetArticleSuccess |
@@ -67,4 +85,7 @@ export type ArticleActions =
   DeleteArticleFail |
   CreateArticle |
   CreateArticleSuccess |
-  CreateArticleFail;
+  CreateArticleFail |
+  UpdateArticle |
+  UpdateArticleSuccess |
+  UpdateArticleFail;

@@ -27,4 +27,10 @@ export class ArticleService {
       .post<fromArticleModels.ArticleResponse>(`${environment.apiUrl}/articles`, requestBody)
       .pipe(map(response => response.article));
   }
+
+  updateArticle(requestBody: fromArticleModels.ArticleRequest): Observable<fromSharedModels.Article> {
+    return this.http
+      .put<fromArticleModels.ArticleResponse>(`${environment.apiUrl}/articles`, requestBody)
+      .pipe(map(response => response.article));
+  }
 }

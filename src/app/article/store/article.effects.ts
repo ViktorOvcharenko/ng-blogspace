@@ -14,6 +14,9 @@ import {
   GetArticle,
   GetArticleFail,
   GetArticleSuccess,
+  UpdateArticle,
+  UpdateArticleFail,
+  UpdateArticleSuccess,
 } from './article.actions';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -51,6 +54,17 @@ export class ArticleEffects {
       return of( new CreateArticleSuccess(article) )
     }),
     catchError((errorResponse: HttpErrorResponse) => of( new CreateArticleFail(errorResponse.error.errors) ))
+  );
+
+  @Effect()
+  updateArticle$: Observable<Action> = this.actions$.pipe(
+    ofType<UpdateArticle>(ArticleActionsTypes.UPDATE_ARTICLE),
+    switchMap(({payload}) => this.articleService.updateArticle(payload)),
+    switchMap((article: fromSharedModels.Article) => {
+      this.router.navigate(['/article', article.slug, 'edit']);
+      return of( new UpdateArticleSuccess(article) )
+    }),
+    catchError((errorResponse: HttpErrorResponse) => of( new UpdateArticleFail(errorResponse.error.errors) ))
   );
 
   constructor(
