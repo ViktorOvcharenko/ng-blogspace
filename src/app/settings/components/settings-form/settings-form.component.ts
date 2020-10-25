@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import * as fromSharedModels from '../../../shared/models';
+import * as fromSettingsModels from '../../models';
 
 @Component({
   selector: 'app-settings-form',
@@ -13,7 +14,7 @@ export class SettingsFormComponent implements OnInit{
   @Input() isLoading: boolean;
   @Input() currentUser: fromSharedModels.CurrentUser;
   @Input() errors: fromSharedModels.BackendErrors;
-  @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onSubmit: EventEmitter<fromSettingsModels.CurrentUserRequest> = new EventEmitter<fromSettingsModels.CurrentUserRequest>();
   @Output() onLogout: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(private fb: FormBuilder) { }
@@ -33,7 +34,16 @@ export class SettingsFormComponent implements OnInit{
   }
 
   submit(): void {
-    this.onSubmit.emit();
+    const requestBody: fromSettingsModels.CurrentUserRequest = {
+      ...this.currentUser,
+      image:  this.form.get('image').value,
+      username:  this.form.get('username').value,
+      bio:  this.form.get('bio').value,
+      email:  this.form.get('email').value,
+      password:  this.form.get('password').value,
+    };
+
+    this.onSubmit.emit(requestBody);
   }
 
   logout(): void {
