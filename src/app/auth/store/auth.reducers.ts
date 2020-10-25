@@ -102,6 +102,22 @@ export const authReducers = (
         validationErrors: action.payload
       };
     }
+    case AuthActionsTypes.LOGOUT: {
+      return {
+        ...state,
+        isLoading: true,
+        validationErrors: null
+      };
+    }
+    case AuthActionsTypes.LOGOUT_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+        isLoggedIn: false,
+        currentUser: null,
+        validationErrors: null
+      };
+    }
     default:
       return state;
   }

@@ -2,7 +2,7 @@
   <div class="container page">
     <div class="row">
       <div class="col-md-6 offset-md-3 col-xs-12">
-        <h1 class="text-xs-center">Your ettings</h1>
+        <h1 class="text-xs-center">Your settings</h1>
 
         <app-backend-error-messages
           *ngIf="errors"
@@ -16,16 +16,14 @@
                 type="text"
                 class="form-control form-control-lg"
                 formControlName="image"
-                placeholder="URL of profile picture"
-              />
+                placeholder="URL of profile picture">
             </fieldset>
             <fieldset class="form-group">
               <input
                 type="text"
                 class="form-control form-control-lg"
                 formControlName="username"
-                placeholder="Username"
-              />
+                placeholder="Username">
             </fieldset>
             <fieldset class="form-group">
               <textarea
@@ -41,8 +39,7 @@
                 type="text"
                 class="form-control form-control-lg"
                 formControlName="email"
-                placeholder="Email"
-              />
+                placeholder="Email">
             </fieldset>
             <fieldset class="form-group">
               <input
@@ -63,7 +60,10 @@
           </fieldset>
         </form>
         <hr />
-        <button class="btn btn-outline-danger" (click)="logout()" type="text">
+        <button
+          (click)="logout()"
+          class="btn btn-outline-danger"
+          type="text">
           Or click here to logout
         </button>
       </div>

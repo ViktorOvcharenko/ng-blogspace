@@ -12,6 +12,8 @@ import {
   Login,
   LoginFail,
   LoginSuccess,
+  Logout,
+  LogoutSuccess,
   Registration,
   RegistrationFail,
   RegistrationSuccess,
@@ -36,7 +38,7 @@ export class AuthEffects {
       this.router.navigate(['/']);
       return of( new RegistrationSuccess(currentUser) )
     }),
-    catchError((errorResponse: HttpErrorResponse) => of( new RegistrationFail(errorResponse.error.errors) ))
+    catchError((errorResponse: HttpErrorResponse) => of(new RegistrationFail(errorResponse.error.errors)))
   );
 
   @Effect()
@@ -48,23 +50,33 @@ export class AuthEffects {
       this.router.navigate(['/']);
       return of( new LoginSuccess(currentUser) )
     }),
-    catchError((errorResponse: HttpErrorResponse) => of( new LoginFail(errorResponse.error.errors) ))
+    catchError((errorResponse: HttpErrorResponse) => of(new LoginFail(errorResponse.error.errors)))
   );
 
   @Effect()
   getCurrentUser$: Observable<Action> = this.actions$.pipe(
     ofType<GetCurrentUser>(AuthActionsTypes.GET_CURRENT_USER),
     switchMap(() => this.authService.getCurrentUser()),
-    switchMap((currentUser: fromSharedModels.CurrentUser) => of( new GetCurrentUserSuccess(currentUser) )),
-    catchError((errorResponse: HttpErrorResponse) => of( new GetCurrentUserFail(errorResponse.error.errors) ))
+    switchMap((currentUser: fromSharedModels.CurrentUser) => of(new GetCurrentUserSuccess(currentUser))),
+    catchError(() => of(new GetCurrentUserFail()))
   );
 
   @Effect()
   updateCurrentUser$: Observable<Action> = this.actions$.pipe(
     ofType<UpdateCurrentUser>(AuthActionsTypes.UPDATE_CURRENT_USER),
     switchMap(({payload}) => this.authService.updateCurrentUser(payload)),
-    switchMap((currentUser: fromSharedModels.CurrentUser) => of( new UpdateCurrentUserSuccess(currentUser) )),
-    catchError((errorResponse: HttpErrorResponse) => of( new UpdateCurrentUserFail(errorResponse.error.errors) ))
+    switchMap((currentUser: fromSharedModels.CurrentUser) => of(new UpdateCurrentUserSuccess(currentUser))),
+    catchError((errorResponse: HttpErrorResponse) => of(new UpdateCurrentUserFail(errorResponse.error.errors)))
+  );
+
+  @Effect()
+  logout$: Observable<Action> = this.actions$.pipe(
+    ofType<Logout>(AuthActionsTypes.LOGOUT),
+    switchMap(() => {
+      this.persistenceService.set('accessToken', '');
+      this.router.navigate(['/']);
+      return of(new LogoutSuccess());
+    })
   );
 
   constructor(

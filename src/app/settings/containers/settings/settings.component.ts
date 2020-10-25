@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
 import {
@@ -6,6 +6,7 @@ import {
   getIsAuthLoading,
   getValidationErrors
 } from '../../../auth/store/auth.selectors';
+import { Logout } from '../../../auth/store/auth.actions';
 
 import * as fromSharedModels from '../../../shared/models';
 
@@ -22,5 +23,9 @@ export class SettingsComponent {
     this.isLoading$ = this.store.pipe(select(getIsAuthLoading));
     this.currentUser$ = this.store.pipe(select(getCurrentUser));
     this.validationErrors$ = this.store.pipe(select(getValidationErrors));
+  }
+
+  logout(): void {
+    this.store.dispatch(new Logout());
   }
 }

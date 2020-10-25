@@ -17,6 +17,8 @@ export enum AuthActionsTypes {
   UPDATE_CURRENT_USER = '[Auth] Update current user',
   UPDATE_CURRENT_USER_SUCCESS = '[Auth] Update current user success',
   UPDATE_CURRENT_USER_FAIL = '[Auth] Update current user fail',
+  LOGOUT = '[Auth] Logout',
+  LOGOUT_SUCCESS = '[Auth] Logout success',
 }
 
 export class Registration implements Action {
@@ -58,7 +60,6 @@ export class GetCurrentUserSuccess implements Action {
 
 export class GetCurrentUserFail implements Action {
   public readonly type = AuthActionsTypes.GET_CURRENT_USER_FAIL;
-  constructor(public payload: fromSharedModels.BackendErrors) { }
 }
 
 export class UpdateCurrentUser implements Action {
@@ -76,6 +77,14 @@ export class UpdateCurrentUserFail implements Action {
   constructor(public payload: fromSharedModels.BackendErrors) { }
 }
 
+export class Logout implements Action {
+  public readonly type = AuthActionsTypes.LOGOUT;
+}
+
+export class LogoutSuccess implements Action {
+  public readonly type = AuthActionsTypes.LOGOUT_SUCCESS;
+}
+
 export type AuthActions =
   Registration |
   RegistrationSuccess |
@@ -88,4 +97,6 @@ export type AuthActions =
   GetCurrentUserFail |
   UpdateCurrentUser |
   UpdateCurrentUserSuccess |
-  UpdateCurrentUserFail;
+  UpdateCurrentUserFail |
+  Logout |
+  LogoutSuccess;

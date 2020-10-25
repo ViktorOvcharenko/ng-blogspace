@@ -5,6 +5,7 @@
     [isLoading]="isLoading$ | async"
     [currentUser]="currentUser$ | async"
     [errors]="validationErrors$ | async"
+    (onLogout)="logout()"
   ></app-settings-form>
 </ng-template>
 

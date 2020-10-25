@@ -14,6 +14,7 @@ export class SettingsFormComponent implements OnInit{
   @Input() currentUser: fromSharedModels.CurrentUser;
   @Input() errors: fromSharedModels.BackendErrors;
   @Output() onSubmit: EventEmitter<any> = new EventEmitter<any>();
+  @Output() onLogout: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(private fb: FormBuilder) { }
 
@@ -36,6 +37,6 @@ export class SettingsFormComponent implements OnInit{
   }
 
   logout(): void {
-
+    this.onLogout.emit();
   }
 }
