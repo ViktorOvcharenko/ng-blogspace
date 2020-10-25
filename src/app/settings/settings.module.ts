@@ -4,20 +4,17 @@ import { SettingsRoutingModule } from './settings-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
 import * as fromContainers from './containers';
-// import * as fromComponents from './components';
-import * as fromSettingsServices from './services';
+import * as fromComponents from './components';
 
 @NgModule({
   declarations: [
-    fromContainers.SettingsComponent
+    fromContainers.SettingsComponent,
+    fromComponents.SettingsFormComponent,
   ],
   imports: [
     CommonModule,
     SettingsRoutingModule,
     SharedModule,
   ],
-  providers: [
-    fromSettingsServices.SettingsService
-  ]
 })
 export class SettingsModule { }

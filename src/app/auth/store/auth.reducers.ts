@@ -61,7 +61,8 @@ export const authReducers = (
     case AuthActionsTypes.GET_CURRENT_USER: {
       return {
         ...state,
-        isLoading: true
+        isLoading: true,
+        validationErrors: null
       };
     }
     case AuthActionsTypes.GET_CURRENT_USER_SUCCESS: {
@@ -78,6 +79,27 @@ export const authReducers = (
         isLoading: false,
         isLoggedIn: false,
         currentUser: null
+      };
+    }
+    case AuthActionsTypes.UPDATE_CURRENT_USER: {
+      return {
+        ...state,
+        isLoading: true,
+        validationErrors: null
+      };
+    }
+    case AuthActionsTypes.UPDATE_CURRENT_USER_SUCCESS: {
+      return {
+        ...state,
+        isLoading: false,
+        currentUser: action.payload
+      };
+    }
+    case AuthActionsTypes.UPDATE_CURRENT_USER_FAIL: {
+      return {
+        ...state,
+        isLoading: false,
+        validationErrors: action.payload
       };
     }
     default:

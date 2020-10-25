@@ -24,7 +24,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import * as fromSharedModels from '../../shared/models';
 import * as fromAuthServices from '../services';
 import * as fromSharedServices from '../../shared/services';
-import * as fromSettingsServices from '../../settings/services';
 
 @Injectable()
 export class AuthEffects {
@@ -63,7 +62,7 @@ export class AuthEffects {
   @Effect()
   updateCurrentUser$: Observable<Action> = this.actions$.pipe(
     ofType<UpdateCurrentUser>(AuthActionsTypes.UPDATE_CURRENT_USER),
-    switchMap(({payload}) => this.settingsService.updateCurrentUser(payload)),
+    switchMap(({payload}) => this.authService.updateCurrentUser(payload)),
     switchMap((currentUser: fromSharedModels.CurrentUser) => of( new UpdateCurrentUserSuccess(currentUser) )),
     catchError((errorResponse: HttpErrorResponse) => of( new UpdateCurrentUserFail(errorResponse.error.errors) ))
   );
@@ -72,7 +71,6 @@ export class AuthEffects {
     private actions$: Actions,
     private authService: fromAuthServices.AuthService,
     private persistenceService: fromSharedServices.PersistenceService,
-    private settingsService: fromSettingsServices.SettingsService,
     private router: Router
   ) { }
 }

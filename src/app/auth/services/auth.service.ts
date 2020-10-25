@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 
 import * as fromSharedModels from '../../shared/models';
 import * as fromAuthModels from '../models';
+import * as fromSettingsModels from '../../settings/models';
 
 @Injectable()
 export class AuthService {
@@ -26,6 +27,11 @@ export class AuthService {
   getCurrentUser(): Observable<fromSharedModels.CurrentUser> {
     return this.http
       .get<fromAuthModels.AuthResponse>(`${environment.apiUrl}/user`)
+      .pipe(map(this.getUser));
+  }
+
+  updateCurrentUser(requestBody: fromSettingsModels.CurrentUserRequest): Observable<fromSharedModels.CurrentUser> {
+    return this.http.put<fromSettingsModels.CurrentUserResponse>(`${environment.apiUrl}/user`, requestBody)
       .pipe(map(this.getUser));
   }
 

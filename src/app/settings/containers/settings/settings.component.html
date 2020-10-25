@@ -1,1 +1,10 @@
-<p>settings works!</p>
+<app-loader *ngIf="isLoading$ | async; else settingsFormRef"></app-loader>
+
+<ng-template #settingsFormRef>
+  <app-settings-form
+    [isLoading]="isLoading$ | async"
+    [currentUser]="currentUser$ | async"
+    [errors]="validationErrors$ | async"
+  ></app-settings-form>
+</ng-template>
+
