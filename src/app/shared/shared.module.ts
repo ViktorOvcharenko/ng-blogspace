@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 import * as fromComponents from './components';
 import * as fromSharedServices from './services';
@@ -23,11 +24,13 @@ import * as fromSharedServices from './services';
     RouterModule,
     TranslateModule,
     ReactiveFormsModule,
+    MatIconModule,
   ],
   exports: [
     CommonModule,
     TranslateModule,
     ReactiveFormsModule,
+    MatIconModule,
     fromComponents.ArticlePreviewComponent,
     fromComponents.ArticleListComponent,
     fromComponents.BackendErrorMessagesComponent,

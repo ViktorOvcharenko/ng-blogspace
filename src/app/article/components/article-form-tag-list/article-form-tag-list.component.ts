@@ -12,6 +12,7 @@ export class ArticleFormTagListComponent {
   @Output() onDeleteTag: EventEmitter<number> = new EventEmitter<number>();
 
   deleteTag(index: number): void {
+    console.log(index)
     this.onDeleteTag.emit(index);
   }
 }

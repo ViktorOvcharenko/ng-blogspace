@@ -1,6 +1,7 @@
 <div class="article-form-tag-list">
-  <span *ngFor="let tag of tagList">
-    {{ tag }}
-  </span>
+  <div *ngFor="let tag of tagList; let index = index" class="tag-container">
+    <mat-icon (click)="deleteTag(index)" class="delete-btn">close</mat-icon>
+    <span>{{ tag }}</span>
+  </div>
 </div>
 

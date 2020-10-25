@@ -1,15 +1,24 @@
 @import "src/assets/styles/variables";
 
 .article-form-tag-list {
-  span {
+  .tag-container {
     color: $color-white;
     font-size: .8rem;
     padding: .1rem .6rem;
     white-space: nowrap;
     margin-right: 3px;
     margin-bottom: .2rem;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     background-color: $color-grey-background;
     border-radius: 10rem;
+
+    .delete-btn {
+      font-size: .8rem;
+      margin-right: 5px;
+      width: 10px;
+      height: 10px;
+      cursor: pointer !important;
+    }
   }
 }
