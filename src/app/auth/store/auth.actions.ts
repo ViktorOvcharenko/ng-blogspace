@@ -2,6 +2,7 @@ import { Action } from '@ngrx/store';
 
 import * as fromSharedModels from '../../shared/models';
 import * as fromAuthModels from '../models';
+import * as fromSettingsModels from '../../settings/models';
 
 export enum AuthActionsTypes {
   REGISTRATION = '[Auth] Registration',
@@ -13,6 +14,9 @@ export enum AuthActionsTypes {
   GET_CURRENT_USER = '[Auth] Get current user',
   GET_CURRENT_USER_SUCCESS = '[Auth] Get current user success',
   GET_CURRENT_USER_FAIL = '[Auth] Get current user fail',
+  UPDATE_CURRENT_USER = '[Auth] Update current user',
+  UPDATE_CURRENT_USER_SUCCESS = '[Auth] Update current user success',
+  UPDATE_CURRENT_USER_FAIL = '[Auth] Update current user fail',
 }
 
 export class Registration implements Action {
@@ -46,6 +50,7 @@ export class LoginFail implements Action {
 export class GetCurrentUser implements Action {
   public readonly type = AuthActionsTypes.GET_CURRENT_USER;
 }
+
 export class GetCurrentUserSuccess implements Action {
   public readonly type = AuthActionsTypes.GET_CURRENT_USER_SUCCESS;
   constructor(public payload: fromSharedModels.CurrentUser) { }
@@ -53,6 +58,22 @@ export class GetCurrentUserSuccess implements Action {
 
 export class GetCurrentUserFail implements Action {
   public readonly type = AuthActionsTypes.GET_CURRENT_USER_FAIL;
+  constructor(public payload: fromSharedModels.BackendErrors) { }
+}
+
+export class UpdateCurrentUser implements Action {
+  public readonly type = AuthActionsTypes.UPDATE_CURRENT_USER;
+  constructor(public payload: fromSettingsModels.CurrentUserRequest) { }
+}
+
+export class UpdateCurrentUserSuccess implements Action {
+  public readonly type = AuthActionsTypes.UPDATE_CURRENT_USER_SUCCESS;
+  constructor(public payload: fromSharedModels.CurrentUser) { }
+}
+
+export class UpdateCurrentUserFail implements Action {
+  public readonly type = AuthActionsTypes.UPDATE_CURRENT_USER_FAIL;
+  constructor(public payload: fromSharedModels.BackendErrors) { }
 }
 
 export type AuthActions =
@@ -64,4 +85,7 @@ export type AuthActions =
   LoginFail |
   GetCurrentUser |
   GetCurrentUserSuccess |
-  GetCurrentUserFail;
+  GetCurrentUserFail |
+  UpdateCurrentUser |
+  UpdateCurrentUserSuccess |
+  UpdateCurrentUserFail;

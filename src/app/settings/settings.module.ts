@@ -5,7 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 
 import * as fromContainers from './containers';
 // import * as fromComponents from './components';
-// import * as fromSettingsServices from './services';
+import * as fromSettingsServices from './services';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import * as fromContainers from './containers';
     SharedModule,
   ],
   providers: [
-
+    fromSettingsServices.SettingsService
   ]
 })
 export class SettingsModule { }

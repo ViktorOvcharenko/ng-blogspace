@@ -14,13 +14,17 @@ import {
   LoginSuccess,
   Registration,
   RegistrationFail,
-  RegistrationSuccess
+  RegistrationSuccess,
+  UpdateCurrentUser,
+  UpdateCurrentUserFail,
+  UpdateCurrentUserSuccess
 } from './auth.actions';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import * as fromSharedModels from '../../shared/models';
 import * as fromAuthServices from '../services';
 import * as fromSharedServices from '../../shared/services';
+import * as fromSettingsServices from '../../settings/services';
 
 @Injectable()
 export class AuthEffects {
@@ -53,13 +57,22 @@ export class AuthEffects {
     ofType<GetCurrentUser>(AuthActionsTypes.GET_CURRENT_USER),
     switchMap(() => this.authService.getCurrentUser()),
     switchMap((currentUser: fromSharedModels.CurrentUser) => of( new GetCurrentUserSuccess(currentUser) )),
-    catchError(() => of( new GetCurrentUserFail() ))
+    catchError((errorResponse: HttpErrorResponse) => of( new GetCurrentUserFail(errorResponse.error.errors) ))
+  );
+
+  @Effect()
+  updateCurrentUser$: Observable<Action> = this.actions$.pipe(
+    ofType<UpdateCurrentUser>(AuthActionsTypes.UPDATE_CURRENT_USER),
+    switchMap(({payload}) => this.settingsService.updateCurrentUser(payload)),
+    switchMap((currentUser: fromSharedModels.CurrentUser) => of( new UpdateCurrentUserSuccess(currentUser) )),
+    catchError((errorResponse: HttpErrorResponse) => of( new UpdateCurrentUserFail(errorResponse.error.errors) ))
   );
 
   constructor(
     private actions$: Actions,
     private authService: fromAuthServices.AuthService,
     private persistenceService: fromSharedServices.PersistenceService,
+    private settingsService: fromSettingsServices.SettingsService,
     private router: Router
   ) { }
 }
