@@ -1,20 +1,28 @@
 <div class="article-container">
   <div class="article-meta">
-    <a [routerLink]="['/profiles', article.author.username]">
-      <img [src]="article.author.image" />
-    </a>
-    <div class="info">
-      <a [routerLink]="['/profiles', article.author.username]" class="author">
-        {{ article.author.username }}
+    <div class="article-meta-wrapper">
+      <a [routerLink]="['/profiles', article.author.username]">
+        <img [src]="article.author.image" />
       </a>
-      <span class="date">{{ article.createdAt | date }}</span>
+      <div class="info">
+        <a [routerLink]="['/profiles', article.author.username]" class="author">
+          {{ article.author.username }}
+        </a>
+        <span class="date">{{ article.createdAt | date }}</span>
+      </div>
     </div>
-    <div class="pull-xs-right">ADD TO FAVORITES</div>
+    <div class="add-to-favorites-wrapper">
+      <app-add-to-favorites
+        [isFavorited]="article.favorited"
+        [favoritesCount]="article.favoritesCount"
+        [articleSlug]="article.slug"
+      ></app-add-to-favorites>
+    </div>
   </div>
   <a [routerLink]="['/article', article.slug]" class="preview-link">
     <h1>{{ article.title }}</h1>
     <p>{{ article.description }}</p>
-    <span>Read more..</span>
+    <span>Read more...</span>
     <app-tag-list [tagList]="article.tagList"></app-tag-list>
   </a>
 </div>

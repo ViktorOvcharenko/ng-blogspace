@@ -1,3 +1,4 @@
+export { AddToFavoritesComponent } from './add-to-favorites/add-to-favorites.component';
 export { ArticlePreviewComponent } from './article-preview/article-preview.component';
 export { ArticleListComponent } from './article-list/article-list.component';
 export { BackendErrorMessagesComponent } from './backend-error-messages/backend-error-messages.component';

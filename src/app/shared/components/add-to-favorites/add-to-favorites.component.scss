@@ -1,0 +1,40 @@
+@import "src/assets/styles/variables";
+
+.pull-xs-right {
+  float: right;
+}
+
+.btn-sm {
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 1.25;
+  border-radius: .2rem;
+  display: flex;
+
+  &:hover {
+    color: $color-white;
+    background-color: $color-theme;
+  }
+
+  &:active {
+    color: $color-white;
+    background-color: $color-theme!important;
+  }
+
+  &:focus {
+    box-shadow: 0 0 0 0.2rem $color-theme-light;
+  }
+}
+
+.btn-outline-primary {
+  color: $color-theme;
+  border-color: $color-theme;
+}
+
+.mat-icon {
+  font-size: .875rem;
+  margin-right: 2px;
+  width: 10px;
+  height: 10px;
+  cursor: pointer !important;
+}

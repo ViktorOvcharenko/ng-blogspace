@@ -10,6 +10,7 @@ import * as fromSharedServices from './services';
 
 @NgModule({
   declarations: [
+    fromComponents.AddToFavoritesComponent,
     fromComponents.ArticlePreviewComponent,
     fromComponents.ArticleListComponent,
     fromComponents.BackendErrorMessagesComponent,
