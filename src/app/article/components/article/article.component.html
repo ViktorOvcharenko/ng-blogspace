@@ -20,10 +20,12 @@
     </div>
 
     <ng-template #errorsRef>
-      <app-backend-error-messages
-        *ngIf="errors"
-        [errors]="errors"
-      ></app-backend-error-messages>
+      <div class="error-messages-wrapper">
+        <app-backend-error-messages
+          *ngIf="errors"
+          [errors]="errors"
+        ></app-backend-error-messages>
+      </div>
     </ng-template>
   </ng-template>
 </div>

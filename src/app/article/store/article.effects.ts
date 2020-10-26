@@ -30,8 +30,11 @@ export class ArticleEffects {
   getArticle$: Observable<Action> = this.actions$.pipe(
     ofType<GetArticle>(ArticleActionsTypes.GET_ARTICLE),
     switchMap(({payload}) => this.articleService.getArticle(payload)),
-    switchMap((article: fromSharedModels.Article) => of( new GetArticleSuccess(article) )),
-    catchError((errorResponse: HttpErrorResponse) => of( new GetArticleFail(errorResponse.error.errors) ))
+    switchMap((article: fromSharedModels.Article) => of(new GetArticleSuccess(article))),
+    catchError((errorResponse: HttpErrorResponse) => {
+      const error: fromSharedModels.BackendErrors = { message: errorResponse.error.error };
+      return of(new GetArticleFail(error));
+    })
   );
 
   @Effect()
@@ -40,9 +43,9 @@ export class ArticleEffects {
     switchMap(({payload}) => this.articleService.deleteArticle(payload)),
     switchMap(() => {
       this.router.navigate(['/']);
-      return of( new DeleteArticleSuccess() )
+      return of(new DeleteArticleSuccess());
     }),
-    catchError((errorResponse: HttpErrorResponse) => of( new DeleteArticleFail(errorResponse.error.errors) ))
+    catchError((errorResponse: HttpErrorResponse) => of(new DeleteArticleFail(errorResponse.error.errors)))
   );
 
   @Effect()
@@ -51,9 +54,9 @@ export class ArticleEffects {
     switchMap(({payload}) => this.articleService.createArticle(payload)),
     switchMap((article: fromSharedModels.Article) => {
       this.router.navigate(['/article', article.slug, 'edit']);
-      return of( new CreateArticleSuccess(article) )
+      return of(new CreateArticleSuccess(article));
     }),
-    catchError((errorResponse: HttpErrorResponse) => of( new CreateArticleFail(errorResponse.error.errors) ))
+    catchError((errorResponse: HttpErrorResponse) => of(new CreateArticleFail(errorResponse.error.errors)))
   );
 
   @Effect()
@@ -62,9 +65,9 @@ export class ArticleEffects {
     switchMap(({payload}) => this.articleService.updateArticle(payload)),
     switchMap((article: fromSharedModels.Article) => {
       this.router.navigate(['/article', article.slug, 'edit']);
-      return of( new UpdateArticleSuccess(article) )
+      return of(new UpdateArticleSuccess(article));
     }),
-    catchError((errorResponse: HttpErrorResponse) => of( new UpdateArticleFail(errorResponse.error.errors) ))
+    catchError((errorResponse: HttpErrorResponse) => of(new UpdateArticleFail(errorResponse.error.errors)))
   );
 
   constructor(

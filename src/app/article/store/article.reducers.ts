@@ -26,6 +26,7 @@ export const articleReducers = (
       return {
         ...state,
         isLoading: false,
+        errors: action.payload,
       };
     }
     case ArticleActionsTypes.DELETE_ARTICLE: {
