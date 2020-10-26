@@ -11,14 +11,10 @@
   border-radius: .2rem;
   display: flex;
 
-  &:hover {
+  &:hover, &:active, .btn-primary  {
     color: $color-white;
     background-color: $color-theme;
-  }
-
-  &:active {
-    color: $color-white;
-    background-color: $color-theme!important;
+    border-color: $color-theme;
   }
 
   &:focus {
