@@ -19,12 +19,12 @@
 
   &:hover, &:active, .btn-primary  {
     color: $color-white;
-    background-color: $color-theme;
-    border-color: $color-theme;
+    background-color: $color-theme !important;
+    border-color: $color-theme !important;
   }
 
   &:focus {
-    box-shadow: 0 0 0 0.2rem $color-theme-light;
+    box-shadow: 0 0 0 0.2rem $color-theme-light !important;
   }
 }
 

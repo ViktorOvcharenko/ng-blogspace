@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-import {AddToFavorites, GetFeed, RemoveFromFavorites} from '../../store/feed.actions';
+import {
+  AddToFavorites,
+  GetFeed,
+  RemoveFromFavorites
+} from '../../store/feed.actions';
 import {
   getFeed,
   getFeedErrors,

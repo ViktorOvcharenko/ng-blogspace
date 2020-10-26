@@ -3,7 +3,11 @@ import { environment } from '../../../../environments/environment';
 import { Observable, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { select, Store } from '@ngrx/store';
-import { GetFeed } from '../../store/feed.actions';
+import {
+  AddToFavorites,
+  GetFeed,
+  RemoveFromFavorites
+} from '../../store/feed.actions';
 import {
   getFeed,
   getFeedErrors,
@@ -67,5 +71,13 @@ export class FeedTagsComponent implements OnInit, OnDestroy {
     };
 
     this.store.dispatch(new GetFeed(request));
+  }
+
+  handleLike(event: fromSharedModels.AddToFavorites): void {
+    if (event.isFavorite) {
+      this.store.dispatch(new RemoveFromFavorites(event.slug));
+    } else {
+      this.store.dispatch(new AddToFavorites(event.slug));
+    }
   }
 }
