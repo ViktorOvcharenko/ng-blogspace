@@ -29,6 +29,64 @@ export const feedReducers = (
         errors: action.payload
       };
     }
+    case FeedActionsTypes.ADD_TO_FAVORITES: {
+      return {
+        ...state,
+        errors: null
+      };
+    }
+    case FeedActionsTypes.ADD_TO_FAVORITES_SUCCESS: {
+      const updatedArticles = [ ...state.feed.articles ]
+        .map(article => {
+          if (article.slug === action.payload) {
+            return { ...article, favoritesCount: article.favoritesCount + 1, favorited: true }
+          }
+         return { ...article }
+        });
+
+      return {
+        ...state,
+        feed: {
+          ...state.feed,
+          articles: updatedArticles
+        }
+      };
+    }
+    case FeedActionsTypes.ADD_TO_FAVORITES_FAIL: {
+      return {
+        ...state,
+        errors: action.payload
+      };
+    }
+    case FeedActionsTypes.REMOVE_FROM_FAVORITES: {
+      return {
+        ...state,
+        errors: null
+      };
+    }
+    case FeedActionsTypes.REMOVE_FROM_FAVORITES_SUCCESS: {
+      const updatedArticles = [ ...state.feed.articles ]
+        .map(article => {
+          if (article.slug === action.payload) {
+            return { ...article, favoritesCount: article.favoritesCount - 1, favorited: false }
+          }
+          return { ...article }
+        });
+
+      return {
+        ...state,
+        feed: {
+          ...state.feed,
+          articles: updatedArticles
+        }
+      };
+    }
+    case FeedActionsTypes.REMOVE_FROM_FAVORITES_FAIL: {
+      return {
+        ...state,
+        errors: action.payload
+      };
+    }
     default:
       return state;
   }

@@ -4,6 +4,12 @@
   float: right;
 }
 
+.btn-primary  {
+  color: $color-white;
+  background-color: $color-theme;
+  border-color: $color-theme;
+}
+
 .btn-sm {
   font-size: .875rem;
   font-weight: 400;
