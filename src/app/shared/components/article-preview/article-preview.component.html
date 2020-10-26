@@ -15,7 +15,8 @@
       <app-add-to-favorites
         [isFavorited]="article.favorited"
         [favoritesCount]="article.favoritesCount"
-        [articleSlug]="article.slug"
+        [slug]="article.slug"
+        (onHandleLike)="handleLike($event)"
       ></app-add-to-favorites>
     </div>
   </div>

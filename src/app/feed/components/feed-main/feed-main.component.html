@@ -6,6 +6,7 @@
       <div *ngIf="isArticles; else emptyArticlesRef">
         <app-article-list
           [articles]="articles"
+          (onHandleLike)="handleLike($event)"
         ></app-article-list>
 
         <app-pagination

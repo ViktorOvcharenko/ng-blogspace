@@ -42,6 +42,7 @@ import * as fromSharedServices from './services';
   ],
   providers: [
     fromSharedServices.PersistenceService,
+    fromSharedServices.AddToFavoritesService,
   ]
 })
 export class SharedModule { }

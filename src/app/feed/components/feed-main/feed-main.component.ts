@@ -15,6 +15,7 @@ export class FeedMainComponent {
   @Input() errors: fromSharedModels.BackendErrors;
   @Input() url: string[];
   @Output() onSelectPage: EventEmitter<fromSharedModels.PaginationParams> = new EventEmitter<fromSharedModels.PaginationParams>();
+  @Output() onHandleLike: EventEmitter<fromSharedModels.AddToFavorites> = new EventEmitter<fromSharedModels.AddToFavorites>();
 
   get isFeed(): boolean {
     return !!this.feed;
@@ -34,5 +35,9 @@ export class FeedMainComponent {
 
   selectPage($event: fromSharedModels.PaginationParams) {
     this.onSelectPage.emit($event);
+  }
+
+  handleLike(event: fromSharedModels.AddToFavorites): void {
+    this.onHandleLike.emit(event);
   }
 }

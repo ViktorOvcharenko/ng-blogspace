@@ -33,16 +33,4 @@ export class ArticleService {
       .put<fromArticleModels.ArticleResponse>(`${environment.apiUrl}/articles/${requestData.slug}`, requestData)
       .pipe(map(response => response.article));
   }
-
-  addToFavorites(slug: string): Observable<fromSharedModels.Article> {
-    return this.http
-      .post<fromArticleModels.ArticleResponse>(`${environment.apiUrl}/articles/${slug}/favorite`, {})
-      .pipe(map(response => response.article));
-  }
-
-  removeFromFavorites(slug: string): Observable<fromSharedModels.Article> {
-    return this.http
-      .delete<fromArticleModels.ArticleResponse>(`${environment.apiUrl}/articles/${slug}/favorite`)
-      .pipe(map(response => response.article));
-  }
 }

@@ -1,16 +1,24 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+
+import * as fromSharedModels from '../../models';
 
 @Component({
   selector: 'app-add-to-favorites',
   templateUrl: './add-to-favorites.component.html',
-  styleUrls: ['./add-to-favorites.component.scss']
+  styleUrls: ['./add-to-favorites.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AddToFavoritesComponent {
   @Input() isFavorited: boolean;
   @Input() favoritesCount: number;
-  @Input() articleSlug: string;
+  @Input() slug: string;
+  @Output() onHandleLike: EventEmitter<fromSharedModels.AddToFavorites> = new EventEmitter<fromSharedModels.AddToFavorites>();
 
   handleLike(): void {
-
+    const event: fromSharedModels.AddToFavorites = {
+      isFavorite: this.isFavorited,
+      slug: this.slug
+    };
+    this.onHandleLike.emit(event);
   }
 }

@@ -1,3 +1,4 @@
+export { AddToFavorites } from './add-to-favorites.interface';
 export { AppState } from './app-state.interface';
 export { Article } from './article.interface';
 export { BackendErrors } from './backend-errors.interface';
