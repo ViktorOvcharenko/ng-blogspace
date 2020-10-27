@@ -2,11 +2,11 @@
   <div class="container page">
     <h1>{{ title }}</h1>
     <div class="article-meta">
-      <a [routerLink]="['/profiles', username]">
+      <a [routerLink]="['/profile', username]">
         <img [src]="image">
       </a>
       <div class="info">
-        <a [routerLink]="['/profiles', username]" class="author">{{ username }}</a>
+        <a [routerLink]="['/profile', username]" class="author">{{ username }}</a>
         <span class="date">{{ article.createdAt | date}}</span>
       </div>
       <span *ngIf="isAuthor">

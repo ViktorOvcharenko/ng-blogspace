@@ -4,6 +4,7 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
 import * as fromContainers from './containers';
+import * as fromProfileServices from './services';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,9 @@ import * as fromContainers from './containers';
     CommonModule,
     ProfileRoutingModule,
     SharedModule
+  ],
+  providers: [
+    fromProfileServices.ProfileService
   ]
 })
 export class ProfileModule { }
