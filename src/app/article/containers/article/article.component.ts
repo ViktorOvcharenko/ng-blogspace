@@ -38,12 +38,14 @@ export class ArticleComponent implements OnInit {
     this.errors$ = this.store.pipe(select(getArticleErrors));
     this.currentUser$ = this.store.pipe(select(getCurrentUser));
     this.isAuthor$ = combineLatest(this.article$, this.currentUser$)
-      .pipe(map(([article, currentUser]) => {
-        if (article && article.author&& currentUser) {
-          return article.author.username === currentUser.username;
-        }
-        return false;
-      }));
+      .pipe(
+        map(([article, currentUser]) => {
+          if (article && article.author && currentUser) {
+            return article.author.username === currentUser.username;
+          }
+          return false;
+        })
+      );
   }
 
   ngOnInit(): void {

@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  templateUrl: './feed-layout.component.html',
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FeedLayoutComponent { }
+export class ProfileComponent { }

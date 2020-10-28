@@ -6,8 +6,18 @@ import * as fromContainers from './containers';
 const routs: Routes = [
   {
     path: ':username',
-    component: fromContainers.ProfileComponent
-  }
+    component: fromContainers.ProfileComponent,
+    children: [
+      {
+        path: '',
+        component: fromContainers.ProfileOwnArticlesComponent
+      },
+      {
+        path: 'favorited',
+        component: fromContainers.ProfileFavoritedArticlesComponent
+      }
+    ]
+  },
 ]
 
 @NgModule({
