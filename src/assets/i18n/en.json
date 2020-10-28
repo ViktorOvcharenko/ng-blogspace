@@ -19,7 +19,9 @@
     "your-feed": "Your feed"
   },
   "profile": {
-    "edit-profile-settings": "Edit Profile Settings"
+    "edit-profile-settings": "Edit Profile Settings",
+    "your-posts": "Your Posts",
+    "favorited-posts": "Favorited Posts"
   },
   "shared": {
     "popular-tags": "Popular tags",

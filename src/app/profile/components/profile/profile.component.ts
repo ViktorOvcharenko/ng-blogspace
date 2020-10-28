@@ -13,4 +13,8 @@ export class ProfileComponent {
   @Input() profile: fromSharedModels.Profile;
   @Input() errors: fromSharedModels.BackendErrors;
   @Input() isSelf: boolean;
+
+  get username(): string {
+    return this.profile.username;
+  }
 }

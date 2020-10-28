@@ -1,0 +1,18 @@
+@import "../../../../assets/styles/variables";
+
+.feed-toggle {
+  margin-bottom: -1px;
+
+  .nav-link {
+    border-radius: 0;
+    border: none;
+    border-bottom: 2px solid rgba(0,0,0,.1);
+    background: none;
+    color: $color-grey;
+
+    &.active {
+      border-color: $color-theme;
+      color: $color-theme;
+    }
+  }
+}
