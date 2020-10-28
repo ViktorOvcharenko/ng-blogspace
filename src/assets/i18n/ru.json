@@ -11,7 +11,8 @@
   "article": {
     "edit-article": "Редактировать статью",
     "delete-article": "Удалить статью",
-    "publish-article": "Опубликовать статью"
+    "publish-article": "Опубликовать статью",
+    "read-more": "Подробнее..."
   },
   "shared": {
     "popular-tags": "Популярные теги",

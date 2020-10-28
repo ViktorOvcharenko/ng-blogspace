@@ -11,7 +11,8 @@
   "article": {
     "edit-article": "Edit article",
     "delete-article": "Delete article",
-    "publish-article": "Publish article"
+    "publish-article": "Publish article",
+    "read-more": "Read more..."
   },
   "shared": {
     "popular-tags": "Popular tags",
