@@ -4,7 +4,7 @@
       <a [routerLink]="['/feed', 'your']"
         routerLinkActive="active"
         class="nav-link">
-        Your feed
+        {{ 'feed.your-feed' | translate }}
       </a>
     </li>
 
@@ -12,7 +12,7 @@
       <a [routerLink]="['/feed', 'global']"
         routerLinkActive="active"
         class="nav-link">
-        Global feed
+        {{ 'feed.global-feed' | translate }}
       </a>
     </li>
 

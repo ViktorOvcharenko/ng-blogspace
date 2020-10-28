@@ -1,4 +1,10 @@
 {
+  "article": {
+    "edit-article": "Редактировать статью",
+    "delete-article": "Удалить статью",
+    "publish-article": "Опубликовать статью",
+    "read-more": "Подробнее..."
+  },
   "auth": {
     "sign-up": "Зарегистрироваться",
     "sign-in": "Войти",
@@ -8,19 +14,17 @@
     "email": "Электронная почта",
     "password": "Пароль"
   },
-  "article": {
-    "edit-article": "Редактировать статью",
-    "delete-article": "Удалить статью",
-    "publish-article": "Опубликовать статью",
-    "read-more": "Подробнее..."
+  "feed": {
+    "global-feed": "Общая лента",
+    "your-feed": "Твоя лента"
+  },
+  "profile": {
+    "edit-profile-settings": "Изменить настройки профиля"
   },
   "shared": {
     "popular-tags": "Популярные теги",
     "confirm": "Подтвердить",
     "cancel": "Отменить"
-  },
-  "profile": {
-    "edit-profile-settings": "Изменить настройки профиля"
   }
 }
 

@@ -1,4 +1,10 @@
 {
+  "article": {
+    "edit-article": "Edit article",
+    "delete-article": "Delete article",
+    "publish-article": "Publish article",
+    "read-more": "Read more..."
+  },
   "auth": {
     "sign-up": "Sign up",
     "sign-in": "Sign in",
@@ -8,18 +14,16 @@
     "email": "Email",
     "password": "Password"
   },
-  "article": {
-    "edit-article": "Edit article",
-    "delete-article": "Delete article",
-    "publish-article": "Publish article",
-    "read-more": "Read more..."
+  "feed": {
+    "global-feed": "Global feed",
+    "your-feed": "Your feed"
+  },
+  "profile": {
+    "edit-profile-settings": "Edit Profile Settings"
   },
   "shared": {
     "popular-tags": "Popular tags",
     "confirm": "Confirm",
     "cancel": "Cancel"
-  },
-  "profile": {
-    "edit-profile-settings": "Edit Profile Settings"
   }
 }
