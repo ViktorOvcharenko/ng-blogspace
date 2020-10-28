@@ -5,6 +5,11 @@ import * as fromContainers from './containers';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/feed/global',
+    pathMatch: 'full'
+  },
+  {
     path: 'new',
     component: fromContainers.ArticleNewComponent,
     pathMatch: 'full'

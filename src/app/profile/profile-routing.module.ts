@@ -5,6 +5,11 @@ import * as fromContainers from './containers';
 
 const routs: Routes = [
   {
+    path: '',
+    redirectTo: '/feed/global',
+    pathMatch: 'full'
+  },
+  {
     path: ':username',
     component: fromContainers.ProfileComponent,
     children: [
