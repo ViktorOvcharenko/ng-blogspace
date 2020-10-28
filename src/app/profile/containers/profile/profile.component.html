@@ -1,1 +1,6 @@
-<app-profile></app-profile>
+<app-profile
+  [isLoading]="isLoading$ | async"
+  [profile]="profile$ | async"
+  [errors]="errors$ | async"
+  [isSelf]="isSelf$ | async"
+></app-profile>

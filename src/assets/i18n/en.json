@@ -17,5 +17,8 @@
     "popular-tags": "Popular tags",
     "confirm": "Confirm",
     "cancel": "Cancel"
+  },
+  "profile": {
+    "edit-profile-settings": "Edit Profile Settings"
   }
 }

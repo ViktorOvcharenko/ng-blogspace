@@ -1,12 +1,31 @@
 <div class="home-page">
-  BANNER
-  <div class="container page">
-    <div class="row">
-      <div class="col-md-9">
-        TOGGLE
-        <router-outlet></router-outlet>
+  <app-loader *ngIf="isLoading; else profileRef"></app-loader>
+
+  <ng-template #profileRef>
+    <div *ngIf="profile; else errorsRef">
+      <app-profile-banner
+        [profile]="profile"
+        [isSelf]="isSelf"
+      ></app-profile-banner>
+
+      <div class="container page">
+        <div class="row">
+          <div class="col-md-9">
+            TOGGLE
+            <router-outlet></router-outlet>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+
+    <ng-template #errorsRef>
+      <div class="error-messages-wrapper">
+        <app-backend-error-messages
+          *ngIf="errors"
+          [errors]="errors"
+        ></app-backend-error-messages>
+      </div>
+    </ng-template>
+  </ng-template>
 </div>
 

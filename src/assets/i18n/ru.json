@@ -17,6 +17,9 @@
     "popular-tags": "Популярные теги",
     "confirm": "Подтвердить",
     "cancel": "Отменить"
+  },
+  "profile": {
+    "edit-profile-settings": "Изменить настройки профиля"
   }
 }
 

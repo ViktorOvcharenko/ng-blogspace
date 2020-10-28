@@ -1,0 +1,39 @@
+@import "src/assets/styles/variables";
+
+.user-info {
+  text-align: center;
+  color: $color-white;
+  background: $color-black;
+  padding: 2rem 0 1rem;
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+    padding-bottom: 1rem;
+  }
+
+  p {
+    text-align: center;
+    padding: 0 .5rem 1rem;
+    margin: 0 auto;
+    color: $color-grey-light;
+    max-width: 450px;
+  }
+
+  .user-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .action-btn {
+    float: right;
+
+    &:hover {
+      color: $color-black;
+      background-color: $color-grey-background;
+    }
+  }
+}

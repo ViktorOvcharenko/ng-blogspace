@@ -18,6 +18,7 @@ import * as fromProfileServices from './services';
     fromContainers.ProfileFavoritedArticlesComponent,
     fromContainers.ProfileOwnArticlesComponent,
     fromComponents.ProfileComponent,
+    fromComponents.ProfileBannerComponent,
   ],
   imports: [
     CommonModule,

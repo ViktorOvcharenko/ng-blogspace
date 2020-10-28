@@ -22,7 +22,7 @@ export class ProfileEffects {
     switchMap(({payload}) => this.profileService.getProfile(payload)),
     switchMap((profile: fromSharedModels.Profile) => of(new GetProfileSuccess(profile))),
     catchError((errorResponse: HttpErrorResponse) => {
-      const error: fromSharedModels.BackendErrors = { message: errorResponse.error.error };
+      const error: fromSharedModels.BackendErrors = { user: errorResponse.error.error };
       return of(new GetProfileFail(error));
     })
   );
