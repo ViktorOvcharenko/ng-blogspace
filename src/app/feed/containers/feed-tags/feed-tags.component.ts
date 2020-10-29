@@ -37,7 +37,7 @@ export class FeedTagsComponent implements OnInit, OnDestroy {
     this.isLoading$ = this.store.pipe(select(getIsFeedLoading));
     this.feed$ = this.store.pipe(select(getFeed));
     this.errors$ = this.store.pipe(select(getFeedErrors));
-    this.selectedTag$ = this.store.pipe(select(getSelectedTag))
+    this.selectedTag$ = this.store.pipe(select(getSelectedTag));
   }
 
   get limit(): number {
@@ -53,7 +53,7 @@ export class FeedTagsComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.destroy$))
       .subscribe(selectedTag => {
         this.selectedTag = selectedTag;
-      this.fetchFeed(startPaginationParams);
+        this.fetchFeed(startPaginationParams);
     });
   }
 

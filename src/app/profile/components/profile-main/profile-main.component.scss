@@ -1,0 +1,10 @@
+@import "src/assets/styles/variables";
+
+.feed-global-container {
+  position: relative;
+
+  .article-empty {
+    padding: 1.5rem;
+    color: $color-black;
+  }
+}

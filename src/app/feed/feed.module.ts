@@ -5,9 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import { feedReducers } from './store/feed.reducers';
 import { popularTagsReducers } from './store/popular-tags.reducers';
-import { FeedEffects } from './store/feed.effects';
 import { PopularTagsEffects } from './store/popular-tags.effects';
 
 import * as fromContainers from './containers';
@@ -31,12 +29,10 @@ import * as fromFeedServices from './services';
     CommonModule,
     FeedRoutingModule,
     SharedModule,
-    StoreModule.forFeature('feed', feedReducers),
     StoreModule.forFeature('popularTags', popularTagsReducers),
-    EffectsModule.forFeature([FeedEffects, PopularTagsEffects]),
+    EffectsModule.forFeature([ PopularTagsEffects ]),
   ],
   providers: [
-    fromFeedServices.FeedService,
     fromFeedServices.PopularTagsService
   ]
 })

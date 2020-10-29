@@ -14,10 +14,13 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { authReducers } from './auth/store/auth.reducers';
+import { feedReducers } from './feed/store/feed.reducers';
 import { AuthEffects } from './auth/store/auth.effects';
+import { FeedEffects } from './feed/store/feed.effects';
 
 import * as fromAuthServices from './auth/services';
 import * as fromSharedInterceptors from './shared/interceptors';
+import * as fromFeedServices from './feed/services';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -44,11 +47,13 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     }),
     StoreModule.forRoot({}),
     StoreModule.forFeature('auth', authReducers),
-    EffectsModule.forRoot([AuthEffects]),
+    StoreModule.forFeature('feed', feedReducers),
+    EffectsModule.forRoot([AuthEffects, FeedEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
     fromAuthServices.AuthService,
+    fromFeedServices.FeedService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass:fromSharedInterceptors.AuthInterceptor,

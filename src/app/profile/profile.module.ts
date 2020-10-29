@@ -19,6 +19,7 @@ import * as fromProfileServices from './services';
     fromContainers.ProfileOwnArticlesComponent,
     fromComponents.ProfileComponent,
     fromComponents.ProfileBannerComponent,
+    fromComponents.ProfileMainComponent,
     fromComponents.ProfileToggleComponent,
   ],
   imports: [
