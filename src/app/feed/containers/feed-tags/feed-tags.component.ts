@@ -67,7 +67,7 @@ export class FeedTagsComponent implements OnInit, OnDestroy {
     const request: fromFeedModels.FeedRequest = {
       url: `${this.apiUrl}/articles`,
       paginationParams,
-      tagParam: this.selectedTag,
+      tag: this.selectedTag,
     };
 
     this.store.dispatch(new GetFeed(request));

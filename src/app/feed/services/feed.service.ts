@@ -10,11 +10,9 @@ export class FeedService {
 
   getFeed(request: fromFeedModels.FeedRequest): Observable<fromFeedModels.FeedResponse> {
     let params = new HttpParams();
+    let key = Object.keys(request)[2];
 
-    if (request.tagParam) {
-      params = params.append('tag', request.tagParam);
-    }
-
+    if (key)  params = params.append(key, request[key]);
     params = params.append('offset', request.paginationParams.offset.toString());
     params = params.append('limit', request.paginationParams.limit.toString());
 
