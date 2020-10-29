@@ -9,10 +9,23 @@
           *ngIf="isSelf; else btnRef"
           [routerLink]="['/settings']"
           class="btn btn-sm btn-outline-secondary action-btn">
+          <mat-icon class="mat-icon settings">settings</mat-icon>
           {{ 'profile.edit-profile-settings' | translate }}
         </a>
         <ng-template #btnRef>
-          FOLLOW USER BUTTON
+          <button
+            *ngIf="isFollow; else unfollowRef"
+            class="btn btn-sm btn-outline-secondary action-btn">
+            <mat-icon class="mat-icon">person_add_alt</mat-icon>
+            {{ 'profile.follow' | translate }} {{ username }}
+          </button>
+
+          <ng-template #unfollowRef>
+            <button class="btn btn-sm btn-outline-secondary action-btn">
+              <mat-icon class="mat-icon">person_remove</mat-icon>
+              {{ 'profile.unfollow' | translate }} {{ username }}
+            </button>
+          </ng-template>
         </ng-template>
       </div>
     </div>

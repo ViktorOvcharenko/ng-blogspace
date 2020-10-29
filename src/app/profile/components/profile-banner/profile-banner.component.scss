@@ -31,10 +31,38 @@
 
   .action-btn {
     float: right;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    transition: all .8s;
 
     &:hover {
+      color: $color-theme;
+      border-color: $color-theme;
+      background-color: $color-black;
+      transition: all .8s;
+    }
+
+    &:disabled {
       color: $color-black;
+      border-color: $color-grey-background;
       background-color: $color-grey-background;
+      transition: all .5s;
+    }
+
+    .mat-icon {
+      font-size: 1.3rem;
+      margin-right: 15px;
+      width: 15px;
+      height: 21px;
+      cursor: pointer !important;
+
+      &.settings {
+        font-size: 1.1rem;
+        margin-right: 10px;
+        width: 10px;
+        height: 20px;
+      }
     }
   }
 }

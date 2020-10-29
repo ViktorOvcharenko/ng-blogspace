@@ -21,7 +21,9 @@
   "profile": {
     "edit-profile-settings": "Изменить настройки профиля",
     "your-posts": "Твои посты",
-    "favorited-posts": "Избранные посты"
+    "favorited-posts": "Избранные посты",
+    "follow": "следовать",
+    "unfollow": "отписаться"
   },
   "shared": {
     "popular-tags": "Популярные теги",

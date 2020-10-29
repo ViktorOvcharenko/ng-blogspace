@@ -23,4 +23,8 @@ export class ProfileBannerComponent {
   get bio(): string {
     return this.profile.bio;
   }
+
+  get isFollow(): boolean {
+    return !this.profile.following;
+  }
 }

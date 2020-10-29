@@ -21,7 +21,9 @@
   "profile": {
     "edit-profile-settings": "Edit Profile Settings",
     "your-posts": "Your Posts",
-    "favorited-posts": "Favorited Posts"
+    "favorited-posts": "Favorited Posts",
+    "follow": "follow",
+    "unfollow": "unfollow"
   },
   "shared": {
     "popular-tags": "Popular tags",
