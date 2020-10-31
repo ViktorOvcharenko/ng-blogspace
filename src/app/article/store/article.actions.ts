@@ -90,7 +90,7 @@ export class FollowArticleAuthor implements Action {
 
 export class FollowArticleAuthorSuccess implements Action {
   public readonly type = ArticleActionsTypes.FOLLOW_TO_ARTICLE_AUTHOR_SUCCESS;
-  constructor(public payload: fromSharedModels.Profile) { }
+  constructor(public payload: boolean) { }
 }
 
 export class FollowArticleAuthorFail implements Action {
@@ -105,7 +105,7 @@ export class UnfollowArticleAuthor implements Action {
 
 export class UnfollowArticleAuthorSuccess implements Action {
   public readonly type = ArticleActionsTypes.UNFOLLOW_FROM_ARTICLE_AUTHOR_SUCCESS;
-  constructor(public payload: fromSharedModels.Profile) { }
+  constructor(public payload: boolean) { }
 }
 
 export class UnfollowArticleAuthorFail implements Action {

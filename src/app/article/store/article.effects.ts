@@ -10,10 +10,10 @@ import {
   CreateArticleSuccess,
   DeleteArticle,
   DeleteArticleFail,
-  DeleteArticleSuccess,
+  DeleteArticleSuccess, FollowArticleAuthor, FollowArticleAuthorFail, FollowArticleAuthorSuccess,
   GetArticle,
   GetArticleFail,
-  GetArticleSuccess,
+  GetArticleSuccess, UnfollowArticleAuthor, UnfollowArticleAuthorFail, UnfollowArticleAuthorSuccess,
   UpdateArticle,
   UpdateArticleFail,
   UpdateArticleSuccess,
@@ -68,6 +68,28 @@ export class ArticleEffects {
       return of(new UpdateArticleSuccess(article));
     }),
     catchError((errorResponse: HttpErrorResponse) => of(new UpdateArticleFail(errorResponse.error.errors)))
+  );
+
+  @Effect()
+  followArticleAuthor$: Observable<Action> = this.actions$.pipe(
+    ofType<FollowArticleAuthor>(ArticleActionsTypes.FOLLOW_TO_ARTICLE_AUTHOR),
+    switchMap(({payload}) => this.articleService.followUser(payload)),
+    switchMap((following: boolean) => of(new FollowArticleAuthorSuccess(following))),
+    catchError((errorResponse: HttpErrorResponse) => {
+      const error: fromSharedModels.BackendErrors = { user: errorResponse.error.error };
+      return of(new FollowArticleAuthorFail(error));
+    })
+  );
+
+  @Effect()
+  unfollowArticleAuthor$: Observable<Action> = this.actions$.pipe(
+    ofType<UnfollowArticleAuthor>(ArticleActionsTypes.UNFOLLOW_FROM_ARTICLE_AUTHOR),
+    switchMap(({payload}) => this.articleService.unfollowUser(payload)),
+    switchMap((following: boolean) => of(new UnfollowArticleAuthorSuccess(following))),
+    catchError((errorResponse: HttpErrorResponse) => {
+      const error: fromSharedModels.BackendErrors = { user: errorResponse.error.error };
+      return of(new UnfollowArticleAuthorFail(error));
+    })
   );
 
   constructor(

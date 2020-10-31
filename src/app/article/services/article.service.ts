@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 
 import * as fromArticleModels from '../models';
 import * as fromSharedModels from '../../shared/models';
+import * as fromProfileModels from '../../profile/models';
 
 @Injectable()
 export class ArticleService {
@@ -32,5 +33,15 @@ export class ArticleService {
     return this.http
       .put<fromArticleModels.ArticleResponse>(`${environment.apiUrl}/articles/${requestData.slug}`, requestData)
       .pipe(map(response => response.article));
+  }
+
+  followUser(username: string): Observable<boolean> {
+    return this.http.post<fromProfileModels.ProfileResponse>(`${environment.apiUrl}/profiles/${username}/follow`, {})
+      .pipe(map(response => response.profile.following));
+  }
+
+  unfollowUser(username: string): Observable<boolean> {
+    return this.http.delete<fromProfileModels.ProfileResponse>(`${environment.apiUrl}/profiles/${username}/follow`)
+      .pipe(map(response => response.profile.following));
   }
 }

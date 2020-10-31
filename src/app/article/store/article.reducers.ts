@@ -92,6 +92,60 @@ export const articleReducers = (
         errors: action.payload
       };
     }
+    case ArticleActionsTypes.FOLLOW_TO_ARTICLE_AUTHOR: {
+      return {
+        ...state,
+        isFollowLoading: true,
+        errors: null,
+      };
+    }
+    case ArticleActionsTypes.FOLLOW_TO_ARTICLE_AUTHOR_SUCCESS: {
+      return {
+        ...state,
+        isFollowLoading: false,
+        article: {
+          ...state.article,
+          author: {
+            ...state.article.author,
+            following: action.payload
+          }
+        },
+      };
+    }
+    case ArticleActionsTypes.FOLLOW_TO_ARTICLE_AUTHOR_FAIL: {
+      return {
+        ...state,
+        isFollowLoading: false,
+        errors: action.payload
+      };
+    }
+    case ArticleActionsTypes.UNFOLLOW_FROM_ARTICLE_AUTHOR: {
+      return {
+        ...state,
+        isFollowLoading: true,
+        errors: null,
+      };
+    }
+    case ArticleActionsTypes.UNFOLLOW_FROM_ARTICLE_AUTHOR_SUCCESS: {
+      return {
+        ...state,
+        isFollowLoading: false,
+        article: {
+          ...state.article,
+          author: {
+            ...state.article.author,
+            following: action.payload
+          }
+        },
+      };
+    }
+    case ArticleActionsTypes.UNFOLLOW_FROM_ARTICLE_AUTHOR_FAIL: {
+      return {
+        ...state,
+        isFollowLoading: false,
+        errors: action.payload
+      };
+    }
     default:
       return state;
   }
