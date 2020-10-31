@@ -13,6 +13,7 @@ import {
 import {
   getArticle,
   getArticleErrors,
+  getArticleIsFollowLoading,
   getArticleIsLoading
 } from '../../store/article.selectors';
 import { getCurrentUser } from '../../../auth/store/auth.selectors';
@@ -26,6 +27,7 @@ import * as fromSharedComponents from '../../../shared/components';
 })
 export class ArticleComponent implements OnInit {
   isLoading$: Observable<boolean>;
+  isFollowLoading$: Observable<boolean>;
   article$: Observable<fromSharedModels.Article>;
   errors$: Observable<fromSharedModels.BackendErrors>;
   isSelf$: Observable<boolean>;
@@ -39,6 +41,7 @@ export class ArticleComponent implements OnInit {
     private dialog: MatDialog,
   ) {
     this.isLoading$ = this.store.pipe(select(getArticleIsLoading));
+    this.isFollowLoading$ = this.store.pipe(select(getArticleIsFollowLoading));
     this.article$ = this.store.pipe(select(getArticle));
     this.errors$ = this.store.pipe(select(getArticleErrors));
     this.currentUser$ = this.store.pipe(select(getCurrentUser));

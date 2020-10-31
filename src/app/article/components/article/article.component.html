@@ -4,6 +4,7 @@
     <ng-template #articleRef>
         <div *ngIf="article; else errorsRef">
             <app-article-banner
+                [isFollowLoading]="isFollowLoading"
                 [article]="article"
                 [isSelf]="isSelf"
                 (onDeleteArticle)="deleteArticle($event)"

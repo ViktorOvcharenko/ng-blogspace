@@ -10,6 +10,7 @@ import * as fromSharedModels from '../../../shared/models';
 })
 export class ArticleComponent  {
   @Input() isLoading: boolean;
+  @Input() isFollowLoading: boolean;
   @Input() article: fromSharedModels.Article;
   @Input() errors: fromSharedModels.BackendErrors;
   @Input() isSelf: boolean;
