@@ -40,14 +40,18 @@
       color: $color-theme;
       border-color: $color-theme;
       background-color: $color-black;
-      transition: all .8s;
+      transition: all .3s;
+    }
+
+    &:focus {
+      box-shadow: none;
     }
 
     &:disabled {
       color: $color-black;
       border-color: $color-grey-background;
       background-color: $color-grey-background;
-      transition: all .5s;
+      transition: all .3s;
     }
 
     .mat-icon {

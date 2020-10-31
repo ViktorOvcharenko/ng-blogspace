@@ -1,9 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { GetProfile } from '../../store/profiel.actions';
 import { combineLatest, Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
+import {
+  FollowUser,
+  GetProfile,
+  UnfollowUser
+} from '../../store/profiel.actions';
 import {
   getProfile,
   getProfileErrors,
@@ -62,10 +66,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   follow(event: string): void {
-
+    this.store.dispatch(new FollowUser(event));
   }
 
   unfollow(event: string): void {
-
+    this.store.dispatch(new UnfollowUser(event));
   }
 }
