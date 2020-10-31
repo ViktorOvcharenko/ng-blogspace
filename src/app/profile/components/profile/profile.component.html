@@ -6,6 +6,8 @@
       <app-profile-banner
         [profile]="profile"
         [isSelf]="isSelf"
+        (onFollow)="follow($event)"
+        (onUnfollow)="unfollow($event)"
       ></app-profile-banner>
 
       <div class="container page">

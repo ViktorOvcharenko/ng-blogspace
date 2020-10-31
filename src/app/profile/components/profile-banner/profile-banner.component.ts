@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import * as fromSharedModels from '../../../shared/models';
 
@@ -11,6 +11,8 @@ import * as fromSharedModels from '../../../shared/models';
 export class ProfileBannerComponent {
   @Input() profile: fromSharedModels.Profile;
   @Input() isSelf: boolean;
+  @Output() onFollow: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onUnfollow: EventEmitter<string> = new EventEmitter<string>();
 
   get image(): string {
     return this.profile.image;
@@ -26,5 +28,13 @@ export class ProfileBannerComponent {
 
   get isFollow(): boolean {
     return !this.profile.following;
+  }
+
+  follow(): void {
+    this.onFollow.emit(this.profile.username);
+  }
+
+  unfollow(): void {
+    this.onUnfollow.emit(this.profile.username);
   }
 }

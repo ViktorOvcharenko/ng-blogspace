@@ -12,7 +12,7 @@ export class FeedService {
     let params = new HttpParams();
     let key = Object.keys(request)[2];
 
-    if (key)  params = params.append(key, request[key]);
+    key ? params = params.append(key, request[key]): null;
     params = params.append('offset', request.paginationParams.offset.toString());
     params = params.append('limit', request.paginationParams.limit.toString());
 

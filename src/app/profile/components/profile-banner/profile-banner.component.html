@@ -15,13 +15,16 @@
         <ng-template #btnRef>
           <button
             *ngIf="isFollow; else unfollowRef"
+            (click)="follow()"
             class="btn btn-sm btn-outline-secondary action-btn">
             <mat-icon class="mat-icon">person_add_alt</mat-icon>
             {{ 'profile.follow' | translate }} {{ username }}
           </button>
 
           <ng-template #unfollowRef>
-            <button class="btn btn-sm btn-outline-secondary action-btn">
+            <button
+              (click)="unfollow()"
+              class="btn btn-sm btn-outline-secondary action-btn">
               <mat-icon class="mat-icon">person_remove</mat-icon>
               {{ 'profile.unfollow' | translate }} {{ username }}
             </button>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import * as fromSharedModels from '../../../shared/models';
 
@@ -13,8 +13,18 @@ export class ProfileComponent {
   @Input() profile: fromSharedModels.Profile;
   @Input() errors: fromSharedModels.BackendErrors;
   @Input() isSelf: boolean;
+  @Output() onFollow: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onUnfollow: EventEmitter<string> = new EventEmitter<string>();
 
   get username(): string {
     return this.profile.username;
+  }
+
+  follow(event: string): void {
+    this.onFollow.emit(event);
+  }
+
+  unfollow(event: string): void {
+    this.onUnfollow.emit(event);
   }
 }

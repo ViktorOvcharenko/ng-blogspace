@@ -60,4 +60,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
   fetchProfile(slug: string): void {
     this.store.dispatch(new GetProfile(slug));
   }
+
+  follow(event: string): void {
+
+  }
+
+  unfollow(event: string): void {
+
+  }
 }

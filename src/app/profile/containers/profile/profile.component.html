@@ -3,4 +3,6 @@
   [profile]="profile$ | async"
   [errors]="errors$ | async"
   [isSelf]="isSelf$ | async"
+  (onFollow)="follow($event)"
+  (onUnfollow)="unfollow($event)"
 ></app-profile>
