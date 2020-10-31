@@ -11,11 +11,13 @@
             </div>
             <span *ngIf="isSelf; else btnRef">
                 <a [routerLink]="['/article', slug, 'edit']" class="btn btn-outline-secondary btn-sm">
+                    <mat-icon class="mat-icon">create</mat-icon>
                     {{ 'article.edit-article' | translate }}
                 </a>
                 <button
                     (click)="deleteArticle()"
                     class="btn btn-outline-danger btn-sm">
+                    <mat-icon class="mat-icon">delete</mat-icon>
                     {{ 'article.delete-article' | translate }}
                 </button>
             </span>
