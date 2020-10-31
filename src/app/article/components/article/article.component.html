@@ -5,8 +5,10 @@
         <div *ngIf="article; else errorsRef">
             <app-article-banner
                 [article]="article"
-                [isAuthor]="isAuthor"
+                [isSelf]="isSelf"
                 (onDeleteArticle)="deleteArticle($event)"
+                (onFollow)="follow($event)"
+                (onUnfollow)="unfollow($event)"
             ></app-article-banner>
 
             <div class="container page">

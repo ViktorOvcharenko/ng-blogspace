@@ -10,8 +10,11 @@ import * as fromSharedModels from '../../../shared/models';
 })
 export class ArticleBannerComponent  {
   @Input() article: fromSharedModels.Article;
-  @Input() isAuthor: boolean;
+  @Input() isSelf: boolean;
+  @Input() isFollowLoading: boolean;
   @Output() onDeleteArticle: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onFollow: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onUnfollow: EventEmitter<string> = new EventEmitter<string>();
 
   get title(): string {
     return this.article.title;
@@ -29,7 +32,19 @@ export class ArticleBannerComponent  {
     return this.article.slug;
   }
 
+  get isFollow(): boolean {
+    return !this.article.author.following;
+  }
+
   deleteArticle(): void {
     this.onDeleteArticle.emit(this.slug);
+  }
+
+  follow(): void {
+    this.onFollow.emit(this.article.author.username);
+  }
+
+  unfollow(): void {
+    this.onUnfollow.emit(this.article.author.username);
   }
 }

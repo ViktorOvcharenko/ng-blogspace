@@ -4,7 +4,12 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { combineLatest, Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { DeleteArticle, GetArticle } from '../../store/article.actions';
+import {
+  DeleteArticle,
+  FollowArticleAuthor,
+  GetArticle,
+  UnfollowArticleAuthor
+} from '../../store/article.actions';
 import {
   getArticle,
   getArticleErrors,
@@ -23,7 +28,7 @@ export class ArticleComponent implements OnInit {
   isLoading$: Observable<boolean>;
   article$: Observable<fromSharedModels.Article>;
   errors$: Observable<fromSharedModels.BackendErrors>;
-  isAuthor$: Observable<boolean>;
+  isSelf$: Observable<boolean>;
   currentUser$: Observable<fromSharedModels.CurrentUser>;
   dialogRef: MatDialogRef<fromSharedComponents.ConfirmDialogComponent>;
   destroy$: Subject<void> = new Subject<void>();
@@ -37,7 +42,7 @@ export class ArticleComponent implements OnInit {
     this.article$ = this.store.pipe(select(getArticle));
     this.errors$ = this.store.pipe(select(getArticleErrors));
     this.currentUser$ = this.store.pipe(select(getCurrentUser));
-    this.isAuthor$ = combineLatest(this.article$, this.currentUser$)
+    this.isSelf$ = combineLatest(this.article$, this.currentUser$)
       .pipe(
         map(([article, currentUser]) => {
           if (article && article.author && currentUser) {
@@ -87,5 +92,13 @@ export class ArticleComponent implements OnInit {
 
   deleteArticle(event: string): void {
     this.store.dispatch(new DeleteArticle(event));
+  }
+
+  follow(event: string): void {
+    this.store.dispatch(new FollowArticleAuthor(event));
+  }
+
+  unfollow(event: string): void {
+    this.store.dispatch(new UnfollowArticleAuthor(event));
   }
 }

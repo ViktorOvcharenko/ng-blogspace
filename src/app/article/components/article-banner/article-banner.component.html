@@ -9,7 +9,7 @@
                 <a [routerLink]="['/profile', username]" class="author">{{ username }}</a>
                 <span class="date">{{ article.createdAt | date}}</span>
             </div>
-            <span *ngIf="isAuthor">
+            <span *ngIf="isSelf; else btnRef">
                 <a [routerLink]="['/article', slug, 'edit']" class="btn btn-outline-secondary btn-sm">
                     {{ 'article.edit-article' | translate }}
                 </a>
@@ -19,6 +19,27 @@
                     {{ 'article.delete-article' | translate }}
                 </button>
             </span>
+
+            <ng-template #btnRef>
+                <button
+                    *ngIf="isFollow; else unfollowRef"
+                    (click)="follow()"
+                    [disabled]="isFollowLoading"
+                    class="btn btn-sm btn-outline-secondary action-btn">
+                    <mat-icon class="mat-icon">person_add_alt</mat-icon>
+                    {{ 'profile.follow' | translate }} {{ username }}
+                </button>
+
+                <ng-template #unfollowRef>
+                    <button
+                        (click)="unfollow()"
+                        [disabled]="isFollowLoading"
+                        class="btn btn-sm btn-outline-secondary action-btn">
+                        <mat-icon class="mat-icon">person_remove</mat-icon>
+                        {{ 'profile.unfollow' | translate }} {{ username }}
+                    </button>
+                </ng-template>
+            </ng-template>
         </div>
     </div>
 </div>

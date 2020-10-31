@@ -2,6 +2,8 @@
     [isLoading]="isLoading$ | async"
     [article]="article$ | async"
     [errors]="errors$ | async"
-    [isAuthor]="isAuthor$ | async"
+    [isSelf]="isSelf$ | async"
     (onDeleteArticle)="confirmDeleteArticle($event)"
+    (onFollow)="follow($event)"
+    (onUnfollow)="unfollow($event)"
 ></app-article>

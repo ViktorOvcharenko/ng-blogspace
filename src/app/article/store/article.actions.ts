@@ -2,6 +2,7 @@ import { Action } from '@ngrx/store';
 
 import * as fromArticleModels from '../models';
 import * as fromSharedModels from '../../shared/models';
+import {ProfileActionTypes} from '../../profile/store/profiel.actions';
 
 export enum ArticleActionsTypes {
   GET_ARTICLE = '[Article] Get article',
@@ -16,6 +17,12 @@ export enum ArticleActionsTypes {
   UPDATE_ARTICLE = '[Article] Update article',
   UPDATE_ARTICLE_SUCCESS = '[Article] Update article success',
   UPDATE_ARTICLE_FAIL = '[Article] Update article fail',
+  FOLLOW_TO_ARTICLE_AUTHOR = '[Profile] Follow to article author',
+  FOLLOW_TO_ARTICLE_AUTHOR_SUCCESS = '[Profile] Follow to article author success',
+  FOLLOW_TO_ARTICLE_AUTHOR_FAIL = '[Profile] Follow to article author fail',
+  UNFOLLOW_FROM_ARTICLE_AUTHOR = '[Profile] Unfollow from article author',
+  UNFOLLOW_FROM_ARTICLE_AUTHOR_SUCCESS = '[Profile] Unfollow from article author success',
+  UNFOLLOW_FROM_ARTICLE_AUTHOR_FAIL = '[Profile] Unfollow from article author fail',
 }
 
 export class GetArticle implements Action {
@@ -76,6 +83,36 @@ export class UpdateArticleFail implements Action {
   constructor(public payload: fromSharedModels.BackendErrors) { }
 }
 
+export class FollowArticleAuthor implements Action {
+  public readonly type = ArticleActionsTypes.FOLLOW_TO_ARTICLE_AUTHOR;
+  constructor(public payload: string) { }
+}
+
+export class FollowArticleAuthorSuccess implements Action {
+  public readonly type = ArticleActionsTypes.FOLLOW_TO_ARTICLE_AUTHOR_SUCCESS;
+  constructor(public payload: fromSharedModels.Profile) { }
+}
+
+export class FollowArticleAuthorFail implements Action {
+  public readonly type = ArticleActionsTypes.FOLLOW_TO_ARTICLE_AUTHOR_FAIL;
+  constructor(public payload: fromSharedModels.BackendErrors) { }
+}
+
+export class UnfollowArticleAuthor implements Action {
+  public readonly type = ArticleActionsTypes.UNFOLLOW_FROM_ARTICLE_AUTHOR;
+  constructor(public payload: string) { }
+}
+
+export class UnfollowArticleAuthorSuccess implements Action {
+  public readonly type = ArticleActionsTypes.UNFOLLOW_FROM_ARTICLE_AUTHOR_SUCCESS;
+  constructor(public payload: fromSharedModels.Profile) { }
+}
+
+export class UnfollowArticleAuthorFail implements Action {
+  public readonly type = ArticleActionsTypes.UNFOLLOW_FROM_ARTICLE_AUTHOR_FAIL;
+  constructor(public payload: fromSharedModels.BackendErrors) { }
+}
+
 export type ArticleActions =
   GetArticle |
   GetArticleSuccess |
@@ -88,4 +125,10 @@ export type ArticleActions =
   CreateArticleFail |
   UpdateArticle |
   UpdateArticleSuccess |
-  UpdateArticleFail;
+  UpdateArticleFail |
+  FollowArticleAuthor |
+  FollowArticleAuthorSuccess |
+  FollowArticleAuthorFail |
+  UnfollowArticleAuthor |
+  UnfollowArticleAuthorSuccess |
+  UnfollowArticleAuthorFail;

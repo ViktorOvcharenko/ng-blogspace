@@ -12,8 +12,10 @@ export class ArticleComponent  {
   @Input() isLoading: boolean;
   @Input() article: fromSharedModels.Article;
   @Input() errors: fromSharedModels.BackendErrors;
-  @Input() isAuthor: boolean;
+  @Input() isSelf: boolean;
   @Output() onDeleteArticle: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onFollow: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onUnfollow: EventEmitter<string> = new EventEmitter<string>();
 
   get articleBody(): string {
     return this.article.body;
@@ -25,5 +27,13 @@ export class ArticleComponent  {
 
   deleteArticle(event: string): void {
     this.onDeleteArticle.emit(event);
+  }
+
+  follow(event: string): void {
+    this.onFollow.emit(event);
+  }
+
+  unfollow(event: string): void {
+    this.onUnfollow.emit(event);
   }
 }

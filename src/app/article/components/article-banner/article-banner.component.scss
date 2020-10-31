@@ -48,4 +48,19 @@
   .btn-outline-danger {
     margin-left: 1rem;
   }
+
+  .action-btn {
+    min-width: 180px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+
+    .mat-icon {
+      font-size: 1.3rem;
+      margin-right: 15px;
+      width: 15px;
+      height: 21px;
+      cursor: pointer !important;
+    }
+  }
 }
