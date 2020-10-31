@@ -30,30 +30,11 @@
   }
 
   .action-btn {
-    min-width: 160px;
+    min-width: 180px;
     float: right;
     display: inline-flex;
     align-items: center;
     font-weight: 500;
-    transition: all .8s;
-
-    &:hover {
-      color: $color-theme;
-      border-color: $color-theme;
-      background-color: $color-black;
-      transition: all .3s;
-    }
-
-    &:focus {
-      box-shadow: none;
-    }
-
-    &:disabled {
-      color: $color-black;
-      border-color: $color-grey-background;
-      background-color: $color-grey-background;
-      transition: all .3s;
-    }
 
     .mat-icon {
       font-size: 1.3rem;

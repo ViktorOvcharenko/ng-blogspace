@@ -1,9 +1,9 @@
 <app-profile
-  [isLoading]="isLoading$ | async"
-  [isFollowLoading]="isFollowLoading$ | async"
-  [profile]="profile$ | async"
-  [errors]="errors$ | async"
-  [isSelf]="isSelf$ | async"
-  (onFollow)="follow($event)"
-  (onUnfollow)="unfollow($event)"
+    [isLoading]="isLoading$ | async"
+    [isFollowLoading]="isFollowLoading$ | async"
+    [profile]="profile$ | async"
+    [errors]="errors$ | async"
+    [isSelf]="isSelf$ | async"
+    (onFollow)="follow($event)"
+    (onUnfollow)="unfollow($event)"
 ></app-profile>

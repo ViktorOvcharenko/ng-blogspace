@@ -1,34 +1,34 @@
 <div class="home-page">
-  <app-loader *ngIf="isLoading; else profileRef"></app-loader>
+    <app-loader *ngIf="isLoading; else profileRef"></app-loader>
 
-  <ng-template #profileRef>
-    <div *ngIf="profile; else errorsRef">
-      <app-profile-banner
-        [isFollowLoading]="isFollowLoading"
-        [profile]="profile"
-        [isSelf]="isSelf"
-        (onFollow)="follow($event)"
-        (onUnfollow)="unfollow($event)"
-      ></app-profile-banner>
+    <ng-template #profileRef>
+        <div *ngIf="profile; else errorsRef">
+            <app-profile-banner
+                [isFollowLoading]="isFollowLoading"
+                [profile]="profile"
+                [isSelf]="isSelf"
+                (onFollow)="follow($event)"
+                (onUnfollow)="unfollow($event)"
+            ></app-profile-banner>
 
-      <div class="container page">
-        <div class="row">
-          <div class="col-md-9">
-            <app-profile-toggle [username]="username"></app-profile-toggle>
-            <router-outlet></router-outlet>
-          </div>
+            <div class="container page">
+                <div class="row">
+                    <div class="col-md-9">
+                        <app-profile-toggle [username]="username"></app-profile-toggle>
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <ng-template #errorsRef>
-      <div class="error-messages-wrapper">
-        <app-backend-error-messages
-          *ngIf="errors"
-          [errors]="errors"
-        ></app-backend-error-messages>
-      </div>
+        <ng-template #errorsRef>
+            <div class="error-messages-wrapper">
+                <app-backend-error-messages
+                    *ngIf="errors"
+                    [errors]="errors"
+                ></app-backend-error-messages>
+            </div>
+        </ng-template>
     </ng-template>
-  </ng-template>
 </div>
 

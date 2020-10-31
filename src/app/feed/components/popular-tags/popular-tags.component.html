@@ -1,21 +1,22 @@
 <div class="popular-tags-container">
-  <app-loader *ngIf="isLoading; else loadedRef"></app-loader>
+    <app-loader *ngIf="isLoading; else loadedRef"></app-loader>
 
   <ng-template #loadedRef>
-    <div *ngIf="popularTags; else errorsRef" class="sidebar">
-      <p>{{ 'shared.popular-tags' | translate }}</p>
-      <div class="tag-list">
-        <a *ngFor="let tag of popularTags"
-          [routerLink]="['/feed', 'tags', tag]"
-           (click)="selectTag(tag)"
-          class="tag-default tag-pill">
-          {{ tag }}
-        </a>
+      <div *ngIf="popularTags; else errorsRef" class="sidebar">
+          <p>{{ 'shared.popular-tags' | translate }}</p>
+          <div class="tag-list">
+              <a
+                  *ngFor="let tag of popularTags"
+                  [routerLink]="['/feed', 'tags', tag]"
+                  (click)="selectTag(tag)"
+                  class="tag-default tag-pill">
+                  {{ tag }}
+              </a>
+          </div>
       </div>
-    </div>
 
-    <ng-template #errorsRef>
-      <app-backend-error-messages [backendErrors]="errors"></app-backend-error-messages>
-    </ng-template>
+      <ng-template #errorsRef>
+          <app-backend-error-messages [errors]="errors"></app-backend-error-messages>
+      </ng-template>
   </ng-template>
 </div>

@@ -1,32 +1,32 @@
 <div class="feed-global-container">
-  <app-loader *ngIf="isLoading; else feedRef"></app-loader>
+    <app-loader *ngIf="isLoading; else feedRef"></app-loader>
 
-  <ng-template #feedRef>
-    <div *ngIf="isFeed; else errorsRef">
-      <div *ngIf="isArticles; else emptyArticlesRef">
-        <app-article-list
-          [articles]="articles"
-          (onHandleLike)="handleLike($event)"
-        ></app-article-list>
+    <ng-template #feedRef>
+        <div *ngIf="isFeed; else errorsRef">
+            <div *ngIf="isArticles; else emptyArticlesRef">
+                <app-article-list
+                    [articles]="articles"
+                    (onHandleLike)="handleLike($event)"
+                ></app-article-list>
 
-        <app-pagination
-          [total]="total"
-          [url]="url"
-          (onSelectPage)="selectPage($event)"
-        ></app-pagination>
-      </div>
+                <app-pagination
+                    [total]="total"
+                    [url]="url"
+                    (onSelectPage)="selectPage($event)"
+                ></app-pagination>
+            </div>
 
-      <ng-template #emptyArticlesRef>
-        <div class="article-empty">No articles are here... yet.</div>
-      </ng-template>
-    </div>
+            <ng-template #emptyArticlesRef>
+                <div class="article-empty">{{ 'profile.no-articles-here-yet' | translate }}</div>
+            </ng-template>
+        </div>
 
-    <ng-template #errorsRef>
-      <app-backend-error-messages
-        *ngIf="errors"
-        [errors]="errors"
-      ></app-backend-error-messages>
+        <ng-template #errorsRef>
+            <app-backend-error-messages
+                *ngIf="errors"
+                [errors]="errors"
+            ></app-backend-error-messages>
+        </ng-template>
     </ng-template>
-  </ng-template>
 </div>
 

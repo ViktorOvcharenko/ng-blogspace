@@ -11,7 +11,7 @@ import * as fromSharedModels from '../../../shared/models';
 export class PopularTagsComponent  {
   @Input() isLoading: boolean;
   @Input() popularTags: fromSharedModels.Tag[];
-  @Input() errors: string;
+  @Input() errors: fromSharedModels.BackendErrors;
   @Output() onSelectTag: EventEmitter<fromSharedModels.Tag> = new EventEmitter<fromSharedModels.Tag>();
 
   selectTag(tagName: fromSharedModels.Tag): void {

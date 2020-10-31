@@ -1,31 +1,31 @@
 <div class="article-page">
-  <app-loader *ngIf="isLoading; else articleRef"></app-loader>
+    <app-loader *ngIf="isLoading; else articleRef"></app-loader>
 
-  <ng-template #articleRef>
-    <div *ngIf="article; else errorsRef">
-      <app-article-banner
-        [article]="article"
-        [isAuthor]="isAuthor"
-        (onDeleteArticle)="deleteArticle($event)"
-      ></app-article-banner>
+    <ng-template #articleRef>
+        <div *ngIf="article; else errorsRef">
+            <app-article-banner
+                [article]="article"
+                [isAuthor]="isAuthor"
+                (onDeleteArticle)="deleteArticle($event)"
+            ></app-article-banner>
 
-      <div class="container page">
-        <div class="row article-content" *ngIf="article">
-          <div class="col-xs-12">
-            <div>{{ articleBody }}</div>
-            <app-tag-list [tagList]="tagList"></app-tag-list>
-          </div>
+            <div class="container page">
+                <div *ngIf="article" class="row article-content">
+                    <div class="col-xs-12">
+                        <div>{{ articleBody }}</div>
+                        <app-tag-list [tagList]="tagList"></app-tag-list>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
 
-    <ng-template #errorsRef>
-      <div class="error-messages-wrapper">
-        <app-backend-error-messages
-          *ngIf="errors"
-          [errors]="errors"
-        ></app-backend-error-messages>
-      </div>
+        <ng-template #errorsRef>
+            <div class="error-messages-wrapper">
+                <app-backend-error-messages
+                    *ngIf="errors"
+                    [errors]="errors"
+                ></app-backend-error-messages>
+            </div>
+        </ng-template>
     </ng-template>
-  </ng-template>
 </div>

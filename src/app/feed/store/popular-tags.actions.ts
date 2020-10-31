@@ -21,6 +21,7 @@ export class GetPopularTagsSuccess implements Action {
 
 export class GetPopularTagsFail implements Action {
   public readonly type = PopularTagsActionsTypes.GET_POPULAR_TAGS_FAIL;
+  constructor(public payload: fromSharedModels.BackendErrors) { }
 }
 
 export class SetSelectedTag implements Action {

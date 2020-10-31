@@ -1,38 +1,38 @@
 <div class="user-info">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-10 offset-md-1">
-        <img [src]="image" class="user-img">
-        <h3>{{ username }}</h3>
-        <p>{{ bio }}</p>
-        <a
-          *ngIf="isSelf; else btnRef"
-          [routerLink]="['/settings']"
-          class="btn btn-sm btn-outline-secondary action-btn">
-          <mat-icon class="mat-icon settings">settings</mat-icon>
-          {{ 'profile.edit-profile-settings' | translate }}
-        </a>
-        <ng-template #btnRef>
-          <button
-            *ngIf="isFollow; else unfollowRef"
-            (click)="follow()"
-            [disabled]="isFollowLoading"
-            class="btn btn-sm btn-outline-secondary action-btn">
-            <mat-icon class="mat-icon">person_add_alt</mat-icon>
-            {{ 'profile.follow' | translate }} {{ username }}
-          </button>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 offset-md-1">
+                <img [src]="image" class="user-img">
+                <h3>{{ username }}</h3>
+                <p>{{ bio }}</p>
+                <a
+                    *ngIf="isSelf; else btnRef"
+                    [routerLink]="['/settings']"
+                    class="btn btn-sm btn-outline-secondary action-btn">
+                    <mat-icon class="mat-icon settings">settings</mat-icon>
+                    {{ 'profile.edit-profile-settings' | translate }}
+                </a>
+                <ng-template #btnRef>
+                    <button
+                        *ngIf="isFollow; else unfollowRef"
+                        (click)="follow()"
+                        [disabled]="isFollowLoading"
+                        class="btn btn-sm btn-outline-secondary action-btn">
+                        <mat-icon class="mat-icon">person_add_alt</mat-icon>
+                        {{ 'profile.follow' | translate }} {{ username }}
+                    </button>
 
-          <ng-template #unfollowRef>
-            <button
-              (click)="unfollow()"
-              [disabled]="isFollowLoading"
-              class="btn btn-sm btn-outline-secondary action-btn">
-              <mat-icon class="mat-icon">person_remove</mat-icon>
-              {{ 'profile.unfollow' | translate }} {{ username }}
-            </button>
-          </ng-template>
-        </ng-template>
-      </div>
+                    <ng-template #unfollowRef>
+                        <button
+                            (click)="unfollow()"
+                            [disabled]="isFollowLoading"
+                            class="btn btn-sm btn-outline-secondary action-btn">
+                            <mat-icon class="mat-icon">person_remove</mat-icon>
+                            {{ 'profile.unfollow' | translate }} {{ username }}
+                        </button>
+                    </ng-template>
+              </ng-template>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

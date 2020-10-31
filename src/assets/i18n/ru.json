@@ -15,6 +15,7 @@
     "password": "Пароль"
   },
   "feed": {
+    "blogspace": "blogspace",
     "global-feed": "Общая лента",
     "your-feed": "Твоя лента"
   },
@@ -23,12 +24,21 @@
     "your-posts": "Твои посты",
     "favorited-posts": "Избранные посты",
     "follow": "следовать",
-    "unfollow": "отписаться"
+    "unfollow": "отписаться",
+    "no-articles-here-yet": "Здесь нет статей ... пока."
+  },
+  "settings": {
+    "your-settings": "Ваши настройки",
+    "or-click-here-logout": "Или нажмите здесь, чтобы выйти",
+    "update-settings": "Обновить настройки"
   },
   "shared": {
     "popular-tags": "Популярные теги",
     "confirm": "Подтвердить",
-    "cancel": "Отменить"
+    "cancel": "Отменить",
+    "home": "Главная",
+    "new-article": "Новая статья",
+    "settings": "Настройки"
   }
 }
 

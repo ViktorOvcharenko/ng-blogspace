@@ -17,7 +17,7 @@ import * as fromSharedModels from '../../../shared/models';
 export class PopularTagsComponent implements OnInit {
   isLoading$: Observable<boolean>;
   popularTags$: Observable<fromSharedModels.Tag[]>;
-  errors$: Observable<string>;
+  errors$: Observable<fromSharedModels.BackendErrors>;
 
   constructor(private store: Store) {
     this.isLoading$ = this.store.pipe(select(getIsPopularTagsLoading));

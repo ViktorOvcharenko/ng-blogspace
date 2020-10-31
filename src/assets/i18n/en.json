@@ -15,6 +15,7 @@
     "password": "Password"
   },
   "feed": {
+    "blogspace": "blogspace",
     "global-feed": "Global feed",
     "your-feed": "Your feed"
   },
@@ -23,11 +24,20 @@
     "your-posts": "Your Posts",
     "favorited-posts": "Favorited Posts",
     "follow": "follow",
-    "unfollow": "unfollow"
+    "unfollow": "unfollow",
+    "no-articles-here-yet": "No articles are here... yet."
+  },
+  "settings": {
+    "your-settings": "Your settings",
+    "or-click-here-logout": "Or click here to logout",
+    "update-settings": "Update settings"
   },
   "shared": {
     "popular-tags": "Popular tags",
     "confirm": "Confirm",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "home": "Home",
+    "new-article": "New Article",
+    "settings": "Settings"
   }
 }

@@ -9,6 +9,7 @@ import {
   GetPopularTagsFail,
   PopularTagsActionsTypes,
 } from './popular-tags.actions';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import * as fromFeedServices from '../services';
 import * as fromSharedModels from '../../shared/models';
@@ -19,8 +20,8 @@ export class PopularTagsEffects {
   getPopularTags$: Observable<Action> = this.actions$.pipe(
     ofType<GetPopularTags>(PopularTagsActionsTypes.GET_POPULAR_TAGS),
     switchMap(() => this.popularTagsService.getPopularTags()),
-    switchMap((popularTags: fromSharedModels.Tag[]) => of( new GetPopularTagsSuccess(popularTags) )),
-    catchError(() => of( new GetPopularTagsFail() ))
+    switchMap((popularTags: fromSharedModels.Tag[]) => of(new GetPopularTagsSuccess(popularTags))),
+    catchError((errorResponse: HttpErrorResponse) => of(new GetPopularTagsFail(errorResponse.error.errors)))
   );
 
   constructor(

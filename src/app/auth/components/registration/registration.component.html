@@ -1,49 +1,53 @@
 <div class="registration">
-  <div class="container page">
-    <div class="row">
-      <div class="col-md-6 offset-md-3 col-xs-12">
-        <h2 class="text-center">{{ 'auth.sign-up' | translate }}</h2>
-        <p class="text-center">
-          <a [routerLink]="['/auth', 'login']" class="registration-link">{{ 'auth.have-account' | translate }}</a>
-        </p>
-        <app-backend-error-messages
-          *ngIf="validationErrors"
-          [errors]="validationErrors"
-        ></app-backend-error-messages>
-        <form [formGroup]="form" (ngSubmit)="submit()">
-          <fieldset>
-            <fieldset class="form-group">
-              <input
-                type="text"
-                class="form-control form-control-lg"
-                placeholder="{{ 'auth.username' | translate}}"
-                formControlName="username">
-            </fieldset>
-            <fieldset class="form-group">
-              <input
-                type="text"
-                class="form-control form-control-lg"
-                placeholder="{{ 'auth.email' | translate}}"
-                formControlName="email">
-            </fieldset>
-            <fieldset class="form-group">
-              <input
-                type="password"
-                class="form-control form-control-lg"
-                placeholder="{{ 'auth.password' | translate}}"
-                formControlName="password">
-            </fieldset>
-            <div class="d-flex justify-content-end">
-              <button
-                class="btn btn-lg btn-success"
-                type="submit"
-                [disabled]="isLoading">
-                {{ 'auth.sign-up' | translate }}
-              </button>
+    <div class="container page">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-xs-12">
+                <h2 class="text-center">{{ 'auth.sign-up' | translate }}</h2>
+                <p class="text-center">
+                  <a [routerLink]="['/auth', 'login']" class="registration-link">
+                    {{ 'auth.have-account' | translate }}
+                  </a>
+                </p>
+
+                <app-backend-error-messages
+                  *ngIf="validationErrors"
+                  [errors]="validationErrors"
+                ></app-backend-error-messages>
+
+                <form [formGroup]="form" (ngSubmit)="submit()">
+                    <fieldset>
+                        <fieldset class="form-group">
+                            <input
+                                type="text"
+                                class="form-control form-control-lg"
+                                placeholder="{{ 'auth.username' | translate}}"
+                                formControlName="username">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input
+                                type="text"
+                                class="form-control form-control-lg"
+                                placeholder="{{ 'auth.email' | translate}}"
+                                formControlName="email">
+                        </fieldset>
+                        <fieldset class="form-group">
+                            <input
+                                type="password"
+                                class="form-control form-control-lg"
+                                placeholder="{{ 'auth.password' | translate}}"
+                                formControlName="password">
+                        </fieldset>
+                        <div class="d-flex justify-content-end">
+                            <button
+                              [disabled]="isLoading"
+                                class="btn btn-lg btn-success"
+                                type="submit">
+                                {{ 'auth.sign-up' | translate }}
+                            </button>
+                        </div>
+                    </fieldset>
+                </form>
             </div>
-          </fieldset>
-        </form>
-      </div>
+        </div>
     </div>
-  </div>
 </div>

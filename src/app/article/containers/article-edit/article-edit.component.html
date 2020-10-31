@@ -1,12 +1,12 @@
 <app-loader *ngIf="isLoading$ | async; else articleFormRef"></app-loader>
 
 <ng-template #articleFormRef>
-  <app-article-form
-    [initialValue]="initialValue"
-    [isLoading]="isLoading$ | async"
-    [errors]="errors$ | async"
-    (onSubmit)="updateArticle($event)"
-  ></app-article-form>
+    <app-article-form
+        [initialValue]="initialValue"
+        [isLoading]="isLoading$ | async"
+        [errors]="errors$ | async"
+        (onSubmit)="updateArticle($event)"
+    ></app-article-form>
 </ng-template>
 
 

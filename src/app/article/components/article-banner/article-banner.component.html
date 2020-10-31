@@ -1,23 +1,24 @@
 <div class="banner">
-  <div class="container page">
-    <h1>{{ title }}</h1>
-    <div class="article-meta">
-      <a [routerLink]="['/profile', username]">
-        <img [src]="image">
-      </a>
-      <div class="info">
-        <a [routerLink]="['/profile', username]" class="author">{{ username }}</a>
-        <span class="date">{{ article.createdAt | date}}</span>
-      </div>
-      <span *ngIf="isAuthor">
-              <a [routerLink]="['/article', slug, 'edit']" class="btn btn-outline-secondary btn-sm">
-                {{ 'article.edit-article' | translate }}
-              </a>
-              <button
-                (click)="deleteArticle()"
-                class="btn btn-outline-danger btn-sm">
-                {{ 'article.delete-article' | translate }}</button>
+    <div class="container page">
+        <h1>{{ title }}</h1>
+        <div class="article-meta">
+            <a [routerLink]="['/profile', username]">
+                <img [src]="image">
+            </a>
+            <div class="info">
+                <a [routerLink]="['/profile', username]" class="author">{{ username }}</a>
+                <span class="date">{{ article.createdAt | date}}</span>
+            </div>
+            <span *ngIf="isAuthor">
+                <a [routerLink]="['/article', slug, 'edit']" class="btn btn-outline-secondary btn-sm">
+                    {{ 'article.edit-article' | translate }}
+                </a>
+                <button
+                    (click)="deleteArticle()"
+                    class="btn btn-outline-danger btn-sm">
+                    {{ 'article.delete-article' | translate }}
+                </button>
             </span>
+        </div>
     </div>
-  </div>
 </div>

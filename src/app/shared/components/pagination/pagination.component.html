@@ -1,10 +1,10 @@
 <ul class="pagination">
-  <li *ngFor="let page of pages" class="page-item">
-    <div
-      (click)="selectPage(page)"
-      [ngClass]="{ active: currentPage === page }"
-      class="page-link">
-      {{ page }}
-    </div>
-  </li>
+    <li *ngFor="let page of pages" class="page-item">
+        <div
+            (click)="selectPage(page)"
+            [ngClass]="{ active: currentPage === page }"
+            class="page-link">
+            {{ page }}
+        </div>
+    </li>
 </ul>

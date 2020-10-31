@@ -1,12 +1,12 @@
 <app-loader *ngIf="isLoading$ | async; else settingsFormRef"></app-loader>
 
 <ng-template #settingsFormRef>
-  <app-settings-form
-    [isLoading]="isLoading$ | async"
-    [currentUser]="currentUser$ | async"
-    [errors]="validationErrors$ | async"
-    (onSubmit)="updateCurrentUser($event)"
-    (onLogout)="logout()"
-  ></app-settings-form>
+    <app-settings-form
+        [isLoading]="isLoading$ | async"
+        [currentUser]="currentUser$ | async"
+        [errors]="validationErrors$ | async"
+        (onSubmit)="updateCurrentUser($event)"
+        (onLogout)="logout()"
+    ></app-settings-form>
 </ng-template>
 
