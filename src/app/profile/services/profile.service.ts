@@ -15,4 +15,14 @@ export class ProfileService {
     return this.http.get<fromProfileModels.ProfileResponse>(`${environment.apiUrl}/profiles/${slug}`)
       .pipe(map(response => response.profile));
   }
+
+  followUser(username: string): Observable<fromSharedModels.Profile> {
+    return this.http.post<fromProfileModels.ProfileResponse>(`${environment.apiUrl}/profiles/${username}/follow`, {})
+      .pipe(map(response => response.profile));
+  }
+
+  unfollowUser(username: string): Observable<fromSharedModels.Profile> {
+    return this.http.delete<fromProfileModels.ProfileResponse>(`${environment.apiUrl}/profiles/${username}/follow`)
+      .pipe(map(response => response.profile));
+  }
 }
