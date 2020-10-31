@@ -9,6 +9,7 @@ import * as fromSharedModels from '../../../shared/models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfileBannerComponent {
+  @Input() isFollowLoading: boolean;
   @Input() profile: fromSharedModels.Profile;
   @Input() isSelf: boolean;
   @Output() onFollow: EventEmitter<string> = new EventEmitter<string>();

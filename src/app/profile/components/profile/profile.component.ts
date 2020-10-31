@@ -10,6 +10,7 @@ import * as fromSharedModels from '../../../shared/models';
 })
 export class ProfileComponent {
   @Input() isLoading: boolean;
+  @Input() isFollowLoading: boolean;
   @Input() profile: fromSharedModels.Profile;
   @Input() errors: fromSharedModels.BackendErrors;
   @Input() isSelf: boolean;

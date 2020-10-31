@@ -11,6 +11,7 @@ import {
 import {
   getProfile,
   getProfileErrors,
+  getProfileIsFollowLoading,
   getProfileIsLoading
 } from '../../store/profile.selectors';
 import { getCurrentUser } from '../../../auth/store/auth.selectors';
@@ -23,6 +24,7 @@ import * as fromSharedModels from '../../../shared/models';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   isLoading$: Observable<boolean>;
+  isFollowLoading$: Observable<boolean>;
   profile$: Observable<fromSharedModels.Profile>;
   errors$: Observable<fromSharedModels.BackendErrors>;
   isSelf$: Observable<boolean>;
@@ -34,6 +36,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
   ) {
     this.isLoading$ = this.store.pipe(select(getProfileIsLoading));
+    this.isFollowLoading$ = this.store.pipe(select(getProfileIsFollowLoading));
     this.profile$ = this.store.pipe(select(getProfile));
     this.errors$ = this.store.pipe(select(getProfileErrors));
     this.currentUser$ = this.store.pipe(select(getCurrentUser));

@@ -16,6 +16,7 @@
           <button
             *ngIf="isFollow; else unfollowRef"
             (click)="follow()"
+            [disabled]="isFollowLoading"
             class="btn btn-sm btn-outline-secondary action-btn">
             <mat-icon class="mat-icon">person_add_alt</mat-icon>
             {{ 'profile.follow' | translate }} {{ username }}
@@ -24,6 +25,7 @@
           <ng-template #unfollowRef>
             <button
               (click)="unfollow()"
+              [disabled]="isFollowLoading"
               class="btn btn-sm btn-outline-secondary action-btn">
               <mat-icon class="mat-icon">person_remove</mat-icon>
               {{ 'profile.unfollow' | translate }} {{ username }}

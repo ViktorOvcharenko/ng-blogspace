@@ -4,6 +4,7 @@
   <ng-template #profileRef>
     <div *ngIf="profile; else errorsRef">
       <app-profile-banner
+        [isFollowLoading]="isFollowLoading"
         [profile]="profile"
         [isSelf]="isSelf"
         (onFollow)="follow($event)"

@@ -29,6 +29,48 @@ export const profileReducers = (
         errors: action.payload,
       };
     }
+    case ProfileActionTypes.FOLLOW_TO_USER: {
+      return {
+        ...state,
+        isFollowLoading: true,
+        errors: null,
+      };
+    }
+    case ProfileActionTypes.FOLLOW_TO_USER_SUCCESS: {
+      return {
+        ...state,
+        isFollowLoading: false,
+        profile: action.payload,
+      };
+    }
+    case ProfileActionTypes.FOLLOW_TO_USER_FAIL: {
+      return {
+        ...state,
+        isFollowLoading: false,
+        errors: action.payload,
+      };
+    }
+    case ProfileActionTypes.UNFOLLOW_FROM_USER: {
+      return {
+        ...state,
+        isFollowLoading: true,
+        errors: null,
+      };
+    }
+    case ProfileActionTypes.UNFOLLOW_FROM_USER_SUCCESS: {
+      return {
+        ...state,
+        isFollowLoading: false,
+        profile: action.payload,
+      };
+    }
+    case ProfileActionTypes.UNFOLLOW_FROM_USER_FAIL: {
+      return {
+        ...state,
+        isFollowLoading: false,
+        errors: action.payload,
+      };
+    }
     default:
       return state;
   }
