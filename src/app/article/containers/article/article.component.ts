@@ -15,7 +15,7 @@ import {
 import {
   getArticle,
   getArticleErrors,
-  getArticleIsFollowLoading,
+  getArticleIsBtnLoading,
   getArticleIsLoading,
 } from '../../store/article.selectors';
 import { getCurrentUser } from '../../../auth/store/auth.selectors';
@@ -43,7 +43,7 @@ export class ArticleComponent implements OnInit {
     private dialog: MatDialog,
   ) {
     this.isLoading$ = this.store.pipe(select(getArticleIsLoading));
-    this.isFollowLoading$ = this.store.pipe(select(getArticleIsFollowLoading));
+    this.isFollowLoading$ = this.store.pipe(select(getArticleIsBtnLoading));
     this.article$ = this.store.pipe(select(getArticle));
     this.errors$ = this.store.pipe(select(getArticleErrors));
     this.currentUser$ = this.store.pipe(select(getCurrentUser));

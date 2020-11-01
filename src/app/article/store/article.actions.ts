@@ -125,7 +125,6 @@ export class AddToFavorites implements Action {
 
 export class AddToFavoritesSuccess implements Action {
   public readonly type = ArticleActionsTypes.ADD_TO_FAVORITES_SUCCESS;
-  constructor(public payload: string) { }
 }
 
 export class AddToFavoritesFail implements Action {
@@ -140,7 +139,6 @@ export class RemoveFromFavorites implements Action {
 
 export class RemoveFromFavoritesSuccess implements Action {
   public readonly type = ArticleActionsTypes.REMOVE_FROM_FAVORITES_SUCCESS;
-  constructor(public payload: string) { }
 }
 
 export class RemoveFromFavoritesFail implements Action {

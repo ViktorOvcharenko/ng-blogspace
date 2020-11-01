@@ -2,7 +2,7 @@ import * as fromSharedModels from '../../shared/models';
 
 export interface ArticleState {
   isLoading: boolean;
-  isFollowLoading: boolean;
+  isBtnLoading: boolean;
   article: fromSharedModels.Article;
   errors: fromSharedModels.BackendErrors;
 }

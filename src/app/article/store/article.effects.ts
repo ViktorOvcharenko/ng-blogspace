@@ -109,7 +109,7 @@ export class ArticleEffects {
   addToFavorites$: Observable<Action> = this.actions$.pipe(
     ofType<AddToFavorites>(ArticleActionsTypes.ADD_TO_FAVORITES),
     switchMap(({payload}) => this.addToFavorites.addToFavorites(payload)),
-    switchMap((slug: string) => of(new AddToFavoritesSuccess(slug))),
+    switchMap(() => of(new AddToFavoritesSuccess())),
     catchError((errorResponse: HttpErrorResponse) => of(new AddToFavoritesFail(errorResponse.error.errors)))
   );
 
@@ -117,7 +117,7 @@ export class ArticleEffects {
   removeFromFavorites$: Observable<Action> = this.actions$.pipe(
     ofType<RemoveFromFavorites>(ArticleActionsTypes.REMOVE_FROM_FAVORITES),
     switchMap(({payload}) => this.addToFavorites.removeFromFavorites(payload)),
-    switchMap((slug: string) => of(new RemoveFromFavoritesSuccess(slug))),
+    switchMap(() => of(new RemoveFromFavoritesSuccess())),
     catchError((errorResponse: HttpErrorResponse) => of(new RemoveFromFavoritesFail(errorResponse.error.errors)))
   );
 
