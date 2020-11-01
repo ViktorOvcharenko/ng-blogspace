@@ -32,6 +32,7 @@ import * as fromSharedServices from './services';
     TranslateModule,
     ReactiveFormsModule,
     MatIconModule,
+    fromComponents.AddToFavoritesComponent,
     fromComponents.ArticlePreviewComponent,
     fromComponents.ArticleListComponent,
     fromComponents.BackendErrorMessagesComponent,

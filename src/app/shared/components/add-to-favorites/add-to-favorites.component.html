@@ -1,7 +1,19 @@
 <button
     (click)="handleLike()"
-    [ngClass]="{'btn-primary': isFavorited, 'btn-outline-primary': !isFavorited}"
+    [ngClass]="{
+        'btn-primary': isFavorited,
+        'btn-outline-primary': !isFavorited,
+        'article': isArticle
+    }"
     class="pull-xs-right btn btn-sm">
     <mat-icon class="mat-icon">favorite</mat-icon>
+    <span *ngIf="isArticle" class="fovorite-text">
+      <span *ngIf="isFavorited; else unfaforitedRef">
+        {{ 'article.favorite-article' | translate }}
+      </span>
+      <ng-template #unfaforitedRef>
+        <span>{{ 'article.unfavorite-article' | translate }}</span>
+      </ng-template>
+    </span>
     <span>&nbsp; {{ favoritesCount }}</span>
 </button>

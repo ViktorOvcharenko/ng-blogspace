@@ -3,7 +3,9 @@
     "edit-article": "Edit article",
     "delete-article": "Delete article",
     "publish-article": "Publish article",
-    "read-more": "Read more..."
+    "read-more": "Read more...",
+    "favorite-article": "Favorite article",
+    "unfavorite-article": "Unfavorite article"
   },
   "auth": {
     "sign-up": "Sign up",

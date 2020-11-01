@@ -3,7 +3,9 @@
     "edit-article": "Редактировать статью",
     "delete-article": "Удалить статью",
     "publish-article": "Опубликовать статью",
-    "read-more": "Подробнее..."
+    "read-more": "Подробнее...",
+    "favorite-article": "Любимая статья",
+    "unfavorite-article": "Удалить из избранного"
   },
   "auth": {
     "sign-up": "Зарегистрироваться",

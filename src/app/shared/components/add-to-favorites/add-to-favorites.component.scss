@@ -2,6 +2,22 @@
 
 .pull-xs-right {
   float: right;
+
+  &.article {
+    float: none;
+    margin-left: 10px;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    border-radius: 0.2rem;
+
+    .mat-icon {
+      font-size: 1.3rem;
+      margin-right: 10px;
+      width: 15px;
+      height: 21px;
+    }
+  }
 }
 
 .btn-primary  {
@@ -24,7 +40,7 @@
   }
 
   &:focus {
-    box-shadow: 0 0 0 0.2rem $color-theme-light !important;
+    box-shadow: none !important;
   }
 }
 
@@ -38,5 +54,9 @@
   margin-right: 2px;
   width: 10px;
   height: 10px;
-  cursor: pointer !important;
+  cursor: pointer;
+}
+
+.fovorite-text {
+  padding: 0 5px;
 }

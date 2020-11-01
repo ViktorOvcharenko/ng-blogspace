@@ -41,6 +41,12 @@
                         {{ 'profile.unfollow' | translate }} {{ username }}
                     </button>
                 </ng-template>
+                <app-add-to-favorites
+                  [isFavorited]="true"
+                  [isArticle]="true"
+                  [favoritesCount]="1"
+                  [slug]="'sdf'"
+                ></app-add-to-favorites>
             </ng-template>
         </div>
     </div>

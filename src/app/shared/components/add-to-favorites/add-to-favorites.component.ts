@@ -10,6 +10,7 @@ import * as fromSharedModels from '../../models';
 })
 export class AddToFavoritesComponent {
   @Input() isFavorited: boolean;
+  @Input() isArticle: boolean;
   @Input() favoritesCount: number;
   @Input() slug: string;
   @Output() onHandleLike: EventEmitter<fromSharedModels.AddToFavorites> = new EventEmitter<fromSharedModels.AddToFavorites>();
