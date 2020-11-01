@@ -10,13 +10,13 @@ import {
   FollowArticleAuthor,
   GetArticle,
   RemoveFromFavorites,
-  UnfollowArticleAuthor
+  UnfollowArticleAuthor,
 } from '../../store/article.actions';
 import {
   getArticle,
   getArticleErrors,
   getArticleIsFollowLoading,
-  getArticleIsLoading
+  getArticleIsLoading,
 } from '../../store/article.selectors';
 import { getCurrentUser } from '../../../auth/store/auth.selectors';
 

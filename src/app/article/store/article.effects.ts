@@ -4,16 +4,28 @@ import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import {
+  AddToFavorites,
+  AddToFavoritesFail,
+  AddToFavoritesSuccess,
   ArticleActionsTypes,
   CreateArticle,
   CreateArticleFail,
   CreateArticleSuccess,
   DeleteArticle,
   DeleteArticleFail,
-  DeleteArticleSuccess, FollowArticleAuthor, FollowArticleAuthorFail, FollowArticleAuthorSuccess,
+  DeleteArticleSuccess,
+  FollowArticleAuthor,
+  FollowArticleAuthorFail,
+  FollowArticleAuthorSuccess,
   GetArticle,
   GetArticleFail,
-  GetArticleSuccess, UnfollowArticleAuthor, UnfollowArticleAuthorFail, UnfollowArticleAuthorSuccess,
+  GetArticleSuccess,
+  RemoveFromFavorites,
+  RemoveFromFavoritesFail,
+  RemoveFromFavoritesSuccess,
+  UnfollowArticleAuthor,
+  UnfollowArticleAuthorFail,
+  UnfollowArticleAuthorSuccess,
   UpdateArticle,
   UpdateArticleFail,
   UpdateArticleSuccess,
@@ -22,6 +34,7 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import * as fromArticleServices from '../services';
+import * as fromSharedServices from '../../shared/services';
 import * as fromSharedModels from '../../shared/models';
 
 @Injectable()
@@ -92,9 +105,26 @@ export class ArticleEffects {
     })
   );
 
+  @Effect()
+  addToFavorites$: Observable<Action> = this.actions$.pipe(
+    ofType<AddToFavorites>(ArticleActionsTypes.ADD_TO_FAVORITES),
+    switchMap(({payload}) => this.addToFavorites.addToFavorites(payload)),
+    switchMap((slug: string) => of(new AddToFavoritesSuccess(slug))),
+    catchError((errorResponse: HttpErrorResponse) => of(new AddToFavoritesFail(errorResponse.error.errors)))
+  );
+
+  @Effect()
+  removeFromFavorites$: Observable<Action> = this.actions$.pipe(
+    ofType<RemoveFromFavorites>(ArticleActionsTypes.REMOVE_FROM_FAVORITES),
+    switchMap(({payload}) => this.addToFavorites.removeFromFavorites(payload)),
+    switchMap((slug: string) => of(new RemoveFromFavoritesSuccess(slug))),
+    catchError((errorResponse: HttpErrorResponse) => of(new RemoveFromFavoritesFail(errorResponse.error.errors)))
+  );
+
   constructor(
     private actions$: Actions,
     private articleService: fromArticleServices.ArticleService,
+    private addToFavorites: fromSharedServices.AddToFavoritesService,
     private router: Router,
   ) { }
 }
