@@ -5,9 +5,11 @@ import { combineLatest, Observable, Subject } from 'rxjs';
 import { map, takeUntil } from 'rxjs/operators';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import {
+  AddToFavorites,
   DeleteArticle,
   FollowArticleAuthor,
   GetArticle,
+  RemoveFromFavorites,
   UnfollowArticleAuthor
 } from '../../store/article.actions';
 import {
@@ -105,7 +107,11 @@ export class ArticleComponent implements OnInit {
     this.store.dispatch(new UnfollowArticleAuthor(event));
   }
 
-  handleLike($event: fromSharedModels.AddToFavorites) {
-
+  handleLike(event: fromSharedModels.AddToFavorites): void {
+    if (event.isFavorite) {
+      this.store.dispatch(new RemoveFromFavorites(event.slug));
+    } else {
+      this.store.dispatch(new AddToFavorites(event.slug));
+    }
   }
 }

@@ -25,6 +25,9 @@ export enum ArticleActionsTypes {
   ADD_TO_FAVORITES = '[Article] Add to favorites',
   ADD_TO_FAVORITES_SUCCESS = '[Article] Add to favorites success',
   ADD_TO_FAVORITES_FAIL = '[Article] Add to favorites fail',
+  REMOVE_FROM_FAVORITES = '[Article] Remove from favorites',
+  REMOVE_FROM_FAVORITES_SUCCESS = '[Article] Remove from favorites success',
+  REMOVE_FROM_FAVORITES_FAIL = '[Article] Remove from favorites fail',
 }
 
 export class GetArticle implements Action {
@@ -130,6 +133,21 @@ export class AddToFavoritesFail implements Action {
   constructor(public payload: fromSharedModels.BackendErrors) { }
 }
 
+export class RemoveFromFavorites implements Action {
+  public readonly type = ArticleActionsTypes.REMOVE_FROM_FAVORITES;
+  constructor(public payload: string) { }
+}
+
+export class RemoveFromFavoritesSuccess implements Action {
+  public readonly type = ArticleActionsTypes.REMOVE_FROM_FAVORITES_SUCCESS;
+  constructor(public payload: string) { }
+}
+
+export class RemoveFromFavoritesFail implements Action {
+  public readonly type = ArticleActionsTypes.REMOVE_FROM_FAVORITES_FAIL;
+  constructor(public payload: fromSharedModels.BackendErrors) { }
+}
+
 export type ArticleActions =
   GetArticle |
   GetArticleSuccess |
@@ -151,4 +169,7 @@ export type ArticleActions =
   UnfollowArticleAuthorFail |
   AddToFavorites |
   AddToFavoritesSuccess |
-  AddToFavoritesFail;
+  AddToFavoritesFail |
+  RemoveFromFavorites |
+  RemoveFromFavoritesSuccess |
+  RemoveFromFavoritesFail;
