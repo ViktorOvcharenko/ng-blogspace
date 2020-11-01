@@ -9,10 +9,10 @@
     <mat-icon class="mat-icon">favorite</mat-icon>
     <span *ngIf="isArticle" class="fovorite-text">
       <span *ngIf="isFavorited; else unfaforitedRef">
-        {{ 'article.favorite-article' | translate }}
+        {{ 'article.unfavorite-article' | translate }}
       </span>
       <ng-template #unfaforitedRef>
-        <span>{{ 'article.unfavorite-article' | translate }}</span>
+        <span>{{ 'article.favorite-article' | translate }}</span>
       </ng-template>
     </span>
     <span>&nbsp; {{ favoritesCount }}</span>

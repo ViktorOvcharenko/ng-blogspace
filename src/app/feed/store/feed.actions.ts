@@ -7,7 +7,7 @@ export enum FeedActionsTypes {
   GET_FEED = '[Feed] Get feed',
   GET_FEED_SUCCESS = '[Feed] Get feed success',
   GET_FEED_FAIL = '[Feed] Get feed fail',
-  ADD_TO_FAVORITES = '[Article] Add to favorites',
+  ADD_TO_FAVORITES = '[Feed] Add to favorites',
   ADD_TO_FAVORITES_SUCCESS = '[Feed] Add to favorites success',
   ADD_TO_FAVORITES_FAIL = '[Feed] Add to favorites fail',
   REMOVE_FROM_FAVORITES = '[Feed] Remove from favorites',

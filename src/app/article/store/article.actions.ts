@@ -2,7 +2,6 @@ import { Action } from '@ngrx/store';
 
 import * as fromArticleModels from '../models';
 import * as fromSharedModels from '../../shared/models';
-import {ProfileActionTypes} from '../../profile/store/profiel.actions';
 
 export enum ArticleActionsTypes {
   GET_ARTICLE = '[Article] Get article',
@@ -17,12 +16,15 @@ export enum ArticleActionsTypes {
   UPDATE_ARTICLE = '[Article] Update article',
   UPDATE_ARTICLE_SUCCESS = '[Article] Update article success',
   UPDATE_ARTICLE_FAIL = '[Article] Update article fail',
-  FOLLOW_TO_ARTICLE_AUTHOR = '[Profile] Follow to article author',
-  FOLLOW_TO_ARTICLE_AUTHOR_SUCCESS = '[Profile] Follow to article author success',
-  FOLLOW_TO_ARTICLE_AUTHOR_FAIL = '[Profile] Follow to article author fail',
-  UNFOLLOW_FROM_ARTICLE_AUTHOR = '[Profile] Unfollow from article author',
-  UNFOLLOW_FROM_ARTICLE_AUTHOR_SUCCESS = '[Profile] Unfollow from article author success',
-  UNFOLLOW_FROM_ARTICLE_AUTHOR_FAIL = '[Profile] Unfollow from article author fail',
+  FOLLOW_TO_ARTICLE_AUTHOR = '[Article] Follow to article author',
+  FOLLOW_TO_ARTICLE_AUTHOR_SUCCESS = '[Article] Follow to article author success',
+  FOLLOW_TO_ARTICLE_AUTHOR_FAIL = '[Article] Follow to article author fail',
+  UNFOLLOW_FROM_ARTICLE_AUTHOR = '[Article] Unfollow from article author',
+  UNFOLLOW_FROM_ARTICLE_AUTHOR_SUCCESS = '[Article] Unfollow from article author success',
+  UNFOLLOW_FROM_ARTICLE_AUTHOR_FAIL = '[Article] Unfollow from article author fail',
+  ADD_TO_FAVORITES = '[Article] Add to favorites',
+  ADD_TO_FAVORITES_SUCCESS = '[Article] Add to favorites success',
+  ADD_TO_FAVORITES_FAIL = '[Article] Add to favorites fail',
 }
 
 export class GetArticle implements Action {
@@ -113,6 +115,21 @@ export class UnfollowArticleAuthorFail implements Action {
   constructor(public payload: fromSharedModels.BackendErrors) { }
 }
 
+export class AddToFavorites implements Action {
+  public readonly type = ArticleActionsTypes.ADD_TO_FAVORITES;
+  constructor(public payload: string) { }
+}
+
+export class AddToFavoritesSuccess implements Action {
+  public readonly type = ArticleActionsTypes.ADD_TO_FAVORITES_SUCCESS;
+  constructor(public payload: string) { }
+}
+
+export class AddToFavoritesFail implements Action {
+  public readonly type = ArticleActionsTypes.ADD_TO_FAVORITES_FAIL;
+  constructor(public payload: fromSharedModels.BackendErrors) { }
+}
+
 export type ArticleActions =
   GetArticle |
   GetArticleSuccess |
@@ -131,4 +148,7 @@ export type ArticleActions =
   FollowArticleAuthorFail |
   UnfollowArticleAuthor |
   UnfollowArticleAuthorSuccess |
-  UnfollowArticleAuthorFail;
+  UnfollowArticleAuthorFail |
+  AddToFavorites |
+  AddToFavoritesSuccess |
+  AddToFavoritesFail;

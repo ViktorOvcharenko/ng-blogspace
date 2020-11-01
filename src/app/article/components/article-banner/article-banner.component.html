@@ -42,10 +42,11 @@
                     </button>
                 </ng-template>
                 <app-add-to-favorites
-                  [isFavorited]="true"
+                  [isFavorited]="isFavorited"
                   [isArticle]="true"
-                  [favoritesCount]="1"
-                  [slug]="'sdf'"
+                  [favoritesCount]="favoritesCount"
+                  [slug]="'slug'"
+                  (onHandleLike)="handleLike($event)"
                 ></app-add-to-favorites>
             </ng-template>
         </div>

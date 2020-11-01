@@ -17,6 +17,7 @@ export class ArticleComponent  {
   @Output() onDeleteArticle: EventEmitter<string> = new EventEmitter<string>();
   @Output() onFollow: EventEmitter<string> = new EventEmitter<string>();
   @Output() onUnfollow: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onHandleLike: EventEmitter<fromSharedModels.AddToFavorites> = new EventEmitter<fromSharedModels.AddToFavorites>();
 
   get articleBody(): string {
     return this.article.body;
@@ -36,5 +37,9 @@ export class ArticleComponent  {
 
   unfollow(event: string): void {
     this.onUnfollow.emit(event);
+  }
+
+  handleLike(event: fromSharedModels.AddToFavorites): void {
+    this.onHandleLike.emit(event);
   }
 }

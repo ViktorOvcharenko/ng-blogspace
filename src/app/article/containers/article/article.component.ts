@@ -104,4 +104,8 @@ export class ArticleComponent implements OnInit {
   unfollow(event: string): void {
     this.store.dispatch(new UnfollowArticleAuthor(event));
   }
+
+  handleLike($event: fromSharedModels.AddToFavorites) {
+
+  }
 }

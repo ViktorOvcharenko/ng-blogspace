@@ -15,6 +15,7 @@ export class ArticleBannerComponent  {
   @Output() onDeleteArticle: EventEmitter<string> = new EventEmitter<string>();
   @Output() onFollow: EventEmitter<string> = new EventEmitter<string>();
   @Output() onUnfollow: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onHandleLike: EventEmitter<fromSharedModels.AddToFavorites> = new EventEmitter<fromSharedModels.AddToFavorites>();
 
   get title(): string {
     return this.article.title;
@@ -36,6 +37,14 @@ export class ArticleBannerComponent  {
     return !this.article.author.following;
   }
 
+  get isFavorited(): boolean {
+    return this.article.favorited;
+  }
+
+  get favoritesCount(): number {
+    return this.article.favoritesCount;
+  }
+
   deleteArticle(): void {
     this.onDeleteArticle.emit(this.slug);
   }
@@ -46,5 +55,9 @@ export class ArticleBannerComponent  {
 
   unfollow(): void {
     this.onUnfollow.emit(this.article.author.username);
+  }
+
+  handleLike(event: fromSharedModels.AddToFavorites): void {
+    this.onHandleLike.emit(event);
   }
 }
