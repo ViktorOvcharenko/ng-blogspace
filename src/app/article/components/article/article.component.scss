@@ -1,5 +1,15 @@
-.error-messages-wrapper {
-  display: flex;
-  justify-content: center;
-  padding-top: 2rem;
+.article-page {
+  .article-content {
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    margin-bottom: 2rem;
+  }
+
+  .error-messages-wrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+  }
 }
+
+

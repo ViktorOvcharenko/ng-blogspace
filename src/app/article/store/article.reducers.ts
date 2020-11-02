@@ -95,14 +95,14 @@ export const articleReducers = (
     case ArticleActionsTypes.FOLLOW_TO_ARTICLE_AUTHOR: {
       return {
         ...state,
-        isBtnLoading: true,
+        isFollowLoading: true,
         errors: null,
       };
     }
     case ArticleActionsTypes.FOLLOW_TO_ARTICLE_AUTHOR_SUCCESS: {
       return {
         ...state,
-        isBtnLoading: false,
+        isFollowLoading: false,
         article: {
           ...state.article,
           author: {
@@ -115,21 +115,21 @@ export const articleReducers = (
     case ArticleActionsTypes.FOLLOW_TO_ARTICLE_AUTHOR_FAIL: {
       return {
         ...state,
-        isBtnLoading: false,
+        isFollowLoading: false,
         errors: action.payload
       };
     }
     case ArticleActionsTypes.UNFOLLOW_FROM_ARTICLE_AUTHOR: {
       return {
         ...state,
-        isBtnLoading: true,
+        isFollowLoading: true,
         errors: null,
       };
     }
     case ArticleActionsTypes.UNFOLLOW_FROM_ARTICLE_AUTHOR_SUCCESS: {
       return {
         ...state,
-        isBtnLoading: false,
+        isFollowLoading: false,
         article: {
           ...state.article,
           author: {
@@ -142,21 +142,21 @@ export const articleReducers = (
     case ArticleActionsTypes.UNFOLLOW_FROM_ARTICLE_AUTHOR_FAIL: {
       return {
         ...state,
-        isBtnLoading: false,
+        isFollowLoading: false,
         errors: action.payload
       };
     }
     case ArticleActionsTypes.ADD_TO_FAVORITES: {
       return  {
         ...state,
-        isBtnLoading: true,
+        isFavoriteLoading: true,
         errors: null
       }
     }
     case ArticleActionsTypes.ADD_TO_FAVORITES_SUCCESS: {
       return  {
         ...state,
-        isBtnLoading: false,
+        isFavoriteLoading: false,
         article: {
           ...state.article,
           favorited: true,
@@ -167,21 +167,21 @@ export const articleReducers = (
     case ArticleActionsTypes.ADD_TO_FAVORITES_FAIL: {
       return  {
         ...state,
-        isBtnLoading: false,
+        isFavoriteLoading: false,
         errors: action.payload
       }
     }
     case ArticleActionsTypes.ADD_TO_FAVORITES_FAIL: {
       return  {
         ...state,
-        isBtnLoading: true,
+        isFavoriteLoading: true,
         errors: null
       }
     }
     case ArticleActionsTypes.REMOVE_FROM_FAVORITES_SUCCESS: {
       return  {
         ...state,
-        isBtnLoading: false,
+        isFavoriteLoading: false,
         article: {
           ...state.article,
           favorited: false,
@@ -192,7 +192,7 @@ export const articleReducers = (
     case ArticleActionsTypes.REMOVE_FROM_FAVORITES_FAIL: {
       return  {
         ...state,
-        isBtnLoading: true,
+        isFavoriteLoading: true,
         errors: null
       }
     }

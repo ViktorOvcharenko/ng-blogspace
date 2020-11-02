@@ -6,13 +6,18 @@
   vertical-align: top;
   margin-bottom: 0;
 
+  &.float-left {
+    float: left;
+    padding-left: 0;
+  }
+
   li {
     font-weight: 300;
     font-size: .8rem;
     padding-top: 0;
     padding-bottom: 0;
-    display: inline-block!important;
-    list-style: none!important;
+    display: inline-block;
+    list-style: none;
   }
 
   .tag-default {

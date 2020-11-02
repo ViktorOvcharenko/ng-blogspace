@@ -5,6 +5,7 @@
         <div *ngIf="article; else errorsRef">
             <app-article-banner
                 [isFollowLoading]="isFollowLoading"
+                [isFavoriteLoading]="isFavoriteLoading"
                 [article]="article"
                 [isSelf]="isSelf"
                 (onDeleteArticle)="deleteArticle($event)"
@@ -15,11 +16,15 @@
 
             <div class="container page">
                 <div *ngIf="article" class="row article-content">
-                    <div class="col-xs-12">
-                        <div>{{ articleBody }}</div>
-                        <app-tag-list [tagList]="tagList"></app-tag-list>
+                    <div class="col-md-12">
+                        <div class="article-content">{{ articleBody }}</div>
+                        <app-tag-list
+                            [tagList]="tagList"
+                            [isFloatLeft]="true"
+                        ></app-tag-list>
                     </div>
                 </div>
+                <hr>
             </div>
         </div>
 

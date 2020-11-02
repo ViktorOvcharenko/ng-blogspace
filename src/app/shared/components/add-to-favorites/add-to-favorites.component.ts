@@ -13,6 +13,7 @@ export class AddToFavoritesComponent {
   @Input() isArticle: boolean;
   @Input() favoritesCount: number;
   @Input() slug: string;
+  @Input() isFavoriteLoading: boolean;
   @Output() onHandleLike: EventEmitter<fromSharedModels.AddToFavorites> = new EventEmitter<fromSharedModels.AddToFavorites>();
 
   handleLike(): void {

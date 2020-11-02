@@ -10,4 +10,5 @@ import * as fromSharedModels from '../../models';
 })
 export class TagListComponent {
   @Input() tagList: fromSharedModels.Tag[];
+  @Input() isFloatLeft: boolean;
 }

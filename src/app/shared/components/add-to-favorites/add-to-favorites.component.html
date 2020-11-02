@@ -5,6 +5,7 @@
         'btn-outline-primary': !isFavorited,
         'article': isArticle
     }"
+    [disabled]="isFavoriteLoading"
     class="pull-xs-right btn btn-sm">
     <mat-icon class="mat-icon">favorite</mat-icon>
     <span *ngIf="isArticle" class="fovorite-text">

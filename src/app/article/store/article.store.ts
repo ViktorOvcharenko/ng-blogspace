@@ -2,7 +2,8 @@ import * as fromArticleModels from '../models';
 
 export const initialArticleState: fromArticleModels.ArticleState = {
   isLoading: false,
-  isBtnLoading: false,
+  isFollowLoading: false,
+  isFavoriteLoading: false,
   article: null,
   errors: null,
 };

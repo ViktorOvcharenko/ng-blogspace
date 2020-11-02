@@ -12,6 +12,7 @@ export class ArticleBannerComponent  {
   @Input() article: fromSharedModels.Article;
   @Input() isSelf: boolean;
   @Input() isFollowLoading: boolean;
+  @Input() isFavoriteLoading: boolean;
   @Output() onDeleteArticle: EventEmitter<string> = new EventEmitter<string>();
   @Output() onFollow: EventEmitter<string> = new EventEmitter<string>();
   @Output() onUnfollow: EventEmitter<string> = new EventEmitter<string>();
