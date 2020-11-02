@@ -3,12 +3,12 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
 import * as fromSharedModels from '../../../shared/models';
 
 @Component({
-  selector: 'app-article-banner',
-  templateUrl: './article-banner.component.html',
-  styleUrls: ['./article-banner.component.scss'],
+  selector: 'app-article-meta',
+  templateUrl: './article-meta.component.html',
+  styleUrls: ['./article-meta.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ArticleBannerComponent  {
+export class ArticleMetaComponent {
   @Input() article: fromSharedModels.Article;
   @Input() isSelf: boolean;
   @Input() isFollowLoading: boolean;
@@ -18,20 +18,40 @@ export class ArticleBannerComponent  {
   @Output() onUnfollow: EventEmitter<string> = new EventEmitter<string>();
   @Output() onHandleLike: EventEmitter<fromSharedModels.AddToFavorites> = new EventEmitter<fromSharedModels.AddToFavorites>();
 
-  get title(): string {
-    return this.article.title;
+  get username(): string {
+    return this.article.author.username;
   }
 
-  deleteArticle(event): void {
-    this.onDeleteArticle.emit(event);
+  get image(): string {
+    return this.article.author.image;
   }
 
-  follow(event): void {
-    this.onFollow.emit(event);
+  get slug(): string {
+    return this.article.slug;
   }
 
-  unfollow(event): void {
-    this.onUnfollow.emit(event);
+  get isFollow(): boolean {
+    return !this.article.author.following;
+  }
+
+  get isFavorited(): boolean {
+    return this.article.favorited;
+  }
+
+  get favoritesCount(): number {
+    return this.article.favoritesCount;
+  }
+
+  deleteArticle(): void {
+    this.onDeleteArticle.emit(this.slug);
+  }
+
+  follow(): void {
+    this.onFollow.emit(this.article.author.username);
+  }
+
+  unfollow(): void {
+    this.onUnfollow.emit(this.article.author.username);
   }
 
   handleLike(event: fromSharedModels.AddToFavorites): void {

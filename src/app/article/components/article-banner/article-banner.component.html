@@ -1,55 +1,15 @@
 <div class="banner">
     <div class="container page">
         <h1>{{ title }}</h1>
-        <div class="article-meta">
-            <a [routerLink]="['/profile', username]">
-                <img [src]="image">
-            </a>
-            <div class="info">
-                <a [routerLink]="['/profile', username]" class="author">{{ username }}</a>
-                <span class="date">{{ article.createdAt | date}}</span>
-            </div>
-            <span *ngIf="isSelf; else btnRef">
-                <a [routerLink]="['/article', slug, 'edit']" class="btn btn-outline-secondary btn-sm">
-                    <mat-icon class="mat-icon">create</mat-icon>
-                    {{ 'article.edit-article' | translate }}
-                </a>
-                <button
-                    (click)="deleteArticle()"
-                    class="btn btn-outline-danger btn-sm">
-                    <mat-icon class="mat-icon">delete</mat-icon>
-                    {{ 'article.delete-article' | translate }}
-                </button>
-            </span>
-
-            <ng-template #btnRef>
-                <button
-                    *ngIf="isFollow; else unfollowRef"
-                    (click)="follow()"
-                    [disabled]="isFollowLoading"
-                    class="btn btn-sm btn-outline-secondary action-btn">
-                    <mat-icon class="mat-icon">person_add_alt</mat-icon>
-                    {{ 'profile.follow' | translate }} {{ username }}
-                </button>
-
-                <ng-template #unfollowRef>
-                    <button
-                        (click)="unfollow()"
-                        [disabled]="isFollowLoading"
-                        class="btn btn-sm btn-outline-secondary action-btn">
-                        <mat-icon class="mat-icon">person_remove</mat-icon>
-                        {{ 'profile.unfollow' | translate }} {{ username }}
-                    </button>
-                </ng-template>
-                <app-add-to-favorites
-                  [isFavorited]="isFavorited"
-                  [isArticle]="true"
-                  [favoritesCount]="favoritesCount"
-                  [slug]="slug"
-                  [isFavoriteLoading]="isFavoriteLoading"
-                  (onHandleLike)="handleLike($event)"
-                ></app-add-to-favorites>
-            </ng-template>
-        </div>
+        <app-article-meta
+            [isFollowLoading]="isFollowLoading"
+            [isFavoriteLoading]="isFavoriteLoading"
+            [article]="article"
+            [isSelf]="isSelf"
+            (onDeleteArticle)="deleteArticle($event)"
+            (onFollow)="follow($event)"
+            (onUnfollow)="unfollow($event)"
+            (onHandleLike)="handleLike($event)"
+        ></app-article-meta>
     </div>
 </div>

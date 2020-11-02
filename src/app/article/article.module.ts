@@ -21,6 +21,7 @@ import * as fromArticleServices from './services';
     fromComponents.ArticleBannerComponent,
     fromComponents.ArticleFormComponent,
     fromComponents.ArticleFormTagListComponent,
+    fromComponents.ArticleMetaComponent,
   ],
   imports: [
     CommonModule,
