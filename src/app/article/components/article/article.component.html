@@ -25,6 +25,18 @@
                     </div>
                 </div>
                 <hr>
+                <div class="article-actions">
+                    <app-article-meta
+                        [isFollowLoading]="isFollowLoading"
+                        [isFavoriteLoading]="isFavoriteLoading"
+                        [article]="article"
+                        [isSelf]="isSelf"
+                        (onDeleteArticle)="deleteArticle($event)"
+                        (onFollow)="follow($event)"
+                        (onUnfollow)="unfollow($event)"
+                        (onHandleLike)="handleLike($event)"
+                    ></app-article-meta>
+                </div>
             </div>
         </div>
 
