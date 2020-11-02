@@ -19,6 +19,7 @@ import * as fromArticleServices from './services';
     fromContainers.ArticleNewComponent,
     fromComponents.ArticleComponent,
     fromComponents.ArticleBannerComponent,
+    fromComponents.ArticleCommentComponent,
     fromComponents.ArticleFormComponent,
     fromComponents.ArticleFormTagListComponent,
     fromComponents.ArticleMetaComponent,
