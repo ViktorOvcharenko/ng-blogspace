@@ -24,17 +24,21 @@ import { getCurrentUser } from '../../../auth/store/auth.selectors';
 
 import * as fromSharedModels from '../../../shared/models';
 import * as fromSharedComponents from '../../../shared/components';
+import {getComments, getCommentsErrors, getCommentsIsLoading} from '../../store/comments.selectors';
 
 @Component({
   selector: 'app-article-container',
   templateUrl: './article.component.html',
 })
 export class ArticleComponent implements OnInit {
-  isLoading$: Observable<boolean>;
+  isArticleLoading$: Observable<boolean>;
   isFollowLoading$: Observable<boolean>;
   isFavoriteLoading$: Observable<boolean>;
+  isCommentsLoading$: Observable<boolean>;
   article$: Observable<fromSharedModels.Article>;
-  errors$: Observable<fromSharedModels.BackendErrors>;
+  comments$: Observable<fromSharedModels.Comment[]>;
+  articleErrors$: Observable<fromSharedModels.BackendErrors>;
+  commentsErrors$: Observable<fromSharedModels.BackendErrors>;
   isSelf$: Observable<boolean>;
   currentUser$: Observable<fromSharedModels.CurrentUser>;
   dialogRef: MatDialogRef<fromSharedComponents.ConfirmDialogComponent>;
@@ -45,11 +49,14 @@ export class ArticleComponent implements OnInit {
     private route: ActivatedRoute,
     private dialog: MatDialog,
   ) {
-    this.isLoading$ = this.store.pipe(select(getArticleIsLoading));
+    this.isArticleLoading$ = this.store.pipe(select(getArticleIsLoading));
     this.isFollowLoading$ = this.store.pipe(select(getArticleIsFollowLoading));
     this.isFavoriteLoading$ = this.store.pipe(select(getArticleIsFavoriteLoading));
+    this.isCommentsLoading$ = this.store.pipe(select(getCommentsIsLoading));
     this.article$ = this.store.pipe(select(getArticle));
-    this.errors$ = this.store.pipe(select(getArticleErrors));
+    this.comments$ = this.store.pipe(select(getComments));
+    this.articleErrors$ = this.store.pipe(select(getArticleErrors));
+    this.commentsErrors$ = this.store.pipe(select(getCommentsErrors));
     this.currentUser$ = this.store.pipe(select(getCurrentUser));
     this.isSelf$ = combineLatest(this.article$, this.currentUser$)
       .pipe(
