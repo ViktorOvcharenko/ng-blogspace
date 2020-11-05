@@ -44,6 +44,7 @@ export class GetArticleFail implements Action {
   public readonly type = ArticleActionsTypes.GET_ARTICLE_FAIL;
   constructor(public payload: fromSharedModels.BackendErrors) { }
 }
+
 export class DeleteArticle implements Action {
   public readonly type = ArticleActionsTypes.DELETE_ARTICLE;
   constructor(public payload: string) { }

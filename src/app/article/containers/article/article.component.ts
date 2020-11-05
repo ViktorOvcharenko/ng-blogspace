@@ -12,6 +12,7 @@ import {
   RemoveFromFavorites,
   UnfollowArticleAuthor,
 } from '../../store/article.actions';
+import { GetComments } from '../../store/comments.actions';
 import {
   getArticle,
   getArticleErrors,
@@ -62,7 +63,7 @@ export class ArticleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fetchArticle();
+    this.fetchData();
   }
 
   ngOnDestroy(): void {
@@ -70,11 +71,12 @@ export class ArticleComponent implements OnInit {
     this.destroy$.complete();
   }
 
-  fetchArticle(): void {
+  fetchData(): void {
     this.route.params
       .pipe(takeUntil(this.destroy$))
       .subscribe((params: Params) => {
         this.store.dispatch(new GetArticle(params.slug))
+        this.store.dispatch(new GetComments(params.slug))
       });
   }
 

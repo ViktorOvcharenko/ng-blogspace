@@ -7,6 +7,7 @@ import { StoreModule } from '@ngrx/store';
 
 import { articleReducers } from './store/article.reducers';
 import { ArticleEffects } from './store/article.effects';
+import { CommentsEffects } from './store/comments.effects';
 
 import * as fromContainers from './containers';
 import * as fromComponents from './components';
@@ -29,10 +30,11 @@ import * as fromArticleServices from './services';
     ArticleRoutingModule,
     SharedModule,
     StoreModule.forFeature('article', articleReducers),
-    EffectsModule.forFeature([ArticleEffects]),
+    EffectsModule.forFeature([ArticleEffects, CommentsEffects]),
   ],
   providers: [
     fromArticleServices.ArticleService,
+    fromArticleServices.CommentsService,
   ]
 })
 export class ArticleModule { }

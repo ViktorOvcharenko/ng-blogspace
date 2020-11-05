@@ -2,6 +2,7 @@ export { AddToFavorites } from './add-to-favorites.interface';
 export { AppState } from './app-state.interface';
 export { Article } from './article.interface';
 export { BackendErrors } from './backend-errors.interface';
+export { Comment } from './comment.interface';
 export { ConfirmData } from './confirm-data.interface';
 export { CurrentUser } from './current-user.interface';
 export { PaginationParams } from './pagination-params.interface';
