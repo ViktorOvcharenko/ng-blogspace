@@ -23,7 +23,7 @@ export class GetCommentsFail implements Action {
   constructor(public payload: fromSharedModels.BackendErrors) { }
 }
 
-export type CommentsType =
+export type CommentsActions =
   GetComments |
   GetCommentsSuccess |
   GetCommentsFail;

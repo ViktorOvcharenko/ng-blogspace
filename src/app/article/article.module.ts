@@ -6,6 +6,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
 import { articleReducers } from './store/article.reducers';
+import { commentsReducers } from './store/comments.reducers';
 import { ArticleEffects } from './store/article.effects';
 import { CommentsEffects } from './store/comments.effects';
 
@@ -30,6 +31,7 @@ import * as fromArticleServices from './services';
     ArticleRoutingModule,
     SharedModule,
     StoreModule.forFeature('article', articleReducers),
+    StoreModule.forFeature('comments', commentsReducers),
     EffectsModule.forFeature([ArticleEffects, CommentsEffects]),
   ],
   providers: [

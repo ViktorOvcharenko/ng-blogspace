@@ -1,5 +1,5 @@
-import {initialArticleState} from './article.store';
-import {ArticleActions, ArticleActionsTypes} from './article.actions';
+import { initialArticleState } from './article.store';
+import { ArticleActions, ArticleActionsTypes } from './article.actions';
 
 import * as fromArticleModels from '../models';
 

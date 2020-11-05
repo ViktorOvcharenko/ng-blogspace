@@ -5,8 +5,9 @@ import * as fromAProfileModels from '../../profile/models';
 
 export interface AppState {
   auth: fromAuthModels.AuthState;
+  article: fromArticleModels.ArticleState;
+  comments: fromArticleModels.CommentsState;
   feed: fromFeedModels.FeedState;
   popularTags: fromFeedModels.PopularTagsState;
-  article: fromArticleModels.ArticleState;
   profile: fromAProfileModels.ProfileState;
 }
