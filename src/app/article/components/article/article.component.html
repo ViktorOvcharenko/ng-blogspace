@@ -42,7 +42,8 @@
                         <app-loader *ngIf="isCommentsLoading; else commentsRef"></app-loader>
 
                         <ng-template #commentsRef>
-                            COMMENT FORM IS COMING SOON :)
+                            <app-article-comment-form
+                            ></app-article-comment-form>
                             <app-article-comment
                                 *ngFor="let comment of comments"
                                 [isLoading]="isCommentsLoading"

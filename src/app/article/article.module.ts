@@ -22,6 +22,7 @@ import * as fromArticleServices from './services';
     fromComponents.ArticleComponent,
     fromComponents.ArticleBannerComponent,
     fromComponents.ArticleCommentComponent,
+    fromComponents.ArticleCommentFormComponent,
     fromComponents.ArticleFormComponent,
     fromComponents.ArticleFormTagListComponent,
     fromComponents.ArticleMetaComponent,
