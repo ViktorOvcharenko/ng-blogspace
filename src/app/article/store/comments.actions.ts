@@ -34,7 +34,7 @@ export class DeleteComment implements Action {
 
 export class DeleteCommentSuccess implements Action {
   public readonly type = CommentsActionTypes.DELETE_COMMENT_SUCCESS;
-  constructor(public payload: string) { }
+  constructor(public payload: number) { }
 }
 
 export class DeleteCommentFail implements Action {

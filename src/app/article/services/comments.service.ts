@@ -16,4 +16,11 @@ export class CommentsService {
       .get<fromArticleModels.CommentsResponse>(`${environment.apiUrl}/articles/${slug}/comments`)
       .pipe(map(response => response.comments));
   }
+
+  deleteComment(request: fromArticleModels.CommentDeleteRequest): Observable<number> {
+    const { slug, id } = request;
+    return this.http
+      .delete<void>(`${environment.apiUrl}/articles/${slug}/comments/${id}`)
+      .pipe(map(() => id));
+  }
 }

@@ -4,7 +4,7 @@ import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import {
-  CommentsActionTypes,
+  CommentsActionTypes, DeleteComment, DeleteCommentFail, DeleteCommentSuccess,
   GetComments,
   GetCommentsFail,
   GetCommentsSuccess
@@ -24,6 +24,17 @@ export class CommentsEffects {
     catchError((errorResponse: HttpErrorResponse) => {
       const error: fromSharedModels.BackendErrors = { message: errorResponse.error.error };
       return of(new GetCommentsFail(error));
+    })
+  );
+
+  @Effect()
+  deleteComment$: Observable<Action> = this.actions$.pipe(
+    ofType<DeleteComment>(CommentsActionTypes.DELETE_COMMENT),
+    switchMap(({payload}) => this.commentsService.deleteComment(payload)),
+    switchMap((id: number) => of(new DeleteCommentSuccess(id))),
+    catchError((errorResponse: HttpErrorResponse) => {
+      const error: fromSharedModels.BackendErrors = { message: errorResponse.error.error };
+      return of(new DeleteCommentFail(error));
     })
   );
 

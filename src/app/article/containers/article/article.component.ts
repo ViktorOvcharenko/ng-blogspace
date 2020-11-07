@@ -133,6 +133,6 @@ export class ArticleComponent implements OnInit {
   }
 
   deleteComment(event: fromArticleModels.CommentDeleteRequest): void {
-    this.store.dispatch(new DeleteComment(event))
+    this.store.dispatch(new DeleteComment(event));
   }
 }

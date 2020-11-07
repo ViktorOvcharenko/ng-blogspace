@@ -29,6 +29,25 @@ export const commentsReducers = (
         errors: action.payload,
       };
     }
+    case CommentsActionTypes.DELETE_COMMENT: {
+      return {
+        ...state,
+        errors: null,
+      };
+    }
+    case CommentsActionTypes.DELETE_COMMENT_SUCCESS: {
+      const updatedComments = state.comments.filter(comment => comment.id !== action.payload);
+      return {
+        ...state,
+        comments: updatedComments,
+      };
+    }
+    case CommentsActionTypes.DELETE_COMMENT_FAIL: {
+      return {
+        ...state,
+        errors: action.payload,
+      };
+    }
     default:
       return state;
   }
