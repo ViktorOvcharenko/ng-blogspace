@@ -12,7 +12,7 @@ import {
   RemoveFromFavorites,
   UnfollowArticleAuthor,
 } from '../../store/article.actions';
-import { GetComments } from '../../store/comments.actions';
+import { DeleteComment, GetComments } from '../../store/comments.actions';
 import {
   getArticle,
   getArticleErrors,
@@ -21,10 +21,15 @@ import {
   getArticleIsLoading,
 } from '../../store/article.selectors';
 import { getCurrentUser } from '../../../auth/store/auth.selectors';
+import {
+  getComments,
+  getCommentsErrors,
+  getCommentsIsLoading
+} from '../../store/comments.selectors';
 
+import * as fromArticleModels from '../../models';
 import * as fromSharedModels from '../../../shared/models';
 import * as fromSharedComponents from '../../../shared/components';
-import {getComments, getCommentsErrors, getCommentsIsLoading} from '../../store/comments.selectors';
 
 @Component({
   selector: 'app-article-container',
@@ -125,5 +130,9 @@ export class ArticleComponent implements OnInit {
     } else {
       this.store.dispatch(new AddToFavorites(event.slug));
     }
+  }
+
+  deleteComment(event: fromArticleModels.CommentDeleteRequest): void {
+    this.store.dispatch(new DeleteComment(event))
   }
 }

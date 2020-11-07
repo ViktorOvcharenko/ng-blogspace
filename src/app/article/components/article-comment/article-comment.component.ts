@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 import * as fromSharedModels from '../../../shared/models';
 
@@ -11,6 +11,7 @@ import * as fromSharedModels from '../../../shared/models';
 export class ArticleCommentComponent {
   @Input() isLoading: boolean;
   @Input() comment: fromSharedModels.Comment;
+  @Output() onDeleteComment: EventEmitter<number> = new EventEmitter<number>();
 
   get body(): string {
     return this.comment.body;
@@ -26,5 +27,13 @@ export class ArticleCommentComponent {
 
   get createdAt(): string {
     return this.comment.createdAt;
+  }
+
+  get commentId(): number {
+    return this.comment.id;
+  }
+
+  deleteComment(id: number): void {
+    this.onDeleteComment.emit(id);
   }
 }

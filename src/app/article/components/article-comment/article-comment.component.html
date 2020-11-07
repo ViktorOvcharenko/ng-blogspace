@@ -12,7 +12,7 @@
             <span class="date-posted">{{ createdAt | date: 'longDate' }}</span>
         </div>
         <span class="mod-options">
-            <mat-icon class="mat-icon">delete</mat-icon>
+            <mat-icon (click)="deleteComment(commentId)" class="mat-icon">delete</mat-icon>
         </span>
     </div>
 </div>

@@ -47,6 +47,7 @@
                                 *ngFor="let comment of comments"
                                 [isLoading]="isCommentsLoading"
                                 [comment]="comment"
+                                (onDeleteComment)="deleteComment($event)"
                             ></app-article-comment>
                         </ng-template>
                     </div>

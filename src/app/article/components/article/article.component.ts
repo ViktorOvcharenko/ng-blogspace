@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
+import * as fromArticleModels from '../../models';
 import * as fromSharedModels from '../../../shared/models';
 
 @Component({
@@ -21,6 +22,7 @@ export class ArticleComponent  {
   @Output() onFollow: EventEmitter<string> = new EventEmitter<string>();
   @Output() onUnfollow: EventEmitter<string> = new EventEmitter<string>();
   @Output() onHandleLike: EventEmitter<fromSharedModels.AddToFavorites> = new EventEmitter<fromSharedModels.AddToFavorites>();
+  @Output() onDeleteComment: EventEmitter<fromArticleModels.CommentDeleteRequest> = new EventEmitter<fromArticleModels.CommentDeleteRequest>();
 
   get articleBody(): string {
     return this.article.body;
@@ -44,5 +46,13 @@ export class ArticleComponent  {
 
   handleLike(event: fromSharedModels.AddToFavorites): void {
     this.onHandleLike.emit(event);
+  }
+
+  deleteComment(event: number): void {
+    const commentDeleteRequest: fromArticleModels.CommentDeleteRequest = {
+      slug: this.article.slug,
+      id: event
+    };
+    this.onDeleteComment.emit(commentDeleteRequest);
   }
 }
