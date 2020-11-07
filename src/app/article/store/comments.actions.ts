@@ -6,6 +6,9 @@ export enum CommentsActionTypes {
   GET_COMMENTS = '[Comments] Get comments',
   GET_COMMENTS_SUCCESS = '[Comments] Get comments success',
   GET_COMMENTS_FAIL = '[Comments] Get comments fail',
+  DELETE_COMMENTS = '[Comments] Delete comment',
+  DELETE_COMMENTS_SUCCESS = '[Comments] Delete comment success',
+  DELETE_COMMENTS_FAIL = '[Comments] Delete comment fail',
 }
 
 export class GetComments implements Action {

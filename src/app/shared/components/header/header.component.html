@@ -31,12 +31,12 @@
             <ng-container *ngIf="isAnonymous$ | async">
                 <li class="nav-item">
                     <a [routerLink]="['/auth', 'login']" class="nav-link">
-                      {{ 'auth.sign-in' | translate }}
+                        {{ 'auth.sign-in' | translate }}
                     </a>
                 </li>
                 <li class="nav-item">
                     <a [routerLink]="['/auth', 'registration']" class="nav-link">
-                      {{ 'auth.sign-up' | translate }}
+                        {{ 'auth.sign-up' | translate }}
                     </a>
                 </li>
             </ng-container>

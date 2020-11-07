@@ -39,10 +39,16 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12 col-md-8 offset-md-2">
-                        COMMENT FORM IS COMING SOON :)
-                      <app-article-comment
-                          *ngFor="let comment of comments"
-                      ></app-article-comment>
+                        <app-loader *ngIf="isCommentsLoading; else commentsRef"></app-loader>
+
+                        <ng-template #commentsRef>
+                            COMMENT FORM IS COMING SOON :)
+                            <app-article-comment
+                                *ngFor="let comment of comments"
+                                [isLoading]="isCommentsLoading"
+                                [comment]="comment"
+                            ></app-article-comment>
+                        </ng-template>
                     </div>
                 </div>
             </div>

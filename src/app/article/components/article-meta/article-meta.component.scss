@@ -23,7 +23,12 @@
     .author {
       color: $color-white;
       display: block;
-      font-weight: 500!important;
+      font-weight: 500;
+      text-decoration: none;
+
+      &:hover {
+        color: $color-grey-border-light
+      }
     }
 
     .date {
