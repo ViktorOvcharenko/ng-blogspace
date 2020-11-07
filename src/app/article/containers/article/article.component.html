@@ -1,9 +1,11 @@
 <app-article
-    [isLoading]="isArticleLoading$ | async"
+    [isArticleLoading]="isArticleLoading$ | async"
+    [isCommentsLoading]="isCommentsLoading$ | async"
     [isFollowLoading]="isFollowLoading$ | async"
     [isFavoriteLoading]="isFavoriteLoading$ | async"
     [article]="article$ | async"
-    [errors]="(articleErrors$ | async)"
+    [comments]="comments$ | async"
+    [errors]="(articleErrors$ | async) || (commentsErrors$ | async)"
     [isSelf]="isSelf$ | async"
     (onDeleteArticle)="confirmDeleteArticle($event)"
     (onFollow)="follow($event)"

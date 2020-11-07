@@ -1,5 +1,5 @@
 <div class="article-page">
-    <app-loader *ngIf="isLoading; else articleRef"></app-loader>
+    <app-loader *ngIf="isArticleLoading; else articleRef"></app-loader>
 
     <ng-template #articleRef>
         <div *ngIf="article; else errorsRef">
@@ -41,8 +41,7 @@
                     <div class="col-xs-12 col-md-8 offset-md-2">
                         COMMENT FORM IS COMING SOON :)
                       <app-article-comment
-                      ></app-article-comment>
-                      <app-article-comment
+                          *ngFor="let comment of comments"
                       ></app-article-comment>
                     </div>
                 </div>

@@ -9,10 +9,12 @@ import * as fromSharedModels from '../../../shared/models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArticleComponent  {
-  @Input() isLoading: boolean;
+  @Input() isArticleLoading: boolean;
+  @Input() isCommentsLoading: boolean;
   @Input() isFollowLoading: boolean;
   @Input() isFavoriteLoading: boolean;
   @Input() article: fromSharedModels.Article;
+  @Input() comments: fromSharedModels.Comment[];
   @Input() errors: fromSharedModels.BackendErrors;
   @Input() isSelf: boolean;
   @Output() onDeleteArticle: EventEmitter<string> = new EventEmitter<string>();

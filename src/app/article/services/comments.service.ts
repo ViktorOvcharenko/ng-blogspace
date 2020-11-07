@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 
+import * as fromArticleModels from '../models';
 import * as fromSharedModels from '../../shared/models';
 
 @Injectable()
@@ -11,6 +13,7 @@ export class CommentsService {
 
   getComments(slug: string): Observable<fromSharedModels.Comment[]> {
     return this.http
-      .get<fromSharedModels.Comment[]>(`${environment.apiUrl}/articles/${slug}/comments`);
+      .get<fromArticleModels.CommentsResponse>(`${environment.apiUrl}/articles/${slug}/comments`)
+      .pipe(map(response => response.comments));
   }
 }
