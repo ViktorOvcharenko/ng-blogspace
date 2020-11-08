@@ -29,6 +29,25 @@ export const commentsReducers = (
         errors: action.payload,
       };
     }
+    case CommentsActionTypes.CREATE_COMMENT: {
+      return {
+        ...state,
+        errors: null,
+      };
+    }
+    case CommentsActionTypes.CREATE_COMMENT_SUCCESS: {
+      const commentsAfterCreate = [ action.payload, ...state.comments];
+      return {
+        ...state,
+        comments: commentsAfterCreate,
+      };
+    }
+    case CommentsActionTypes.CREATE_COMMENT_FAIL: {
+      return {
+        ...state,
+        errors: action.payload,
+      };
+    }
     case CommentsActionTypes.DELETE_COMMENT: {
       return {
         ...state,
@@ -36,10 +55,10 @@ export const commentsReducers = (
       };
     }
     case CommentsActionTypes.DELETE_COMMENT_SUCCESS: {
-      const updatedComments = state.comments.filter(comment => comment.id !== action.payload);
+      const commentsAfterRemove = state.comments.filter(comment => comment.id !== action.payload);
       return {
         ...state,
-        comments: updatedComments,
+        comments: commentsAfterRemove,
       };
     }
     case CommentsActionTypes.DELETE_COMMENT_FAIL: {
