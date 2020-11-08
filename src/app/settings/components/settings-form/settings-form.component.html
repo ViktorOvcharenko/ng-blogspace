@@ -59,12 +59,20 @@
                     </fieldset>
                 </form>
                 <hr>
-                <button
-                    (click)="logout()"
-                    class="btn btn-outline-danger"
-                    type="text">
-                    {{ 'settings.or-click-here-logout' | translate }}
-                </button>
+                <fieldset class="form-group">
+                    <h4>{{'settings.choose-your-language'| translate }}</h4>
+                    <select (change)="selectLang()" class="form-control" #selectLangRef>
+                        <option *ngFor="let lang of languages" [value]="lang">{{ lang }}</option>
+                    </select>
+                </fieldset>
+                <div class="logout-btn-container">
+                    <button
+                      (click)="logout()"
+                      class="btn btn-outline-danger"
+                      type="text">
+                      {{ 'settings.or-click-here-logout' | translate }}
+                    </button>
+                </div>
             </div>
         </div>
     </div>

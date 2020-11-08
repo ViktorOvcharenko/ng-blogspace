@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import * as fromSharedModels from '../../../shared/models';
@@ -14,8 +14,11 @@ export class SettingsFormComponent implements OnInit{
   @Input() isLoading: boolean;
   @Input() currentUser: fromSharedModels.CurrentUser;
   @Input() errors: fromSharedModels.BackendErrors;
+  @Input() languages: string[];
   @Output() onSubmit: EventEmitter<fromSettingsModels.CurrentUserRequest> = new EventEmitter<fromSettingsModels.CurrentUserRequest>();
   @Output() onLogout: EventEmitter<void> = new EventEmitter<void>();
+  @Output() onSelectLang: EventEmitter<string> = new EventEmitter<string>();
+  @ViewChild('selectLangRef') selectLangRef: ElementRef;
 
   constructor(private fb: FormBuilder) { }
 
@@ -48,5 +51,11 @@ export class SettingsFormComponent implements OnInit{
 
   logout(): void {
     this.onLogout.emit();
+  }
+
+
+  selectLang() {
+    const value = this.selectLangRef.nativeElement.value;
+    this.onSelectLang.emit(value);
   }
 }

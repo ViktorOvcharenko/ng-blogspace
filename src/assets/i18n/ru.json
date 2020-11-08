@@ -6,7 +6,8 @@
     "read-more": "Подробнее...",
     "favorite-article": "Любимая статья",
     "unfavorite-article": "Удалить из избранного",
-    "post-comment": "Комментировать"
+    "post-comment": "Комментировать",
+    "choose-your-language": "Выберите предпочитаемый язык приложения:"
   },
   "auth": {
     "sign-up": "Зарегистрироваться",

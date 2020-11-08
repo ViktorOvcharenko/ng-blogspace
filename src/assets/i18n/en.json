@@ -33,7 +33,8 @@
   "settings": {
     "your-settings": "Your settings",
     "or-click-here-logout": "Or click here to logout",
-    "update-settings": "Update settings"
+    "update-settings": "Update settings",
+    "choose-your-language": "Choose your preferred application language:"
   },
   "shared": {
     "popular-tags": "Popular tags",

@@ -5,8 +5,10 @@
         [isLoading]="isLoading$ | async"
         [currentUser]="currentUser$ | async"
         [errors]="validationErrors$ | async"
+        [languages]="languages"
         (onSubmit)="updateCurrentUser($event)"
         (onLogout)="logout()"
+        (onSelectLang)="selectLang($event)"
     ></app-settings-form>
 </ng-template>
 

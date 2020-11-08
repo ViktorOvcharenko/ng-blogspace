@@ -10,6 +10,7 @@ import {
 
 import * as fromSharedModels from '../../../shared/models';
 import * as fromSettingsModels from '../../models';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-settings-container',
@@ -19,8 +20,12 @@ export class SettingsComponent {
   isLoading$: Observable<boolean>;
   currentUser$: Observable<fromSharedModels.CurrentUser>;
   validationErrors$: Observable<fromSharedModels.BackendErrors>;
+  languages: string[] = ['english', 'russian'];
 
-  constructor(private store: Store) {
+  constructor(
+    private store: Store,
+    private translateService: TranslateService,
+  ) {
     this.isLoading$ = this.store.pipe(select(getIsAuthLoading));
     this.currentUser$ = this.store.pipe(select(getCurrentUser));
     this.validationErrors$ = this.store.pipe(select(getValidationErrors));
@@ -32,5 +37,9 @@ export class SettingsComponent {
 
   logout(): void {
     this.store.dispatch(new Logout());
+  }
+
+  selectLang(event: string) {
+    this.translateService.setDefaultLang('ru');
   }
 }

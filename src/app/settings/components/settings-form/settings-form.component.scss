@@ -8,6 +8,12 @@
     text-align: center;
   }
 
+  h4, select {
+    font-size: 1.25rem;
+    color: $color-black;
+    padding: 0.5rem 1rem;
+  }
+
   .submit-container {
     display: flex;
     justify-content: flex-end;
@@ -16,5 +22,9 @@
       background-color: $color-theme;
       border-color: $color-theme;
     }
+  }
+
+  .logout-btn-container {
+    padding-bottom: 1rem;
   }
 }
