@@ -17,6 +17,13 @@ export class CommentsService {
       .pipe(map(response => response.comments));
   }
 
+  createComment(request: fromArticleModels.CommentCreateRequest): Observable<fromSharedModels.Comment> {
+    const { slug, body } = request;
+    return this.http
+      .post<fromArticleModels.CommentCreateResponse>(`${environment.apiUrl}/articles/${slug}/comments`, { comment: { body } })
+      .pipe(map(response => response.comment));
+  }
+
   deleteComment(request: fromArticleModels.CommentDeleteRequest): Observable<number> {
     const { slug, id } = request;
     return this.http

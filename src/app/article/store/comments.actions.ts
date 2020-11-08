@@ -32,7 +32,7 @@ export class GetCommentsFail implements Action {
 
 export class CreateComment implements Action {
   readonly type = CommentsActionTypes.CREATE_COMMENT;
-  constructor(public payload: string) { }
+  constructor(public payload: fromArticleModels.CommentCreateRequest) { }
 }
 
 export class CreateCommentSuccess implements Action {

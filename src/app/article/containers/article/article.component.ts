@@ -136,7 +136,7 @@ export class ArticleComponent implements OnInit {
     this.store.dispatch(new DeleteComment(event));
   }
 
-  createComment(event: string): void {
+  createComment(event: fromArticleModels.CommentCreateRequest): void {
     this.store.dispatch(new CreateComment(event));
   }
 }
