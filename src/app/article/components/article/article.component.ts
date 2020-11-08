@@ -24,7 +24,7 @@ export class ArticleComponent  {
   @Output() onUnfollow: EventEmitter<string> = new EventEmitter<string>();
   @Output() onHandleLike: EventEmitter<fromSharedModels.AddToFavorites> = new EventEmitter<fromSharedModels.AddToFavorites>();
   @Output() onDeleteComment: EventEmitter<fromArticleModels.CommentDeleteRequest> = new EventEmitter<fromArticleModels.CommentDeleteRequest>();
-  @Output() onAddComment: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onCreateComment: EventEmitter<string> = new EventEmitter<string>();
 
   get articleBody(): string {
     return this.article.body;
@@ -58,7 +58,7 @@ export class ArticleComponent  {
     this.onDeleteComment.emit(commentDeleteRequest);
   }
 
-  addComment(event: string):void {
-    this.onAddComment.emit(event);
+  createComment(event: string):void {
+    this.onCreateComment.emit(event);
   }
 }

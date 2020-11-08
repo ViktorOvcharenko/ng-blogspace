@@ -12,7 +12,7 @@ import * as fromSharedModels from '../../../shared/models';
 export class ArticleCommentFormComponent implements OnInit {
   form: FormGroup;
   @Input() currentUser: fromSharedModels.CurrentUser;
-  @Output() onAddComment: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onCreateComment: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(private fb: FormBuilder) { }
 
@@ -32,7 +32,7 @@ export class ArticleCommentFormComponent implements OnInit {
 
   submit(): void {
     const commentBody = this.form.get('body').value;
-    this.onAddComment.emit(commentBody);
+    this.onCreateComment.emit(commentBody);
     this.form.reset();
   }
 }

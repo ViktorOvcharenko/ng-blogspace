@@ -12,7 +12,7 @@ import {
   RemoveFromFavorites,
   UnfollowArticleAuthor,
 } from '../../store/article.actions';
-import { DeleteComment, GetComments } from '../../store/comments.actions';
+import {CreateComment, DeleteComment, GetComments} from '../../store/comments.actions';
 import {
   getArticle,
   getArticleErrors,
@@ -136,7 +136,7 @@ export class ArticleComponent implements OnInit {
     this.store.dispatch(new DeleteComment(event));
   }
 
-  addComment(event: string): void {
-    console.log(1111, event)
+  createComment(event: string): void {
+    this.store.dispatch(new CreateComment(event));
   }
 }
