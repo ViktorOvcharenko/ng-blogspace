@@ -5,7 +5,8 @@
     "publish-article": "Опубликовать статью",
     "read-more": "Подробнее...",
     "favorite-article": "Любимая статья",
-    "unfavorite-article": "Удалить из избранного"
+    "unfavorite-article": "Удалить из избранного",
+    "post-comment": "Комментировать"
   },
   "auth": {
     "sign-up": "Зарегистрироваться",

@@ -43,6 +43,8 @@
 
                         <ng-template #commentsRef>
                             <app-article-comment-form
+                                [currentUser]="currentUser"
+                                (onAddComment)="addComment($event)"
                             ></app-article-comment-form>
                             <app-article-comment
                                 *ngFor="let comment of comments"

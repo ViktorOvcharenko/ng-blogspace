@@ -7,9 +7,11 @@
     [comments]="comments$ | async"
     [errors]="(articleErrors$ | async) || (commentsErrors$ | async)"
     [isSelf]="isSelf$ | async"
+    [currentUser]="currentUser$ | async"
     (onDeleteArticle)="confirmDeleteArticle($event)"
     (onFollow)="follow($event)"
     (onUnfollow)="unfollow($event)"
     (onHandleLike)="handleLike($event)"
     (onDeleteComment)="deleteComment($event)"
+    (onAddComment)="addComment($event)"
 ></app-article>

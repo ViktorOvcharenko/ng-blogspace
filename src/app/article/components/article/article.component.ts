@@ -18,11 +18,13 @@ export class ArticleComponent  {
   @Input() comments: fromSharedModels.Comment[];
   @Input() errors: fromSharedModels.BackendErrors;
   @Input() isSelf: boolean;
+  @Input() currentUser: fromSharedModels.CurrentUser;
   @Output() onDeleteArticle: EventEmitter<string> = new EventEmitter<string>();
   @Output() onFollow: EventEmitter<string> = new EventEmitter<string>();
   @Output() onUnfollow: EventEmitter<string> = new EventEmitter<string>();
   @Output() onHandleLike: EventEmitter<fromSharedModels.AddToFavorites> = new EventEmitter<fromSharedModels.AddToFavorites>();
   @Output() onDeleteComment: EventEmitter<fromArticleModels.CommentDeleteRequest> = new EventEmitter<fromArticleModels.CommentDeleteRequest>();
+  @Output() onAddComment: EventEmitter<string> = new EventEmitter<string>();
 
   get articleBody(): string {
     return this.article.body;
@@ -54,5 +56,9 @@ export class ArticleComponent  {
       id: event
     };
     this.onDeleteComment.emit(commentDeleteRequest);
+  }
+
+  addComment(event: string):void {
+    this.onAddComment.emit(event);
   }
 }

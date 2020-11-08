@@ -5,7 +5,8 @@
     "publish-article": "Publish article",
     "read-more": "Read more...",
     "favorite-article": "Favorite article",
-    "unfavorite-article": "Unfavorite article"
+    "unfavorite-article": "Unfavorite article",
+    "post-comment": "Post Comment"
   },
   "auth": {
     "sign-up": "Sign up",
