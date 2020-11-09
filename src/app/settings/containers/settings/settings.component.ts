@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { select, Store } from '@ngrx/store';
-import { Logout, UpdateCurrentUser } from '../../../auth/store/auth.actions';
+import {
+  Logout,
+  SetCurrentLanguage,
+  UpdateCurrentUser
+} from '../../../auth/store/auth.actions';
 import {
   getCurrentUser,
   getIsAuthLoading,
@@ -10,7 +14,6 @@ import {
 
 import * as fromSharedModels from '../../../shared/models';
 import * as fromSettingsModels from '../../models';
-import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-settings-container',
@@ -20,12 +23,12 @@ export class SettingsComponent {
   isLoading$: Observable<boolean>;
   currentUser$: Observable<fromSharedModels.CurrentUser>;
   validationErrors$: Observable<fromSharedModels.BackendErrors>;
-  languages: string[] = ['english', 'russian'];
+  languages: fromSettingsModels.Language[] = [
+    { title: 'settings.english', value: 'en' },
+    { title: 'settings.russian', value: 'ru' },
+  ];
 
-  constructor(
-    private store: Store,
-    private translateService: TranslateService,
-  ) {
+  constructor(private store: Store) {
     this.isLoading$ = this.store.pipe(select(getIsAuthLoading));
     this.currentUser$ = this.store.pipe(select(getCurrentUser));
     this.validationErrors$ = this.store.pipe(select(getValidationErrors));
@@ -40,6 +43,6 @@ export class SettingsComponent {
   }
 
   selectLang(event: string) {
-    this.translateService.setDefaultLang('ru');
+    this.store.dispatch(new SetCurrentLanguage(event));
   }
 }

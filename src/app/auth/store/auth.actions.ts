@@ -17,6 +17,8 @@ export enum AuthActionsTypes {
   UPDATE_CURRENT_USER = '[Auth] Update current user',
   UPDATE_CURRENT_USER_SUCCESS = '[Auth] Update current user success',
   UPDATE_CURRENT_USER_FAIL = '[Auth] Update current user fail',
+  SET_CURRENT_LANGUAGE = '[Auth] Set current language',
+  SET_CURRENT_LANGUAGE_SUCCESS = '[Auth] Set current language success',
   LOGOUT = '[Auth] Logout',
   LOGOUT_SUCCESS = '[Auth] Logout success',
 }
@@ -77,6 +79,16 @@ export class UpdateCurrentUserFail implements Action {
   constructor(public payload: fromSharedModels.BackendErrors) { }
 }
 
+export class SetCurrentLanguage implements Action {
+  public readonly type = AuthActionsTypes.SET_CURRENT_LANGUAGE;
+  constructor(public payload: string) { }
+}
+
+export class SetCurrentLanguageSuccess implements Action {
+  public readonly type = AuthActionsTypes.SET_CURRENT_LANGUAGE_SUCCESS;
+  constructor(public payload: string) { }
+}
+
 export class Logout implements Action {
   public readonly type = AuthActionsTypes.LOGOUT;
 }
@@ -98,5 +110,7 @@ export type AuthActions =
   UpdateCurrentUser |
   UpdateCurrentUserSuccess |
   UpdateCurrentUserFail |
+  SetCurrentLanguage |
+  SetCurrentLanguageSuccess |
   Logout |
   LogoutSuccess;

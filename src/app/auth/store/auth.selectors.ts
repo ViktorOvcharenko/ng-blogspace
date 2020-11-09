@@ -9,4 +9,5 @@ export const getIsAuthLoading = createSelector(authFeatureSelector, (state: from
 export const getIsLoggedIn = createSelector(authFeatureSelector, (state: fromAuthModels.AuthState) => state.isLoggedIn);
 export const getIsAnonymous = createSelector(authFeatureSelector, (state: fromAuthModels.AuthState) => !state.isLoggedIn);
 export const getCurrentUser = createSelector(authFeatureSelector, (state: fromAuthModels.AuthState) => state.currentUser);
+export const getCurrentLanguage = createSelector(authFeatureSelector, (state: fromAuthModels.AuthState) => state.currentLanguage);
 export const getValidationErrors = createSelector(authFeatureSelector, (state: fromAuthModels.AuthState) => state.validationErrors);

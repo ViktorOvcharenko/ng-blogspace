@@ -6,8 +6,7 @@
     "read-more": "Подробнее...",
     "favorite-article": "Любимая статья",
     "unfavorite-article": "Удалить из избранного",
-    "post-comment": "Комментировать",
-    "choose-your-language": "Выберите предпочитаемый язык приложения:"
+    "post-comment": "Комментировать"
   },
   "auth": {
     "sign-up": "Зарегистрироваться",
@@ -34,7 +33,10 @@
   "settings": {
     "your-settings": "Ваши настройки",
     "or-click-here-logout": "Или нажмите здесь, чтобы выйти",
-    "update-settings": "Обновить настройки"
+    "update-settings": "Обновить настройки",
+    "choose-your-language": "Выберите предпочитаемый язык приложения:",
+    "english": "Английский",
+    "russian": "Русский"
   },
   "shared": {
     "popular-tags": "Популярные теги",

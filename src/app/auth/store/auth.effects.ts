@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Observable, of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 import {
@@ -16,7 +17,7 @@ import {
   LogoutSuccess,
   Registration,
   RegistrationFail,
-  RegistrationSuccess,
+  RegistrationSuccess, SetCurrentLanguage, SetCurrentLanguageSuccess,
   UpdateCurrentUser,
   UpdateCurrentUserFail,
   UpdateCurrentUserSuccess
@@ -70,6 +71,16 @@ export class AuthEffects {
   );
 
   @Effect()
+  setCurrentLanguage$: Observable<Action> = this.actions$.pipe(
+    ofType<SetCurrentLanguage>(AuthActionsTypes.SET_CURRENT_LANGUAGE),
+    switchMap(({payload}) => {
+      this.persistenceService.set('currentLanguage', payload);
+      this.translateService.setDefaultLang(payload);
+      return of(new SetCurrentLanguageSuccess(payload));
+    })
+  );
+
+  @Effect()
   logout$: Observable<Action> = this.actions$.pipe(
     ofType<Logout>(AuthActionsTypes.LOGOUT),
     switchMap(() => {
@@ -83,6 +94,7 @@ export class AuthEffects {
     private actions$: Actions,
     private authService: fromAuthServices.AuthService,
     private persistenceService: fromSharedServices.PersistenceService,
-    private router: Router
+    private router: Router,
+    private translateService: TranslateService,
   ) { }
 }

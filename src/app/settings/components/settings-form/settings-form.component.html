@@ -62,7 +62,11 @@
                 <fieldset class="form-group">
                     <h4>{{'settings.choose-your-language'| translate }}</h4>
                     <select (change)="selectLang()" class="form-control" #selectLangRef>
-                        <option *ngFor="let lang of languages" [value]="lang">{{ lang }}</option>
+                        <option
+                            *ngFor="let lang of languages"
+                            [value]="lang.value">
+                            {{ lang.title | translate }}
+                        </option>
                     </select>
                 </fieldset>
                 <div class="logout-btn-container">

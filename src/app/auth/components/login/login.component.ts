@@ -12,11 +12,16 @@ import * as fromSharedModels from '../../../shared/models';
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
+  isShowPassword: boolean = false;
   @Input() isLoading: boolean;
   @Input() validationErrors: fromSharedModels.BackendErrors;
   @Output() onSubmit: EventEmitter<fromAuthModels.LoginRequest> = new EventEmitter<fromAuthModels.LoginRequest>();
 
   constructor(private fb: FormBuilder) { }
+
+  get passwordType(): string {
+    return this.isShowPassword ? 'text': 'password';
+  }
 
   ngOnInit(): void {
     this.initForm();
@@ -31,7 +36,10 @@ export class LoginComponent implements OnInit {
 
   submit(): void {
     const requestBody: fromAuthModels.LoginRequest = { user: { ...this.form.value } };
-
     this.onSubmit.emit(requestBody);
+  }
+
+  toggleIsShowPassword(): void {
+    this.isShowPassword = !this.isShowPassword;
   }
 }

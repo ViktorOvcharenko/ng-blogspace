@@ -102,6 +102,12 @@ export const authReducers = (
         validationErrors: action.payload
       };
     }
+    case AuthActionsTypes.SET_CURRENT_LANGUAGE_SUCCESS: {
+      return {
+        ...state,
+        currentLanguage: action.payload
+      };
+    }
     case AuthActionsTypes.LOGOUT: {
       return {
         ...state,

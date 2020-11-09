@@ -14,7 +14,7 @@ export class SettingsFormComponent implements OnInit{
   @Input() isLoading: boolean;
   @Input() currentUser: fromSharedModels.CurrentUser;
   @Input() errors: fromSharedModels.BackendErrors;
-  @Input() languages: string[];
+  @Input() languages: fromSettingsModels.Language[];
   @Output() onSubmit: EventEmitter<fromSettingsModels.CurrentUserRequest> = new EventEmitter<fromSettingsModels.CurrentUserRequest>();
   @Output() onLogout: EventEmitter<void> = new EventEmitter<void>();
   @Output() onSelectLang: EventEmitter<string> = new EventEmitter<string>();

@@ -30,12 +30,25 @@
                                 placeholder="{{ 'auth.email' | translate}}"
                                 formControlName="email">
                         </fieldset>
-                        <fieldset class="form-group">
+                        <fieldset class="form-group password-wrapper">
                             <input
-                                type="password"
+                                [type]="passwordType"
                                 class="form-control form-control-lg"
                                 placeholder="{{ 'auth.password' | translate}}"
                                 formControlName="password">
+                                <mat-icon
+                                    *ngIf="!isShowPassword; else visibilityOffRef"
+                                    (click)="toggleIsShowPassword()"
+                                    class="delete-btn">
+                                    visibility
+                                </mat-icon>
+                               <ng-template #visibilityOffRef>
+                                  <mat-icon
+                                      (click)="toggleIsShowPassword()"
+                                      class="delete-btn">
+                                      visibility_off
+                                  </mat-icon>
+                               </ng-template>
                         </fieldset>
                         <div class="d-flex justify-content-end">
                             <button

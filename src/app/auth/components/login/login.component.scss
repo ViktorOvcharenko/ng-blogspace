@@ -9,4 +9,21 @@
       color: $color-theme-light;
     }
   }
+
+  .password-wrapper {
+    position: relative;
+
+    .mat-icon {
+      position: absolute;
+      top: .75rem;
+      right: .75rem;
+      font-size: 1.75rem;
+      color: $color-grey;
+
+      &:hover {
+        color: $color-black;
+        cursor: pointer;
+      }
+    }
+  }
 }

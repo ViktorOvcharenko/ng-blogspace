@@ -34,7 +34,9 @@
     "your-settings": "Your settings",
     "or-click-here-logout": "Or click here to logout",
     "update-settings": "Update settings",
-    "choose-your-language": "Choose your preferred application language:"
+    "choose-your-language": "Choose your preferred application language:",
+    "english": "English",
+    "russian": "Russian"
   },
   "shared": {
     "popular-tags": "Popular tags",
