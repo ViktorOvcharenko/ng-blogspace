@@ -13,6 +13,10 @@
   .password-wrapper {
     position: relative;
 
+    input {
+      padding-right: 2.5rem;
+    }
+
     .mat-icon {
       position: absolute;
       top: .75rem;
