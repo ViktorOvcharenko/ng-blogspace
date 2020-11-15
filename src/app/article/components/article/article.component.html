@@ -1,70 +1,70 @@
 <div class="article-page">
-    <app-loader *ngIf="isArticleLoading; else articleRef"></app-loader>
+  <app-loader *ngIf="isArticleLoading; else articleRef"></app-loader>
 
-    <ng-template #articleRef>
-        <div *ngIf="article; else errorsRef">
-            <app-article-banner
-                [isFollowLoading]="isFollowLoading"
-                [isFavoriteLoading]="isFavoriteLoading"
-                [article]="article"
-                [isSelf]="isSelf"
-                (onDeleteArticle)="deleteArticle($event)"
-                (onFollow)="follow($event)"
-                (onUnfollow)="unfollow($event)"
-                (onHandleLike)="handleLike($event)"
-            ></app-article-banner>
+  <ng-template #articleRef>
+    <div *ngIf="article; else errorsRef">
+      <app-article-banner
+        [isFollowLoading]="isFollowLoading"
+        [isFavoriteLoading]="isFavoriteLoading"
+        [article]="article"
+        [isSelf]="isSelf"
+        (onDeleteArticle)="deleteArticle($event)"
+        (onFollow)="follow($event)"
+        (onUnfollow)="unfollow($event)"
+        (onHandleLike)="handleLike($event)"
+      ></app-article-banner>
 
-            <div class="container page">
-                <div *ngIf="article" class="row article-content">
-                    <div class="col-md-12">
-                        <div class="article-content">{{ articleBody }}</div>
-                        <app-tag-list
-                            [tagList]="tagList"
-                            [isFloatLeft]="true"
-                        ></app-tag-list>
-                    </div>
-                </div>
-                <hr>
-                <div class="article-actions">
-                    <app-article-meta
-                        [isFollowLoading]="isFollowLoading"
-                        [isFavoriteLoading]="isFavoriteLoading"
-                        [article]="article"
-                        [isSelf]="isSelf"
-                        (onDeleteArticle)="deleteArticle($event)"
-                        (onFollow)="follow($event)"
-                        (onUnfollow)="unfollow($event)"
-                        (onHandleLike)="handleLike($event)"
-                    ></app-article-meta>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-md-8 offset-md-2">
-                        <app-loader *ngIf="isCommentsLoading; else commentsRef"></app-loader>
-
-                        <ng-template #commentsRef>
-                            <app-article-comment-form
-                                [currentUser]="currentUser"
-                                (onCreateComment)="createComment($event)"
-                            ></app-article-comment-form>
-                            <app-article-comment
-                                *ngFor="let comment of comments"
-                                [isLoading]="isCommentsLoading"
-                                [comment]="comment"
-                                (onDeleteComment)="deleteComment($event)"
-                            ></app-article-comment>
-                        </ng-template>
-                    </div>
-                </div>
-            </div>
+      <div class="container page">
+        <div *ngIf="article" class="row article-content">
+          <div class="col-md-12">
+            <div class="article-content">{{ articleBody }}</div>
+            <app-tag-list
+              [tagList]="tagList"
+              [isFloatLeft]="true"
+            ></app-tag-list>
+          </div>
         </div>
+        <hr>
+        <div class="article-actions">
+          <app-article-meta
+            [isFollowLoading]="isFollowLoading"
+            [isFavoriteLoading]="isFavoriteLoading"
+            [article]="article"
+            [isSelf]="isSelf"
+            (onDeleteArticle)="deleteArticle($event)"
+            (onFollow)="follow($event)"
+            (onUnfollow)="unfollow($event)"
+            (onHandleLike)="handleLike($event)"
+          ></app-article-meta>
+        </div>
+          <div class="row">
+            <div class="col-xs-12 col-md-8 offset-md-2">
+              <app-loader *ngIf="isCommentsLoading; else commentsRef"></app-loader>
 
-        <ng-template #errorsRef>
-            <div class="error-messages-wrapper">
-                <app-backend-error-messages
-                    *ngIf="errors"
-                    [errors]="errors"
-                ></app-backend-error-messages>
+              <ng-template #commentsRef>
+                <app-article-comment-form
+                  [currentUser]="currentUser"
+                  (onCreateComment)="createComment($event)"
+                ></app-article-comment-form>
+                <app-article-comment
+                  *ngFor="let comment of comments"
+                  [isLoading]="isCommentsLoading"
+                  [comment]="comment"
+                  (onDeleteComment)="deleteComment($event)"
+                ></app-article-comment>
+              </ng-template>
             </div>
-        </ng-template>
+          </div>
+        </div>
+    </div>
+
+    <ng-template #errorsRef>
+      <div class="error-messages-wrapper">
+        <app-backend-error-messages
+          *ngIf="errors"
+          [errors]="errors"
+        ></app-backend-error-messages>
+      </div>
     </ng-template>
+  </ng-template>
 </div>
