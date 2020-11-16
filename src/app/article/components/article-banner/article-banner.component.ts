@@ -22,15 +22,15 @@ export class ArticleBannerComponent  {
     return this.article.title;
   }
 
-  deleteArticle(event): void {
+  deleteArticle(event: string): void {
     this.onDeleteArticle.emit(event);
   }
 
-  follow(event): void {
+  follow(event: string): void {
     this.onFollow.emit(event);
   }
 
-  unfollow(event): void {
+  unfollow(event: string): void {
     this.onUnfollow.emit(event);
   }
 

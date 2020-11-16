@@ -1,15 +1,15 @@
 <div class="banner">
-    <div class="container page">
-        <h1>{{ title }}</h1>
-        <app-article-meta
-            [isFollowLoading]="isFollowLoading"
-            [isFavoriteLoading]="isFavoriteLoading"
-            [article]="article"
-            [isSelf]="isSelf"
-            (onDeleteArticle)="deleteArticle($event)"
-            (onFollow)="follow($event)"
-            (onUnfollow)="unfollow($event)"
-            (onHandleLike)="handleLike($event)"
-        ></app-article-meta>
-    </div>
+  <div class="container page">
+    <h1>{{ title }}</h1>
+    <app-article-meta
+      [isFollowLoading]="isFollowLoading"
+      [isFavoriteLoading]="isFavoriteLoading"
+      [article]="article"
+      [isSelf]="isSelf"
+      (onDeleteArticle)="deleteArticle($event)"
+      (onFollow)="follow($event)"
+      (onUnfollow)="unfollow($event)"
+      (onHandleLike)="handleLike($event)"
+    ></app-article-meta>
+  </div>
 </div>
