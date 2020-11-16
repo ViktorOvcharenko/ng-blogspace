@@ -1,18 +1,18 @@
 <div class="card">
-    <div class="card-block">
-          <p class="card-text">{{ body }}</p>
-    </div>
+  <div class="card-block">
+    <p class="card-text">{{ body }}</p>
+  </div>
 
-    <div class="card-footer">
-        <div class="comment-author-container">
-            <a [routerLink]="['/profile', username]" class="comment-image-container">
-                <img class="comment-author-img" [src]="authorImage">
-            </a>
-            <a [routerLink]="['/profile', username]" class="comment-author">{{ username }}</a>
-            <span class="date-posted">{{ createdAt | date: 'longDate' }}</span>
-        </div>
-        <span class="mod-options">
-            <mat-icon (click)="deleteComment(commentId)" class="mat-icon">delete</mat-icon>
-        </span>
+  <div class="card-footer">
+    <div class="comment-author-container">
+      <a [routerLink]="['/profile', username]" class="comment-image-container">
+        <img [src]="authorImage" class="comment-author-img">
+      </a>
+      <a [routerLink]="['/profile', username]" class="comment-author">{{ username }}</a>
+      <span class="date-posted">{{ createdAt | date: 'longDate' }}</span>
     </div>
+    <span class="mod-options">
+      <mat-icon (click)="deleteComment(commentId)" class="mat-icon">delete</mat-icon>
+    </span>
+  </div>
 </div>
