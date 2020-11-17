@@ -1,24 +1,24 @@
 <div class="card comment-form">
-    <form [formGroup]="form" (ngSubmit)="submit()">
-        <fieldset>
-            <div class="card-block">
-                  <textarea
-                      formControlName="body"
-                      class="form-control"
-                      placeholder="Write a comment..."
-                      rows="3"
-                  ></textarea>
-            </div>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <fieldset>
+      <div class="card-block">
+        <textarea
+          formControlName="body"
+          class="form-control"
+          placeholder="Write a comment..."
+          rows="3"
+        ></textarea>
+      </div>
 
-            <div class="card-footer">
-                <img [src]="currentUserImage" class="comment-author-img">
-                <button
-                    class="btn btn-sm btn-primary"
-                    type="submit">
-                    {{ 'article.post-comment' | translate }}
-                </button>
-            </div>
-        </fieldset>
-    </form>
+      <div class="card-footer">
+        <img [src]="currentUserImage" class="comment-author-img">
+        <button
+          class="btn btn-sm btn-primary"
+          type="submit">
+          {{ 'article.post-comment' | translate }}
+        </button>
+      </div>
+    </fieldset>
+  </form>
 </div>
 
