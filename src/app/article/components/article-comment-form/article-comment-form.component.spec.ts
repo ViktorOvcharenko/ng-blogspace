@@ -24,7 +24,7 @@ describe('ArticleCommentFormComponent', () => {
     component = fixture.componentInstance;
     component.currentUser = fromTestModels.currentUserMock;
     fixture.detectChanges();
-  })
+  });
 
   describe('currentUserImage', () => {
     it('should return image', () => {

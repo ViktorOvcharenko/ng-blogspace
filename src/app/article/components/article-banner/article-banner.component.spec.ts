@@ -20,7 +20,7 @@ describe('ArticleBannerComponent', () => {
     component = fixture.componentInstance;
     component.article = fromTestModels.articleMock;
     fixture.detectChanges();
-  })
+  });
 
   describe('title', () => {
     it('should return title', () => {

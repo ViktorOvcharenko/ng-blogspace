@@ -20,7 +20,7 @@ describe('ArticleCommentComponent', () => {
     component = fixture.componentInstance;
     component.comment = fromTestModels.commentMock;
     fixture.detectChanges();
-  })
+  });
 
   describe('body', () => {
     it('should return body', () => {
