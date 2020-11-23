@@ -74,7 +74,7 @@ export class ArticleFormComponent implements OnInit, OnDestroy {
         const control = this.fb.control(value);
 
         (this.form.get('tagList') as FormArray).push(control);
-        this.form.get('tagName').setValue('t');
+        this.form.get('tagName').setValue('');
       });
   }
 
