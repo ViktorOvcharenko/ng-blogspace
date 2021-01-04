@@ -7,4 +7,4 @@ export const currentUserMock: fromSharedModels.CurrentUser = {
   updatedAt: '2020',
   username: 'test',
   token: 'test',
-}
+};

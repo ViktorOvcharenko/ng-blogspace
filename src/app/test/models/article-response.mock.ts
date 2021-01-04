@@ -16,4 +16,4 @@ export const articleResponseMock: fromArticleModels.ArticleResponse = {
     title: 'test',
     updatedAt: '2020',
   }
-}
+};

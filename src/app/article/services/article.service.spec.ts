@@ -79,4 +79,34 @@ describe('ArticleService', () => {
       }).flush(responseMock);
     });
   });
+
+  describe('followUser', () => {
+    it('should follow to user', () => {
+      const responseMock = fromTestModels.profileResponseMock;
+      const requestMock = 'test';
+      const expected = false;
+      service.followUser(requestMock).subscribe(response => {
+        expect(response).toBe(expected);
+      });
+      backend.expectOne({
+        method: 'POST',
+        url: `${environment.apiUrl}/profiles/${requestMock}/follow`,
+      }).flush(responseMock);
+    });
+  });
+
+  describe('unfollowUser', () => {
+    it('should unfollow to user', () => {
+      const responseMock = fromTestModels.profileResponseMock;
+      const requestMock = 'test';
+      const expected = false;
+      service.unfollowUser(requestMock).subscribe(response => {
+        expect(response).toBe(expected);
+      });
+      backend.expectOne({
+        method: 'DELETE',
+        url: `${environment.apiUrl}/profiles/${requestMock}/follow`,
+      }).flush(responseMock);
+    });
+  });
 });

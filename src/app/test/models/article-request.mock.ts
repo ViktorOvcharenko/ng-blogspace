@@ -7,4 +7,4 @@ export const articleRequestMock: fromArticleModels.ArticleRequest = {
     body: 'test',
     tagList: [],
   }
-}
+};

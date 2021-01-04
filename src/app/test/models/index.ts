@@ -7,3 +7,4 @@ export { commentCreateRequestMock } from './comment-create-request.mock';
 export { commentDeleteRequestMock } from './comment-delete-request.mock';
 export { currentUserMock } from './current-user.mock';
 export { profileMock } from './profile.mock';
+export { profileResponseMock } from './profile-response.mock';
