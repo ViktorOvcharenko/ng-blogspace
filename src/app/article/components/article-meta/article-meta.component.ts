@@ -47,11 +47,11 @@ export class ArticleMetaComponent {
   }
 
   follow(): void {
-    this.onFollow.emit(this.article.author.username);
+    this.onFollow.emit(this.username);
   }
 
   unfollow(): void {
-    this.onUnfollow.emit(this.article.author.username);
+    this.onUnfollow.emit(this.username);
   }
 
   handleLike(event: fromSharedModels.AddToFavorites): void {

@@ -58,7 +58,7 @@ export class ArticleComponent  {
     this.onDeleteComment.emit(commentDeleteRequest);
   }
 
-  createComment(event: string):void {
+  createComment(event: string): void {
     const commentDeleteRequest: fromArticleModels.CommentCreateRequest = {
       slug: this.article.slug,
       body: event
