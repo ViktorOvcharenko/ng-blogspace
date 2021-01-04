@@ -1,4 +1,5 @@
 export { addToFavoritesMock } from './add-to-favorites.mock';
+export { appStateMock } from './app-state.mock';
 export { articleMock } from './article.mock';
 export { articleRequestMock } from './article-request.mock';
 export { articleResponseMock } from './article-response.mock';
