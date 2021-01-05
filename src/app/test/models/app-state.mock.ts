@@ -17,7 +17,7 @@ export const appStateMock: fromSharedModels.AppState = {
   },
   comments: {
     isLoading: false,
-    comments: null,
+    comments: [],
     errors: null,
   },
   feed: {

@@ -13,23 +13,33 @@ describe('ArticleSelectors', () => {
   const appState = fromTestModels.appStateMock;
   const initialState = { ...initialArticleState };
 
-  it('should get the isLoading', () => {
-    expect(getArticleIsLoading(appState)).toBe(initialState.isLoading);
+  describe('getArticleIsLoading', () => {
+    it('should get the isLoading', () => {
+      expect(getArticleIsLoading(appState)).toBe(initialState.isLoading);
+    });
   });
 
-  it('should get the isFollowLoading', () => {
-    expect(getArticleIsFollowLoading(appState)).toBe(initialState.isFollowLoading);
+  describe('getArticleIsFollowLoading', () => {
+    it('should get the isFollowLoading', () => {
+      expect(getArticleIsFollowLoading(appState)).toBe(initialState.isFollowLoading);
+    });
   });
 
-  it('should get the isFavoriteLoading', () => {
-    expect(getArticleIsFavoriteLoading(appState)).toBe(initialState.isFavoriteLoading);
+  describe('getArticleIsFavoriteLoading', () => {
+    it('should get the isFavoriteLoading', () => {
+      expect(getArticleIsFavoriteLoading(appState)).toBe(initialState.isFavoriteLoading);
+    });
   });
 
-  it('should get the isLoading', () => {
-    expect(getArticle(appState)).toBe(initialState.article);
+  describe('getArticle', () => {
+    it('should get the isLoading', () => {
+      expect(getArticle(appState)).toBe(initialState.article);
+    });
   });
 
-  it('should get the isLoading', () => {
-    expect(getArticleErrors(appState)).toBe(initialState.errors);
+  describe('getArticleErrors', () => {
+    it('should get the isLoading', () => {
+      expect(getArticleErrors(appState)).toBe(initialState.errors);
+    });
   });
 });

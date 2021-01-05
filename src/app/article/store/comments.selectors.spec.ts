@@ -7,15 +7,21 @@ describe('CommentsSelectors', () => {
   const appState = fromTestModels.appStateMock;
   const initialState = { ...initialCommentsState };
 
-  it('should get the isLoading', () => {
-    expect(getCommentsIsLoading(appState)).toBe(initialState.isLoading);
+  describe('getCommentsIsLoading', () => {
+    it('should get the isLoading', () => {
+      expect(getCommentsIsLoading(appState)).toEqual(initialState.isLoading);
+    });
   });
 
-  it('should get the comments', () => {
-    expect(getComments(appState)).toBe(initialState.comments);
+  describe('getComments', () => {
+    it('should get the comments', () => {
+      expect(getComments(appState)).toEqual(initialState.comments);
+    });
   });
 
-  it('should get the errors', () => {
-    expect(getCommentsErrors(appState)).toBe(initialState.errors);
+  describe('getCommentsErrors', () => {
+    it('should get the errors', () => {
+      expect(getCommentsErrors(appState)).toEqual(initialState.errors);
+    });
   });
 });
